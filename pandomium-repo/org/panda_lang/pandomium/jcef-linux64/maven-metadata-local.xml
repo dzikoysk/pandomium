@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.panda_lang.pandomium</groupId>
+  <artifactId>jcef-linux64</artifactId>
+  <versioning>
+    <release>indev-0.1.0</release>
+    <versions>
+      <version>indev-0.1.0</version>
+    </versions>
+    <lastUpdated>20170416183949</lastUpdated>
+  </versioning>
+</metadata>

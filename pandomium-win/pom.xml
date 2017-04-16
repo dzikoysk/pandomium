@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>pandomium-parent</artifactId>
+        <groupId>org.panda_lang</groupId>
+        <version>indev-0.1.0</version>
+    </parent>
+
+    <artifactId>pandomium-win</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.panda_lang.pandomium</groupId>
+            <artifactId>gluegen-rt-win64</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.panda_lang.pandomium</groupId>
+            <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.panda_lang.pandomium</groupId>
+            <artifactId>jcef-tests-win64</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.panda_lang.pandomium</groupId>
+            <artifactId>jcef-win64</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.panda_lang.pandomium</groupId>
+            <artifactId>jogl-all-natives-windows-amd64</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.panda_lang.pandomium</groupId>
+            <artifactId>jogl-all-win64</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.panda_lang</groupId>
+    <artifactId>pandomium-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>indev-0.1.0</version>
+
+    <modules>
+        <module>pandomium</module>
+        <module>pandomium-win</module>
+        <module>pandomium-linux</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <pandomium.repository>file:///${project.basedir}/pandomium-repo</pandomium.repository>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Windows x64 -->
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>gluegen-rt-win64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jcef-tests-win64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jcef-win64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jogl-all-natives-windows-amd64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jogl-all-win64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+
+            <!-- Linux x64 -->
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>gluegen-rt-linux64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jcef-tests-linux64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jcef-linux64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jogl-all-natives-linux-amd64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jogl-all-linux64</artifactId>
+                <version>indev-0.1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>panda-repo</id>
+            <url>https://repo.panda-lang.org/</url>
+        </repository>
+    </repositories>
+
+</project>

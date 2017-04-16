@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.panda_lang.pandomium</groupId>
+  <artifactId>jogl-all-natives-windows-amd64</artifactId>
+  <versioning>
+    <release>indev-0.1.0</release>
+    <versions>
+      <version>indev-0.1.0</version>
+    </versions>
+    <lastUpdated>20170416162948</lastUpdated>
+  </versioning>
+</metadata>
