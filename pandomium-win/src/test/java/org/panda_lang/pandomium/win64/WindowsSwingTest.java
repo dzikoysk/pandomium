@@ -13,12 +13,12 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class WindowsTest extends JFrame {
+public class WindowsSwingTest extends JFrame {
 
     private final JTextField address;
     private final CefBrowser cefBrowser;
 
-    private WindowsTest(String startURL, boolean useOSR, boolean isTransparent) {
+    private WindowsSwingTest(String startURL, boolean useOSR, boolean isTransparent) {
         CefApp.addAppHandler(new CefAppHandlerAdapter(null) {
             @Override
             public void stateHasChanged(org.cef.CefApp.CefAppState state) {
@@ -55,7 +55,7 @@ public class WindowsTest extends JFrame {
     }
 
     public static void main(String[] args) {
-        new WindowsTest("http://www.google.com", OS.isLinux(), false);
+        new WindowsSwingTest("http://www.google.com", OS.isLinux(), false);
     }
 
 }

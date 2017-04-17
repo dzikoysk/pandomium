@@ -10,6 +10,7 @@
     <modules>
         <module>pandomium</module>
         <module>pandomium-win</module>
+        <module>pandomium-macos</module>
         <module>pandomium-linux</module>
     </modules>
 
@@ -21,6 +22,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>1.0</version>
+            </dependency>
+
             <!-- Windows x64 -->
             <dependency>
                 <groupId>org.panda_lang.pandomium</groupId>
