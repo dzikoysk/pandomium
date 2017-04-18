@@ -42,6 +42,7 @@ Soon...
 
 #### TODO
 * [x] Build natives & jcef
+* [ ] Win32, Linux32 & macOS support
 * [x] Basic implementation
 * [ ] Builds available in the maven repository
 * [ ] Pandomium wrapper for JCEF objects
