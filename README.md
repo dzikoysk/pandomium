@@ -39,3 +39,11 @@ Soon...
     <version>indev-0.1.0-SNAPSHOT</version>
 </dependency>
 ```
+
+#### TODO
+* [x] Build natives & jcef
+* [x] Basic implementation
+* [ ] Builds available in the maven repository
+* [ ] Pandomium wrapper for JCEF objects
+* [ ] Advanced Java <-> JS bridge
+* [ ] ByteBuffer implementation

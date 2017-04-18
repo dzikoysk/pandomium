@@ -18,78 +18,74 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <pandomium.repository>file:///${project.basedir}/pandomium-repo</pandomium.repository>
+        <pandomium.version>${project.version}</pandomium.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Pandomium -->
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-compress</artifactId>
-                <version>1.0</version>
+                <groupId>org.panda_lang</groupId>
+                <artifactId>pandomium</artifactId>
+                <version>${pandomium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang</groupId>
+                <artifactId>panda</artifactId>
+                <version>indev-0.0.3-SNAPSHOT</version>
+            </dependency>
+
+            <!-- JCEF -->
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jcef</artifactId>
+                <version>${pandomium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jcef-tests</artifactId>
+                <version>${pandomium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>gluegen-rt</artifactId>
+                <version>${pandomium.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.panda_lang.pandomium</groupId>
+                <artifactId>jogl-all</artifactId>
+                <version>${pandomium.version}</version>
             </dependency>
 
             <!-- Windows x64 -->
             <dependency>
                 <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>gluegen-rt-win64</artifactId>
-                <version>indev-0.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
                 <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
-                <version>indev-0.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jcef-tests-win64</artifactId>
-                <version>indev-0.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jcef-win64</artifactId>
-                <version>indev-0.1.0</version>
+                <version>${pandomium.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.panda_lang.pandomium</groupId>
                 <artifactId>jogl-all-natives-windows-amd64</artifactId>
-                <version>indev-0.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jogl-all-win64</artifactId>
-                <version>indev-0.1.0</version>
+                <version>${pandomium.version}</version>
             </dependency>
 
             <!-- Linux x64 -->
             <dependency>
                 <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>gluegen-rt-linux64</artifactId>
-                <version>indev-0.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
                 <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
-                <version>indev-0.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jcef-tests-linux64</artifactId>
-                <version>indev-0.1.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jcef-linux64</artifactId>
-                <version>indev-0.1.0</version>
+                <version>${pandomium.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.panda_lang.pandomium</groupId>
                 <artifactId>jogl-all-natives-linux-amd64</artifactId>
-                <version>indev-0.1.0</version>
+                <version>${pandomium.version}</version>
             </dependency>
+
+            <!-- Utilities -->
             <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jogl-all-linux64</artifactId>
-                <version>indev-0.1.0</version>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>1.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

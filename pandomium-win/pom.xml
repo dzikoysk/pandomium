@@ -12,8 +12,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>gluegen-rt-win64</artifactId>
+            <groupId>org.panda_lang</groupId>
+            <artifactId>pandomium</artifactId>
         </dependency>
         <dependency>
             <groupId>org.panda_lang.pandomium</groupId>
@@ -21,19 +21,7 @@
         </dependency>
         <dependency>
             <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jcef-tests-win64</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jcef-win64</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
             <artifactId>jogl-all-natives-windows-amd64</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jogl-all-win64</artifactId>
         </dependency>
     </dependencies>
 

@@ -21,7 +21,7 @@ public class WindowsSwingTest extends JFrame {
     private WindowsSwingTest(String startURL, boolean useOSR, boolean isTransparent) {
         CefApp.addAppHandler(new CefAppHandlerAdapter(null) {
             @Override
-            public void stateHasChanged(org.cef.CefApp.CefAppState state) {
+            public void stateHasChanged(CefApp.CefAppState state) {
                 if (state == CefAppState.TERMINATED) {
                     System.exit(0);
                 }
