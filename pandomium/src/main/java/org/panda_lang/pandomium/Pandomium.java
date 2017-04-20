@@ -1,5 +1,6 @@
 package org.panda_lang.pandomium;
 
+import org.cef.CefClient;
 import org.panda_lang.pandomium.loader.PandomiumLoader;
 import org.panda_lang.pandomium.loader.PandomiumProgressListener;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
@@ -20,8 +21,6 @@ public class Pandomium {
         PandomiumLoader loader = new PandomiumLoader(this);
 
         loader.addProgressListener((state, progress) -> {
-            System.out.println(progress + "%");
-
             if (state != PandomiumProgressListener.State.DONE) {
                 return;
             }
@@ -34,12 +33,14 @@ public class Pandomium {
     }
 
     public PandomiumClient createClient() {
-        return null;
+        CefClient client = pcef.getCefApp().createClient();
+        return new PandomiumClient(client);
     }
 
     public void exit() {
         if (pcef != null) {
             pcef.dispose();
+            return;
         }
 
         System.exit(0);

@@ -1,6 +1,44 @@
 # Pandomium
 Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for the maven projects 
 
+#### Example
+```java
+public class PandomiumTest {
+
+    public static void main(String[] args) {
+        PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
+
+        Pandomium pandomium = new Pandomium(settings);
+        pandomium.initialize();
+
+        PandomiumClient client = pandomium.createClient();
+        PandomiumBrowser browser = client.createBrowser("https://panda-lang.org");
+
+        JFrame frame = new JFrame();
+        frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
+        frame.pack();
+
+        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                frame.dispose();
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                pandomium.exit();
+            }
+        });
+
+        frame.setTitle("Pandomium");
+        frame.setSize(1380, 760);
+        frame.setVisible(true);
+    }
+
+}
+```
+
 #### Repository structure
 ```
 pandomium/
@@ -30,8 +68,6 @@ pandomium/
 ```
 
 #### Maven
-Soon...
-
 ```xml
 <dependency>
     <groupId>org.panda_lang</groupId>
