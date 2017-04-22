@@ -49,7 +49,7 @@ public class PandomiumTest {
 <dependency>
     <groupId>org.panda_lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>indev-0.1.0-SNAPSHOT</version>
+    <version>indev-0.1.0</version>
 </dependency>
 ```
 
