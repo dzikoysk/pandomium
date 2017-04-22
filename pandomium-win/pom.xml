@@ -5,23 +5,16 @@
     <parent>
         <artifactId>pandomium-parent</artifactId>
         <groupId>org.panda_lang</groupId>
-        <version>indev-0.1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>pandomium-win</artifactId>
+    <version>1.0.0</version>
 
     <dependencies>
         <dependency>
             <groupId>org.panda_lang</groupId>
             <artifactId>pandomium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jogl-all-natives-windows-amd64</artifactId>
         </dependency>
     </dependencies>
 

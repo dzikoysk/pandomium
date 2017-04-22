@@ -5,10 +5,11 @@
     <parent>
         <artifactId>pandomium-parent</artifactId>
         <groupId>org.panda_lang</groupId>
-        <version>indev-0.1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>pandomium</artifactId>
+    <version>1.0.0</version>
 
     <dependencies>
         <!-- Panda -->
@@ -19,40 +20,20 @@
 
         <!-- JCEF -->
         <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jcef</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jcef-tests</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jogl-all</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>gluegen-rt</artifactId>
+            <groupId>org.panda_lang.pandomium-dependencies</groupId>
+            <artifactId>universal</artifactId>
         </dependency>
 
         <!-- Windows x64 -->
         <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jogl-all-natives-windows-amd64</artifactId>
+            <groupId>org.panda_lang.pandomium-dependencies</groupId>
+            <artifactId>natives-windows-amd64</artifactId>
         </dependency>
 
         <!-- Linux x64 -->
         <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jogl-all-natives-linux-amd64</artifactId>
+            <groupId>org.panda_lang.pandomium-dependencies</groupId>
+            <artifactId>natives-linux-amd64</artifactId>
         </dependency>
 
         <!-- Utilities -->
@@ -63,7 +44,6 @@
         <dependency>
             <groupId>org.tukaani</groupId>
             <artifactId>xz</artifactId>
-            <version>1.6</version>
         </dependency>
     </dependencies>
 

@@ -5,7 +5,7 @@
     <groupId>org.panda_lang</groupId>
     <artifactId>pandomium-parent</artifactId>
     <packaging>pom</packaging>
-    <version>indev-0.1.0</version>
+    <version>1.0.0</version>
 
     <modules>
         <module>pandomium</module>
@@ -18,8 +18,9 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <pandomium.repository>file:///${project.basedir}/pandomium-repo</pandomium.repository>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <pandomium.version>${project.version}</pandomium.version>
+        <pandomium.nativeVersion>1.0.0</pandomium.nativeVersion>
     </properties>
 
     <dependencyManagement>
@@ -38,48 +39,23 @@
 
             <!-- JCEF -->
             <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jcef</artifactId>
-                <version>${pandomium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jcef-tests</artifactId>
-                <version>${pandomium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>gluegen-rt</artifactId>
-                <version>${pandomium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jogl-all</artifactId>
-                <version>${pandomium.version}</version>
+                <groupId>org.panda_lang.pandomium-dependencies</groupId>
+                <artifactId>universal</artifactId>
+                <version>${pandomium.nativeVersion}</version>
             </dependency>
 
             <!-- Windows x64 -->
             <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
-                <version>${pandomium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jogl-all-natives-windows-amd64</artifactId>
-                <version>${pandomium.version}</version>
+                <groupId>org.panda_lang.pandomium-dependencies</groupId>
+                <artifactId>natives-windows-amd64</artifactId>
+                <version>${pandomium.nativeVersion}</version>
             </dependency>
 
             <!-- Linux x64 -->
             <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
-                <version>${pandomium.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.panda_lang.pandomium</groupId>
-                <artifactId>jogl-all-natives-linux-amd64</artifactId>
-                <version>${pandomium.version}</version>
+                <groupId>org.panda_lang.pandomium-dependencies</groupId>
+                <artifactId>natives-linux-amd64</artifactId>
+                <version>${pandomium.nativeVersion}</version>
             </dependency>
 
             <!-- Utilities -->
@@ -88,6 +64,11 @@
                 <artifactId>commons-compress</artifactId>
                 <version>1.0</version>
             </dependency>
+            <dependency>
+                <groupId>org.tukaani</groupId>
+                <artifactId>xz</artifactId>
+                <version>1.6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -95,6 +76,10 @@
         <repository>
             <id>panda-repo</id>
             <url>https://repo.panda-lang.org/</url>
+        </repository>
+        <repository>
+            <id>local-repo</id>
+            <url>${pandomium.repository}</url>
         </repository>
     </repositories>
 

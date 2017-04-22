@@ -49,8 +49,13 @@ public class PandomiumTest {
 <dependency>
     <groupId>org.panda_lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>indev-0.1.0</version>
+    <version>1.0.0</version>
 </dependency>
+
+<repository>
+    <id>panda-repo</id>
+    <url>https://repo.panda-lang.org/</url>
+</repository>
 ```
 
 #### Repository structure

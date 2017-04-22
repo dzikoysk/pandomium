@@ -7,10 +7,17 @@
     <parent>
         <groupId>org.panda_lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>indev-0.1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>pandomium-macos</artifactId>
-    <version>indev-0.1.0</version>
-    
+    <version>1.0.0</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.panda_lang</groupId>
+            <artifactId>pandomium</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

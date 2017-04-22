@@ -1,0 +1,1 @@
+install:install-file -DlocalRepositoryPath=pandomium-mirror/maven -DcreateChecksum=true -Dpackaging=jar -Dfile=pandomium/libs/universal.jar -DgroupId=org.panda_lang.pandomium-dependencies -DartifactId=universal -Dversion=1.0.0

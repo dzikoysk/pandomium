@@ -7,24 +7,16 @@
     <parent>
         <groupId>org.panda_lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>indev-0.1.0</version>
+        <version>1.0.0</version>
     </parent>
 
     <artifactId>pandomium-linux</artifactId>
-    <version>indev-0.1.0</version>
+    <version>1.0.0</version>
 
     <dependencies>
         <dependency>
             <groupId>org.panda_lang</groupId>
             <artifactId>pandomium</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.panda_lang.pandomium</groupId>
-            <artifactId>jogl-all-natives-linux-amd64</artifactId>
         </dependency>
     </dependencies>
 
