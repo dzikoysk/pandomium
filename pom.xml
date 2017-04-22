@@ -37,7 +37,7 @@
                 <version>indev-0.0.3-SNAPSHOT</version>
             </dependency>
 
-            <!-- JCEF -->
+            <!-- Java Chromium Embedded Framework -->
             <dependency>
                 <groupId>org.panda_lang.pandomium-dependencies</groupId>
                 <artifactId>universal</artifactId>
@@ -48,6 +48,13 @@
             <dependency>
                 <groupId>org.panda_lang.pandomium-dependencies</groupId>
                 <artifactId>natives-windows-amd64</artifactId>
+                <version>${pandomium.nativeVersion}</version>
+            </dependency>
+
+            <!-- macOS -->
+            <dependency>
+                <groupId>org.panda_lang.pandomium-dependencies</groupId>
+                <artifactId>natives-macosx-universal</artifactId>
                 <version>${pandomium.nativeVersion}</version>
             </dependency>
 
@@ -76,10 +83,6 @@
         <repository>
             <id>panda-repo</id>
             <url>https://repo.panda-lang.org/</url>
-        </repository>
-        <repository>
-            <id>local-repo</id>
-            <url>${pandomium.repository}</url>
         </repository>
     </repositories>
 

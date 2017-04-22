@@ -18,7 +18,7 @@
             <artifactId>panda</artifactId>
         </dependency>
 
-        <!-- JCEF -->
+        <!-- Java Chromium Embedded Framework  -->
         <dependency>
             <groupId>org.panda_lang.pandomium-dependencies</groupId>
             <artifactId>universal</artifactId>
@@ -28,6 +28,12 @@
         <dependency>
             <groupId>org.panda_lang.pandomium-dependencies</groupId>
             <artifactId>natives-windows-amd64</artifactId>
+        </dependency>
+
+        <!-- macOS -->
+        <dependency>
+            <groupId>org.panda_lang.pandomium-dependencies</groupId>
+            <artifactId>natives-macosx-universal</artifactId>
         </dependency>
 
         <!-- Linux x64 -->

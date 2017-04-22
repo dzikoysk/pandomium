@@ -1,1 +1,1 @@
-install:install-file -DlocalRepositoryPath=pandomium-mirror/maven -DcreateChecksum=true -Dpackaging=jar -Dfile=pandomium-macos/libs/natives-macos-amd64.jar -DgroupId=org.panda_lang.pandomium-dependencies -DartifactId=natives-macos-amd64 -Dversion=1.0.0
+install:install-file -DlocalRepositoryPath=pandomium-mirror/maven -DcreateChecksum=true -Dpackaging=jar -Dfile=pandomium-macos/libs/natives-macosx-universal.jar -DgroupId=org.panda_lang.pandomium-dependencies -DartifactId=natives-macosx-universal -Dversion=1.0.0
