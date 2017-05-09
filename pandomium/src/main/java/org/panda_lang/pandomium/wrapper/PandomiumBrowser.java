@@ -14,8 +14,10 @@ public class PandomiumBrowser {
     }
 
     public JPanel toSwingComponent() {
-        JPanel panel = new JPanel();
-        panel.add(toAWTComponent());
+        BorderLayout borderLayout = new BorderLayout();
+        JPanel panel = new JPanel(borderLayout);
+
+        panel.add(toAWTComponent(), BorderLayout.CENTER);
         return panel;
     }
 
