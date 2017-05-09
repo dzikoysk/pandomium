@@ -4,36 +4,35 @@
 
 package tests.detailed.dialog;
 
-import java.awt.Frame;
-
-import javax.swing.JOptionPane;
-
 import org.cef.callback.CefRequestCallback;
 import org.cef.handler.CefLoadHandler.ErrorCode;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class CertErrorDialog implements Runnable {
-  private final Frame owner_;
-  private final ErrorCode cert_error_;
-  private final String request_url_;
-  private final CefRequestCallback callback_;
+    private final Frame owner_;
+    private final ErrorCode cert_error_;
+    private final String request_url_;
+    private final CefRequestCallback callback_;
 
-  public CertErrorDialog(Frame owner, ErrorCode cert_error, String request_url, CefRequestCallback callback) {
-    owner_ = owner;
-    cert_error_ = cert_error;
-    request_url_ = request_url;
-    callback_ = callback;
-  }
+    public CertErrorDialog(Frame owner, ErrorCode cert_error, String request_url, CefRequestCallback callback) {
+        owner_ = owner;
+        cert_error_ = cert_error;
+        request_url_ = request_url;
+        callback_ = callback;
+    }
 
-  @Override
-  public void run() {
-    int dialogResult = JOptionPane.showConfirmDialog(owner_,
-            "An certificate error (" +
-            cert_error_ + ") occurreed " +
-            "while requesting\n" + request_url_ +
-            "\nDo you want to proceed anyway?",
-            "Certificate error",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.ERROR_MESSAGE);
-    callback_.Continue(dialogResult == JOptionPane.YES_OPTION);
-  }
+    @Override
+    public void run() {
+        int dialogResult = JOptionPane.showConfirmDialog(owner_,
+                "An certificate error (" +
+                        cert_error_ + ") occurreed " +
+                        "while requesting\n" + request_url_ +
+                        "\nDo you want to proceed anyway?",
+                "Certificate error",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.ERROR_MESSAGE);
+        callback_.Continue(dialogResult == JOptionPane.YES_OPTION);
+    }
 }

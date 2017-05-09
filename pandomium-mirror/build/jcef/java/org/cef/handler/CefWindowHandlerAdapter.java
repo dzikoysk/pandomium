@@ -4,9 +4,9 @@
 
 package org.cef.handler;
 
-import java.awt.Rectangle;
-
 import org.cef.browser.CefBrowser;
+
+import java.awt.*;
 
 /**
  * An abstract adapter class for receiving windowed render events.
@@ -15,13 +15,13 @@ import org.cef.browser.CefBrowser;
  */
 public abstract class CefWindowHandlerAdapter implements CefWindowHandler {
 
-  @Override
-  public Rectangle getRect(CefBrowser browser) {
-    return new Rectangle(0,0,0,0);
-  }
+    @Override
+    public Rectangle getRect(CefBrowser browser) {
+        return new Rectangle(0, 0, 0, 0);
+    }
 
-  @Override
-  public void onMouseEvent(CefBrowser browser, int event, int screenX,
-      int screenY, int modifier, int button) {
-  }
+    @Override
+    public void onMouseEvent(CefBrowser browser, int event, int screenX,
+            int screenY, int modifier, int button) {
+    }
 }

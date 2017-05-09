@@ -5,19 +5,19 @@
 package org.cef.callback;
 
 class CefDownloadItemCallback_N extends CefNativeAdapter implements
-    CefDownloadItemCallback {
+        CefDownloadItemCallback {
 
-  CefDownloadItemCallback_N() {
-  }
-
-  @Override
-  public void cancel() {
-    try {
-      N_Cancel();
-    } catch (UnsatisfiedLinkError ule) {
-      ule.printStackTrace();
+    CefDownloadItemCallback_N() {
     }
-  }
 
-  private final native void N_Cancel();
+    @Override
+    public void cancel() {
+        try {
+            N_Cancel();
+        } catch (UnsatisfiedLinkError ule) {
+            ule.printStackTrace();
+        }
+    }
+
+    private final native void N_Cancel();
 }

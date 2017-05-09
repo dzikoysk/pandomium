@@ -16,34 +16,34 @@ import org.cef.misc.CefPrintSettings;
  * This class exists as convenience for creating handler objects.
  */
 public abstract class CefPrintHandlerAdapter extends CefNativeAdapter
-    implements CefPrintHandler {
+        implements CefPrintHandler {
 
-  @Override
-  public void onPrintStart(CefBrowser browser) {
-    // The default implementation does nothing
-  }
+    @Override
+    public void onPrintStart(CefBrowser browser) {
+        // The default implementation does nothing
+    }
 
-  @Override
-  public void onPrintSettings(CefPrintSettings settings, boolean get_defaults) {
-    // The default implementation does nothing
-  }
+    @Override
+    public void onPrintSettings(CefPrintSettings settings, boolean get_defaults) {
+        // The default implementation does nothing
+    }
 
-  @Override
-  public boolean onPrintDialog(boolean has_selection,
-      CefPrintDialogCallback callback) {
-    // The default implementation does nothing
-    return false;
-  }
+    @Override
+    public boolean onPrintDialog(boolean has_selection,
+            CefPrintDialogCallback callback) {
+        // The default implementation does nothing
+        return false;
+    }
 
-  @Override
-  public boolean onPrintJob(String document_name, String pdf_file_path,
-      CefPrintJobCallback callback) {
-    // The default implementation does nothing
-    return false;
-  }
+    @Override
+    public boolean onPrintJob(String document_name, String pdf_file_path,
+            CefPrintJobCallback callback) {
+        // The default implementation does nothing
+        return false;
+    }
 
-  @Override
-  public void onPrintReset() {
-    // The default implementation does nothing
-  }
+    @Override
+    public void onPrintReset() {
+        // The default implementation does nothing
+    }
 }

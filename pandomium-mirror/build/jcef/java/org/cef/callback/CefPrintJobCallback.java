@@ -9,8 +9,8 @@ package org.cef.callback;
  */
 public interface CefPrintJobCallback {
 
-  /**
-   * Indicate completion of the print job.
-   */
-  void Continue();
+    /**
+     * Indicate completion of the print job.
+     */
+    void Continue();
 }

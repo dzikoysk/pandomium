@@ -11,13 +11,13 @@ import org.cef.misc.CefPrintSettings;
  */
 public interface CefPrintDialogCallback {
 
-  /**
-   * Continue printing with the specified |settings|.
-   */
-  void Continue(CefPrintSettings settings);
+    /**
+     * Continue printing with the specified |settings|.
+     */
+    void Continue(CefPrintSettings settings);
 
-  /**
-   * Cancel the printing.
-   */
-  void cancel();
+    /**
+     * Cancel the printing.
+     */
+    void cancel();
 }

@@ -4,45 +4,43 @@
 
 package tests.detailed.dialog;
 
-import java.awt.BorderLayout;
-import java.awt.Frame;
-import java.awt.Point;
+import org.cef.browser.CefBrowser;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
-import javax.swing.JDialog;
-
-import org.cef.browser.CefBrowser;
-
 @SuppressWarnings("serial")
 public class DevToolsDialog extends JDialog {
-  private final CefBrowser devTools_;
-  public DevToolsDialog(Frame owner, String title, CefBrowser browser) {
-    this(owner, title, browser, null);
-  }
+    private final CefBrowser devTools_;
 
-  public DevToolsDialog(Frame owner, String title, CefBrowser browser,
-      Point inspectAt) {
-    super(owner, title, false);
+    public DevToolsDialog(Frame owner, String title, CefBrowser browser) {
+        this(owner, title, browser, null);
+    }
 
-    setLayout(new BorderLayout());
-    setSize(800, 600);
-    setLocation(owner.getLocation().x+20, owner.getLocation().y+20);
+    public DevToolsDialog(Frame owner, String title, CefBrowser browser,
+            Point inspectAt) {
+        super(owner, title, false);
 
-    devTools_ = browser.getDevTools(inspectAt);
-    add(devTools_.getUIComponent());
+        setLayout(new BorderLayout());
+        setSize(800, 600);
+        setLocation(owner.getLocation().x + 20, owner.getLocation().y + 20);
 
-    addComponentListener(new ComponentAdapter() {
-      @Override
-      public void componentHidden(ComponentEvent e) {
-        dispose();
-      }
-    });
-  }
+        devTools_ = browser.getDevTools(inspectAt);
+        add(devTools_.getUIComponent());
 
-  @Override
-  public void dispose() {
-    devTools_.close();
-    super.dispose();
-  }
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentHidden(ComponentEvent e) {
+                dispose();
+            }
+        });
+    }
+
+    @Override
+    public void dispose() {
+        devTools_.close();
+        super.dispose();
+    }
 }

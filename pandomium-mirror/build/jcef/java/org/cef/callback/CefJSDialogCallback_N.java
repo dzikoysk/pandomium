@@ -5,19 +5,19 @@
 package org.cef.callback;
 
 class CefJSDialogCallback_N extends CefNativeAdapter implements
-    CefJSDialogCallback {
+        CefJSDialogCallback {
 
-  CefJSDialogCallback_N() {
-  }
-
-  @Override
-  public void Continue(boolean success, String user_input) {
-    try {
-      N_Continue(success,user_input);
-    } catch (UnsatisfiedLinkError ule) {
-      ule.printStackTrace();
+    CefJSDialogCallback_N() {
     }
-  }
 
-  private final native void N_Continue(boolean success, String user_input);
+    @Override
+    public void Continue(boolean success, String user_input) {
+        try {
+            N_Continue(success, user_input);
+        } catch (UnsatisfiedLinkError ule) {
+            ule.printStackTrace();
+        }
+    }
+
+    private final native void N_Continue(boolean success, String user_input);
 }
