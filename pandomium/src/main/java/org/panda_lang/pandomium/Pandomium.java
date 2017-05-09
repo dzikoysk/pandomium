@@ -10,22 +10,21 @@ import org.panda_lang.pandomium.wrapper.PandomiumClient;
 public class Pandomium {
 
     private final PandomiumSettings settings;
+    private final PandomiumLoader loader;
     private PandomiumCEF pcef;
 
     public Pandomium(PandomiumSettings settings) {
         this.settings = settings;
+        this.loader = new PandomiumLoader(this);
     }
 
     public void initialize() {
-        Pandomium that = this;
-        PandomiumLoader loader = new PandomiumLoader(this);
-
         loader.addProgressListener((state, progress) -> {
             if (state != PandomiumProgressListener.State.DONE) {
                 return;
             }
 
-            pcef = new PandomiumCEF(that);
+            pcef = new PandomiumCEF(this);
             pcef.initialize();
         });
 
@@ -33,7 +32,11 @@ public class Pandomium {
     }
 
     public PandomiumClient createClient() {
-        CefClient client = pcef.getCefApp().createClient();
+        if (pcef == null) {
+            throw new RuntimeException("Pandomium is not initialized");
+        }
+
+        CefClient client = getRaw().getCefApp().createClient();
         return new PandomiumClient(client);
     }
 
@@ -48,6 +51,10 @@ public class Pandomium {
 
     public PandomiumCEF getRaw() {
         return pcef;
+    }
+
+    public PandomiumLoader getLoader() {
+        return loader;
     }
 
     public PandomiumSettings getSettings() {
