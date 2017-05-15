@@ -12,6 +12,11 @@ public class PandomiumClient {
         this.cefClient = cefClient;
     }
 
+    public PandomiumBrowser loadURL(String url) {
+        return createBrowser(url);
+    }
+
+    @Deprecated
     public PandomiumBrowser createBrowser(String url) {
         CefBrowser browser = cefClient.createBrowser(url, PandomiumOS.isLinux(), false);
         return new PandomiumBrowser(browser);
