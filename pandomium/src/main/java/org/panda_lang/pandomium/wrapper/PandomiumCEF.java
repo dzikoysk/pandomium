@@ -1,6 +1,7 @@
 package org.panda_lang.pandomium.wrapper;
 
 import org.cef.CefApp;
+import org.cef.CefClient;
 import org.cef.CefSettings;
 import org.cef.handler.CefAppHandlerAdapter;
 import org.panda_lang.pandomium.Pandomium;
@@ -29,6 +30,11 @@ public class PandomiumCEF {
                 }
             }
         });
+    }
+
+    public PandomiumClient createClient() {
+        CefClient client = cefApp.createClient();
+        return new PandomiumClient(pandomium, client);
     }
 
     public void dispose() {

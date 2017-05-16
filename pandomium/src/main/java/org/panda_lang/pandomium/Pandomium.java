@@ -1,6 +1,5 @@
 package org.panda_lang.pandomium;
 
-import org.cef.CefClient;
 import org.panda_lang.pandomium.loader.PandomiumLoader;
 import org.panda_lang.pandomium.loader.PandomiumProgressListener;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
@@ -36,8 +35,7 @@ public class Pandomium {
             throw new RuntimeException("Pandomium is not initialized");
         }
 
-        CefClient client = getRaw().getCefApp().createClient();
-        return new PandomiumClient(client);
+        return pcef.createClient();
     }
 
     public void exit() {
