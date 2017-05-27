@@ -5,11 +5,11 @@
     <parent>
         <artifactId>pandomium-parent</artifactId>
         <groupId>org.panda_lang</groupId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </parent>
 
     <artifactId>pandomium-win</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <dependencies>
         <dependency>
