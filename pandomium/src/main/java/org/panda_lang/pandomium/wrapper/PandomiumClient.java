@@ -2,16 +2,15 @@ package org.panda_lang.pandomium.wrapper;
 
 import org.cef.CefClient;
 import org.cef.browser.CefBrowser;
-import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.util.os.PandomiumOS;
 
 public class PandomiumClient {
 
-    private final Pandomium pandomium;
+    private final PandomiumCEF pandomiumCEF;
     private final CefClient cefClient;
 
-    public PandomiumClient(Pandomium pandomium, CefClient cefClient) {
-        this.pandomium = pandomium;
+    public PandomiumClient(PandomiumCEF pandomiumCEF, CefClient cefClient) {
+        this.pandomiumCEF = pandomiumCEF;
         this.cefClient = cefClient;
     }
 
@@ -19,7 +18,7 @@ public class PandomiumClient {
         return createBrowser(url);
     }
 
-    public PandomiumBrowser loadContent(String content) {
+    protected PandomiumBrowser loadContent(String content) {
         return null; // TODO
     }
 
@@ -32,8 +31,8 @@ public class PandomiumClient {
         return cefClient;
     }
 
-    public Pandomium getPandomium() {
-        return pandomium;
+    public PandomiumCEF getPandomiumCEF() {
+        return pandomiumCEF;
     }
 
 }

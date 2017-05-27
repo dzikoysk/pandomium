@@ -38,13 +38,15 @@ public class Pandomium {
         return pcef.createClient();
     }
 
+    @Deprecated
     public void exit() {
+        dispose();
+    }
+
+    public void dispose() {
         if (pcef != null) {
             pcef.dispose();
-            return;
         }
-
-        System.exit(0);
     }
 
     public PandomiumCEF getRaw() {

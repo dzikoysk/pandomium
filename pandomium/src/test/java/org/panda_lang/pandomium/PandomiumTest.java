@@ -18,7 +18,7 @@ public class PandomiumTest {
         pandomium.initialize();
 
         PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.createBrowser("https://panda-lang.org");
+        PandomiumBrowser browser = client.loadURL("https://panda-lang.org");
 
         JFrame frame = new JFrame();
         frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
@@ -28,12 +28,8 @@ public class PandomiumTest {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
+                pandomium.dispose();
                 frame.dispose();
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                pandomium.exit();
             }
         });
 
