@@ -8,7 +8,7 @@ public class PandomiumTest {
 
     public static void main(String[] args) {
         PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
-        
+
         Pandomium pandomium = new Pandomium(settings);
         pandomium.initialize();
 
@@ -28,6 +28,15 @@ public class PandomiumTest {
             }
         });
 
+        pandomium.getRaw().getPandomiumThread().getApp().addShutdownHookAction(() -> {
+            if (!frame.isDisplayable()) {
+                return;
+            }
+
+            pandomium.dispose();
+            frame.dispose();
+        });
+
         frame.setTitle("Pandomium");
         frame.setSize(1380, 760);
         frame.setVisible(true);
@@ -45,7 +54,7 @@ public class PandomiumTest {
 <dependency>
     <groupId>org.panda_lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
 </dependency>
 
 <repository>

@@ -5,11 +5,12 @@
     <parent>
         <artifactId>pandomium-parent</artifactId>
         <groupId>org.panda_lang</groupId>
-        <version>1.0.1</version>
+        <version>1.0.3</version>
     </parent>
 
     <artifactId>pandomium</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.3</version>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- Panda -->

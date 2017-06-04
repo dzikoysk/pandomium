@@ -5,14 +5,26 @@
     <groupId>org.panda_lang</groupId>
     <artifactId>pandomium-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
-
+    <version>1.0.3</version>
+    <scm>
+        <connection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</connection>
+        <developerConnection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</developerConnection>
+        <url>https://github.com/Panda-Programming-Language/Pandomium</url>
+    </scm>
     <modules>
         <module>pandomium</module>
         <module>pandomium-win</module>
         <module>pandomium-macos</module>
         <module>pandomium-linux</module>
     </modules>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <properties>
         <java.version>1.8</java.version>

@@ -38,11 +38,6 @@ public class Pandomium {
         return pcef.createClient();
     }
 
-    @Deprecated
-    public void exit() {
-        dispose();
-    }
-
     public void dispose() {
         if (pcef != null) {
             pcef.dispose();
@@ -59,6 +54,10 @@ public class Pandomium {
 
     public PandomiumSettings getSettings() {
         return settings;
+    }
+
+    public static String getVersion() {
+        return PandomiumConstants.PANDOMIUM_VERSION;
     }
 
 }

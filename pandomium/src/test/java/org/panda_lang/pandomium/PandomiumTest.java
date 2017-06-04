@@ -33,6 +33,15 @@ public class PandomiumTest {
             }
         });
 
+        pandomium.getRaw().getPandomiumThread().getApp().addShutdownHookAction(() -> {
+            if (!frame.isDisplayable()) {
+                return;
+            }
+
+            pandomium.dispose();
+            frame.dispose();
+        });
+
         frame.setTitle("Pandomium");
         frame.setSize(1380, 760);
         frame.setVisible(true);

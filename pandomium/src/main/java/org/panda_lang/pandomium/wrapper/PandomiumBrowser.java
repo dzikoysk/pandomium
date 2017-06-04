@@ -2,7 +2,6 @@ package org.panda_lang.pandomium.wrapper;
 
 import org.cef.browser.CefBrowser;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class PandomiumBrowser {
@@ -11,14 +10,6 @@ public class PandomiumBrowser {
 
     public PandomiumBrowser(CefBrowser cefBrowser) {
         this.cefBrowser = cefBrowser;
-    }
-
-    public JPanel toSwingComponent() {
-        BorderLayout borderLayout = new BorderLayout();
-        JPanel panel = new JPanel(borderLayout);
-
-        panel.add(toAWTComponent(), BorderLayout.CENTER);
-        return panel;
     }
 
     public Component toAWTComponent() {

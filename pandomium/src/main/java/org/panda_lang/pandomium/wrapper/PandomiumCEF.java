@@ -1,36 +1,39 @@
 package org.panda_lang.pandomium.wrapper;
 
-import org.cef.CefApp;
-import org.cef.CefSettings;
 import org.panda_lang.pandomium.Pandomium;
-import org.panda_lang.pandomium.util.os.PandomiumOS;
 
 public class PandomiumCEF {
 
     private final Pandomium pandomium;
-    private CefApp cefApp;
+    private final PandomiumThread pandomiumThread;
 
     public PandomiumCEF(Pandomium pandomium) {
         this.pandomium = pandomium;
+        this.pandomiumThread = new PandomiumThread(this);
     }
 
     public void initialize() {
-        CefSettings settings = new CefSettings();
-        settings.windowless_rendering_enabled = PandomiumOS.isLinux();
+        pandomiumThread.start();
 
-        this.cefApp = CefApp.getInstance(settings);
+        while (!pandomiumThread.isPrepared()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public PandomiumClient createClient() {
-        return new PandomiumClient(this, cefApp.createClient());
+        return new PandomiumClient(this, pandomiumThread.getClient());
     }
 
     public void dispose() {
-        CefApp.getInstance().dispose();
+        pandomiumThread.dispose();
     }
 
-    public CefApp getCefApp() {
-        return cefApp;
+    public PandomiumThread getPandomiumThread() {
+        return pandomiumThread;
     }
 
 }
