@@ -23,10 +23,15 @@ public class PandomiumDownloader {
         try {
             URL url = new URL(remotePath);
             URLConnection conn = url.openConnection();
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+
             int size = conn.getContentLength();
 
-            in = new BufferedInputStream(url.openStream());
+            if (size == -1) {
+                System.out.println("Unknown size, downloading...");
+            }
 
+            in = new BufferedInputStream(url.openStream());
             byte data[] = new byte[1024];
             double sumCount = 0.0;
             int count;
@@ -44,6 +49,7 @@ public class PandomiumDownloader {
                 }
             }
 
+            System.out.println("Done");
             return new ByteArrayInputStream(out.toByteArray());
         } catch (IOException exception) {
             exception.printStackTrace();
