@@ -6,6 +6,7 @@ import org.panda_lang.pandomium.settings.categories.DependenciesSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
 import org.panda_lang.pandomium.util.ArchiveUtils;
 import org.panda_lang.pandomium.util.FileUtils;
+import org.panda_lang.pandomium.util.os.PandomiumOS;
 
 import java.io.File;
 import java.io.InputStream;
@@ -52,12 +53,16 @@ public class PandomiumNativeLoader {
         }
 
         File[] directoryContent = directory.listFiles();
+        boolean success = FileUtils.isIn("jcef.so", directoryContent) || FileUtils.isIn("jcef.dll", directoryContent);
 
-        boolean chromeElfExists = FileUtils.isIn("chrome_elf.so", directoryContent) || FileUtils.isIn("chrome_elf.dll", directoryContent);
-        boolean libcefExists = FileUtils.isIn("libcef.so", directoryContent) || FileUtils.isIn("libcef.dll", directoryContent);
-        boolean jcefExists = FileUtils.isIn("jcef.so", directoryContent) || FileUtils.isIn("jcef.dll", directoryContent);
+        if (PandomiumOS.isWindows()) {
+            success = success && FileUtils.isIn("chrome_elf.dll", directoryContent) && FileUtils.isIn("libcef.dll", directoryContent);
+        }
+        else if (PandomiumOS.isLinux()) {
+            success = success && FileUtils.isIn("cef.pak", directoryContent);
+        }
 
-        return chromeElfExists && libcefExists && jcefExists;
+        return success;
     }
 
 }
