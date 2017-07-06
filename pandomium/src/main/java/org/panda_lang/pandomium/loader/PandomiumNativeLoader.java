@@ -53,10 +53,10 @@ public class PandomiumNativeLoader {
         }
 
         File[] directoryContent = directory.listFiles();
-        boolean success = FileUtils.isIn("jcef.so", directoryContent) || FileUtils.isIn("jcef.dll", directoryContent);
+        boolean success = FileUtils.isIn("libcef.so", directoryContent) || FileUtils.isIn("libcef.dll", directoryContent);
 
         if (PandomiumOS.isWindows()) {
-            success = success && FileUtils.isIn("chrome_elf.dll", directoryContent) && FileUtils.isIn("libcef.dll", directoryContent);
+            success = success && FileUtils.isIn("chrome_elf.dll", directoryContent) && FileUtils.isIn("jcef.dll", directoryContent);
         }
         else if (PandomiumOS.isLinux()) {
             success = success && FileUtils.isIn("cef.pak", directoryContent);

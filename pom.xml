@@ -13,9 +13,6 @@
     </scm>
     <modules>
         <module>pandomium</module>
-        <module>pandomium-win</module>
-        <module>pandomium-macos</module>
-        <module>pandomium-linux</module>
     </modules>
 
     <licenses>
