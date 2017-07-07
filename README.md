@@ -1,4 +1,4 @@
-# Pandomium
+# Pandomium [![Build Status](https://travis-ci.org/Panda-Programming-Language/Pandomium.svg?branch=master)](https://travis-ci.org/Panda-Programming-Language/Pandomium)
 Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for the maven projects 
 
 #### Example
