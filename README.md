@@ -46,7 +46,7 @@ public class PandomiumTest {
 ```
 
 #### Requirements
-* Windows x64 or Linux x64 (macOS soon)
+* Windows x64 (only)
 * Java 8
 
 #### Maven
