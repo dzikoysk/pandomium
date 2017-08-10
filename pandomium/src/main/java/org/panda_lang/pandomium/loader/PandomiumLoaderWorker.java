@@ -4,6 +4,11 @@ import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
 import org.panda_lang.pandomium.util.SystemUtils;
+import org.panda_lang.pandomium.util.os.PandomiumOS;
+import sun.misc.Unsafe;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class PandomiumLoaderWorker implements Runnable {
 
@@ -32,7 +37,12 @@ public class PandomiumLoaderWorker implements Runnable {
         PandomiumSettings settings = pandomium.getSettings();
 
         NativesSettings nativesSettings = settings.getNatives();
-        SystemUtils.injectLibraryPath("./" + nativesSettings.getNativeDirectory());
+        SystemUtils.injectLibraryPath(nativesSettings.getNativeDirectory());
+
+        // TODO: Modify JVM
+        if (PandomiumOS.isLinux() && !System.getenv("LD_LIBRARY_PATH").contains(nativesSettings.getNativeDirectory())) {
+            System.out.println("Environment variable LD_LIBRARY_PATH is not set to the \"" + nativesSettings.getNativeDirectory() +"\"");
+        }
 
         loader.updateProgress(100);
         loader.callListeners(PandomiumProgressListener.State.DONE);

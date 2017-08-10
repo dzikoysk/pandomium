@@ -5,6 +5,8 @@ import org.panda_lang.pandomium.settings.categories.LoaderSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
 import org.panda_lang.pandomium.util.os.PandomiumOSType;
 
+import java.io.File;
+
 public class PandomiumSettingsBuilder {
 
     private DependenciesSettings dependenciesSettings;
@@ -36,7 +38,15 @@ public class PandomiumSettingsBuilder {
     }
 
     public PandomiumSettingsBuilder nativeDirectory(String nativeDirectory) {
-        nativesSettings.setNativeDirectory(nativeDirectory);
+        File file = new File(nativeDirectory);
+
+        if (!file.exists()) {
+            if (!file.mkdirs()) {
+                throw new RuntimeException("Cannot create native directory");
+            }
+        }
+
+        nativesSettings.setNativeDirectory(file.getAbsolutePath());
         return this;
     }
 
