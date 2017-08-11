@@ -42,7 +42,7 @@ public class PandomiumTest {
         });
 
         frame.setTitle("Pandomium");
-        frame.setSize(980, 640);
+        frame.setSize(1720, 840);
         frame.setVisible(true);
     }
 
