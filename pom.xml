@@ -95,6 +95,13 @@
         </repository>
     </repositories>
 
+    <distributionManagement>
+        <repository>
+            <id>panda-repo-releases</id>
+            <url>https://repo.panda-lang.org/releases</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <defaultGoal>clean install</defaultGoal>
         <plugins>
