@@ -2,7 +2,9 @@
 Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for the maven projects 
 
 #### Example
-![PandomiumTest.java](https://panda-lang.org/screenshot/5d8KeBJg.png)
+![PandomiumTest.java - Windows x64](https://panda-lang.org/screenshot/5d8KeBJg.png)
+![PandomiumTest.java - Linux x64](https://panda-lang.org/screenshot/5E5ZgE9A.png)
+
 ```java
 public class PandomiumTest {
 
@@ -46,7 +48,7 @@ public class PandomiumTest {
 ```
 
 #### Requirements
-* Windows x64 (only)
+* Windows x64 / Linux x64
 * Java 8
 
 #### Maven
@@ -54,7 +56,7 @@ public class PandomiumTest {
 <dependency>
     <groupId>org.panda_lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 </dependency>
 
 <repository>
