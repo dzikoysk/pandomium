@@ -69,11 +69,6 @@
 
             <!-- Linux x64 -->
             <dependency>
-                <groupId>org.panda_lang.pandomium-dependencies</groupId>
-                <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
-                <version>${pandomium.nativeVersion}</version>
-            </dependency>
-            <dependency>
                 <groupId>net.dzikoysk</groupId>
                 <artifactId>linuxenv</artifactId>
                 <version>1.0.0</version>

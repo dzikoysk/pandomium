@@ -3,7 +3,8 @@ Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicate
 
 #### Example
 ![PandomiumTest.java - Windows x64](https://panda-lang.org/screenshot/5d8KeBJg.png)
-![PandomiumTest.java - Linux x64](https://panda-lang.org/screenshot/5E5ZgE9A.png)
+<!-- ![PandomiumTest.java - Linux x64](https://panda-lang.org/screenshot/5E5ZgE9A.png) -->>
+![PandomiumTest.java - Linux x64](https://panda-lang.org/screenshot/bZwbEGmm.png)
 
 ```java
 public class PandomiumTest {
