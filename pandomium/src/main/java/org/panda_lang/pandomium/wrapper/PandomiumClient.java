@@ -23,7 +23,7 @@ public class PandomiumClient {
     }
 
     private PandomiumBrowser createBrowser(String url) {
-        CefBrowser browser = cefClient.createBrowser(url, PandomiumOS.isLinux(), false);
+        CefBrowser browser = cefClient.createBrowser(url, PandomiumOS.isLinux(), PandomiumOS.isLinux());
         return new PandomiumBrowser(browser);
     }
 

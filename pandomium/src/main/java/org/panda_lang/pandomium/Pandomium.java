@@ -1,8 +1,12 @@
 package org.panda_lang.pandomium;
 
+import net.dzikoysk.linuxenv.LinuxJVMEnvironment;
 import org.panda_lang.pandomium.loader.PandomiumLoader;
 import org.panda_lang.pandomium.loader.PandomiumProgressListener;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
+import org.panda_lang.pandomium.settings.categories.NativesSettings;
+import org.panda_lang.pandomium.util.SystemUtils;
+import org.panda_lang.pandomium.util.os.PandomiumOS;
 import org.panda_lang.pandomium.wrapper.PandomiumCEF;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
 
@@ -17,7 +21,7 @@ public class Pandomium {
         this.loader = new PandomiumLoader(this);
     }
 
-    public void initialize() {
+    public void initialize() throws Exception {
         loader.addProgressListener((state, progress) -> {
             if (state != PandomiumProgressListener.State.DONE) {
                 return;

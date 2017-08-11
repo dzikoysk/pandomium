@@ -6,6 +6,7 @@ import org.cef.CefSettings;
 import org.cef.CefThreadBridge;
 import org.panda_lang.pandomium.util.os.PandomiumOS;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -45,7 +46,11 @@ public class PandomiumThread extends Thread implements CefThreadBridge {
             delegates.clear();
 
             for (Runnable runnable : copy) {
-                runnable.run();
+                try {
+                    SwingUtilities.invokeLater(runnable);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -68,10 +73,6 @@ public class PandomiumThread extends Thread implements CefThreadBridge {
 
     @Override
     public void invokeLater(Runnable runnable) {
-        if (!isHealthy()) {
-            throw new RuntimeException("PandomiumThread is not healthy");
-        }
-
         delegates.add(runnable);
     }
 

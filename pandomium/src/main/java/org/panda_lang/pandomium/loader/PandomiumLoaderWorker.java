@@ -1,12 +1,15 @@
 package org.panda_lang.pandomium.loader;
 
+import net.dzikoysk.linuxenv.LinuxJVMEnvironment;
 import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
+import org.panda_lang.pandomium.util.FileUtils;
 import org.panda_lang.pandomium.util.SystemUtils;
 import org.panda_lang.pandomium.util.os.PandomiumOS;
 import sun.misc.Unsafe;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,11 +40,26 @@ public class PandomiumLoaderWorker implements Runnable {
         PandomiumSettings settings = pandomium.getSettings();
 
         NativesSettings nativesSettings = settings.getNatives();
-        SystemUtils.injectLibraryPath(nativesSettings.getNativeDirectory());
+        String nativePath = nativesSettings.getNativeDirectory();
+        SystemUtils.injectLibraryPath(nativePath);
 
-        // TODO: Modify JVM
-        if (PandomiumOS.isLinux() && !System.getenv("LD_LIBRARY_PATH").contains(nativesSettings.getNativeDirectory())) {
-            System.out.println("Environment variable LD_LIBRARY_PATH is not set to the \"" + nativesSettings.getNativeDirectory() +"\"");
+        if (PandomiumOS.isLinux()) {
+            LinuxJVMEnvironment linuxJVMEnvironment = new LinuxJVMEnvironment();
+            linuxJVMEnvironment.setJVMEnvironmentVariable("LD_LIBRARY_PATH", nativePath, 1);
+
+            String javaHome = System.getProperty("java.home");
+            File bin = new File(javaHome + File.separator + "bin");
+
+            String[] symFiles = new String[] { "icudtl.dat", "natives_blob.bin", "snapshot_blob.bin" };
+            File[] binFiles = bin.listFiles();
+
+            for (String name : symFiles) {
+                if (FileUtils.isIn(name, binFiles)) {
+                    continue;
+                }
+
+                System.out.println("You have to create symlink: ln -s " + nativePath + File.separator + name + " " + bin.getAbsolutePath() + File.separator + name);
+            }
         }
 
         loader.updateProgress(100);

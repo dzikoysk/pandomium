@@ -40,7 +40,12 @@
         <!-- Linux x64 -->
         <dependency>
             <groupId>org.panda_lang.pandomium-dependencies</groupId>
-            <artifactId>natives-linux-amd64</artifactId>
+            <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.dzikoysk</groupId>
+            <artifactId>linuxenv</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- Utilities -->

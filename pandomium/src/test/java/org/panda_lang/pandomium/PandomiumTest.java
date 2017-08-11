@@ -11,18 +11,17 @@ import java.awt.event.WindowEvent;
 
 public class PandomiumTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
 
         Pandomium pandomium = new Pandomium(settings);
         pandomium.initialize();
 
         PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.loadURL("https://panda-lang.org");
+        PandomiumBrowser browser = client.loadURL("https://panda-lang.org/");
 
         JFrame frame = new JFrame();
         frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
-        frame.pack();
 
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
@@ -43,7 +42,7 @@ public class PandomiumTest {
         });
 
         frame.setTitle("Pandomium");
-        frame.setSize(1380, 760);
+        frame.setSize(980, 640);
         frame.setVisible(true);
     }
 
