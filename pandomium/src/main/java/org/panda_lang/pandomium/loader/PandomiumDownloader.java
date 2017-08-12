@@ -13,8 +13,6 @@ public class PandomiumDownloader {
     }
 
     public InputStream download(String remotePath) {
-        System.out.println("Downloading " + remotePath);
-
         try {
             URL url = new URL(remotePath);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

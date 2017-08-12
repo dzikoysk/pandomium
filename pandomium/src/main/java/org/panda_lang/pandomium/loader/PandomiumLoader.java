@@ -1,6 +1,7 @@
 package org.panda_lang.pandomium.loader;
 
 import org.panda_lang.pandomium.Pandomium;
+import org.panda_lang.pandomium.loader.PandomiumProgressListener.State;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.settings.categories.LoaderSettings;
 
@@ -23,6 +24,12 @@ public class PandomiumLoader {
 
         PandomiumSettings settings = pandomium.getSettings();
         LoaderSettings loaderSettings = settings.getLoader();
+
+        progressListeners.add((state, progress) -> {
+            if (state == State.RUNNING) {
+                System.out.println(progress + "%");
+            }
+        });
 
         if (!loaderSettings.isLoadAsync()) {
             worker.run();
