@@ -39,19 +39,24 @@ public class PandomiumThread extends Thread implements CefThreadBridge {
         this.client = app.createClient();
 
         while (isHealthy()) {
-            if (delegates.isEmpty()) {
-                continue;
-            }
+           callDelegates();
+        }
+    }
 
-            List<Runnable> copy = new ArrayList<>(delegates);
-            delegates.clear();
+    public synchronized void callDelegates() {
+        if (delegates.isEmpty()) {
+            return;
+        }
 
-            for (Runnable runnable : copy) {
-                try {
-                    SwingUtilities.invokeLater(runnable);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        List<Runnable> copy = new ArrayList<>(delegates);
+        delegates.clear();
+
+        for (Runnable runnable : copy) {
+            try {
+                //runnable.run();
+                SwingUtilities.invokeLater(runnable);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
@@ -80,7 +85,12 @@ public class PandomiumThread extends Thread implements CefThreadBridge {
     @Override
     public void invokeAndWait(Runnable runnable) {
         invokeLater(runnable);
-        while (delegates.size() != 0);
+
+        if (isEventDispatchThread()) {
+            callDelegates();
+        } else {
+            while (delegates.size() != 0);
+        }
     }
 
     @Override

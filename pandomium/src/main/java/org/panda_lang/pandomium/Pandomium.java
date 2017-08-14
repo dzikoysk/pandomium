@@ -1,12 +1,8 @@
 package org.panda_lang.pandomium;
 
-import net.dzikoysk.linuxenv.LinuxJVMEnvironment;
 import org.panda_lang.pandomium.loader.PandomiumLoader;
 import org.panda_lang.pandomium.loader.PandomiumProgressListener;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
-import org.panda_lang.pandomium.settings.categories.NativesSettings;
-import org.panda_lang.pandomium.util.SystemUtils;
-import org.panda_lang.pandomium.util.os.PandomiumOS;
 import org.panda_lang.pandomium.wrapper.PandomiumCEF;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
 
@@ -14,14 +10,16 @@ public class Pandomium {
 
     private final PandomiumSettings settings;
     private final PandomiumLoader loader;
+    private final Thread mainThread;
     private PandomiumCEF pcef;
 
     public Pandomium(PandomiumSettings settings) {
         this.settings = settings;
         this.loader = new PandomiumLoader(this);
+        this.mainThread = Thread.currentThread();
     }
 
-    public void initialize() throws Exception {
+    public void initialize() {
         loader.addProgressListener((state, progress) -> {
             if (state != PandomiumProgressListener.State.DONE) {
                 return;
@@ -46,6 +44,10 @@ public class Pandomium {
         if (pcef != null) {
             pcef.dispose();
         }
+    }
+
+    public Thread getMainThread() {
+        return mainThread;
     }
 
     public PandomiumCEF getRaw() {

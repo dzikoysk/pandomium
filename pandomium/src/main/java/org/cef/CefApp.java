@@ -380,7 +380,8 @@ public class CefApp extends CefAppHandlerAdapter {
                 r.run();
             }
             else {
-                SwingUtilities.invokeAndWait(r);
+                SwingUtilities.invokeLater(r);
+                Thread.sleep(1000);
             }
         } catch (Exception e) {
             e.printStackTrace();
