@@ -251,6 +251,10 @@ class CefBrowserOsr extends CefBrowser_N implements CefRenderHandler {
 
     @Override
     public void onPaint(CefBrowser browser, boolean popup, Rectangle[] dirtyRects, ByteBuffer buffer, int width, int height) {
+        if (canvas_.getContext() == null) {
+            System.out.println("Skipping painting request [CefApp is terminated]");
+        }
+
         canvas_.getContext().makeCurrent();
         renderer_.onPaint(canvas_.getGL().getGL2(), popup, dirtyRects, buffer, width, height);
         canvas_.getContext().release();

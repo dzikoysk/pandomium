@@ -90,6 +90,11 @@ public abstract class CefAppHandlerAdapter implements CefAppHandler {
 
     @Override
     public void onScheduleMessagePumpWork(long delay_ms) {
+        if (CefApp.getState() == CefAppState.TERMINATED) {
+            System.out.println("Skipping sheduled message pump work [CefApp is terminated]");
+            return;
+        }
+
         CefApp.getInstance().doMessageLoopWork(delay_ms);
     }
 }
