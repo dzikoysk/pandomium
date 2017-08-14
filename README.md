@@ -57,7 +57,7 @@ public class PandomiumTest {
 <dependency>
     <groupId>org.panda_lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
 </dependency>
 
 <repository>
