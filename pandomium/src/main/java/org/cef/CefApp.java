@@ -376,11 +376,11 @@ public class CefApp extends CefAppHandlerAdapter {
                     }
                 }
             };
-            if (SwingUtilities.isEventDispatchThread()) {
+            if (cefThreadBridge.isEventDispatchThread()) {
                 r.run();
             }
             else {
-                SwingUtilities.invokeLater(r);
+                cefThreadBridge.invokeLater(r);
                 Thread.sleep(1000);
             }
         } catch (Exception e) {

@@ -18,7 +18,7 @@ public class PandomiumTest {
         pandomium.initialize();
 
         PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.loadURL("https://panda-lang.org/");
+        PandomiumBrowser browser = client.loadURL("https://google.pl/");
 
         JFrame frame = new JFrame();
         frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
