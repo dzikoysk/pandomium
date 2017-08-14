@@ -376,12 +376,23 @@ public class CefApp extends CefAppHandlerAdapter {
                     }
                 }
             };
-            if (cefThreadBridge.isEventDispatchThread()) {
-                r.run();
+
+            if (OS.isLinux()) {
+                if (SwingUtilities.isEventDispatchThread()) {
+                    r.run();
+                }
+                else {
+                    SwingUtilities.invokeAndWait(r);
+                }
             }
             else {
-                cefThreadBridge.invokeLater(r);
-                Thread.sleep(1000);
+                if (cefThreadBridge.isEventDispatchThread()) {
+                    r.run();
+                }
+                else {
+                    cefThreadBridge.invokeLater(r);
+                    Thread.sleep(1000);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

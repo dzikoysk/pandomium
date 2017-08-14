@@ -6,6 +6,7 @@ import org.cef.CefSettings;
 import org.cef.CefThreadBridge;
 import org.panda_lang.pandomium.util.os.PandomiumOS;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -52,8 +53,12 @@ public class PandomiumThread extends Thread implements CefThreadBridge {
 
         for (Runnable runnable : copy) {
             try {
-                runnable.run();
-                //SwingUtilities.invokeLater(runnable);
+                if (PandomiumOS.isLinux()) {
+                    SwingUtilities.invokeLater(runnable);
+                }
+                else {
+                    runnable.run();
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
