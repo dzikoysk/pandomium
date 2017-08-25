@@ -48,7 +48,7 @@ public class MainFrame extends JFrame {
         settings.background_color = settings.new ColorType(100, 255, 242, 211);
         CefApp myApp = CefApp.getInstance(args, settings);
         CefVersion version = myApp.getVersion();
-        System.out.println("Using:\n" + version);
+        CefApp.getLogger().info("Using:\n" + version);
 
         //    We're registering our own AppHandler because we want to
         //    add an own schemes (search:// and client://) and its corresponding
@@ -212,16 +212,16 @@ public class MainFrame extends JFrame {
                 cookiePath = arg.substring("--cookie-path=".length());
                 File testPath = new File(cookiePath);
                 if (!testPath.isDirectory() || !testPath.canWrite()) {
-                    System.out.println("Can't use " + cookiePath + " as cookie directory. Check if it exists and if it is writable");
+                    CefApp.getLogger().info("Can't use " + cookiePath + " as cookie directory. Check if it exists and if it is writable");
                     cookiePath = null;
                 }
                 else {
-                    System.out.println("Storing cookies in " + cookiePath);
+                    CefApp.getLogger().info("Storing cookies in " + cookiePath);
                 }
             }
         }
 
-        System.out.println("Offscreen rendering " + (osrEnabledArg ? "enabled" : "disabled"));
+        CefApp.getLogger().info("Offscreen rendering " + (osrEnabledArg ? "enabled" : "disabled"));
 
         // MainFrame keeps all the knowledge to display the embedded browser
         // frame.
