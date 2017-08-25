@@ -4,6 +4,7 @@
 
 package org.cef.browser;
 
+import org.cef.CefApp;
 import org.cef.callback.CefDragData;
 import org.cef.handler.CefClientHandler;
 import org.cef.handler.CefRenderHandler;
@@ -252,7 +253,7 @@ class CefBrowserOsr extends CefBrowser_N implements CefRenderHandler {
     @Override
     public void onPaint(CefBrowser browser, boolean popup, Rectangle[] dirtyRects, ByteBuffer buffer, int width, int height) {
         if (canvas_.getContext() == null) {
-            System.out.println("Skipping painting request [CefApp is terminated]");
+            CefApp.getLogger().info("Skipping painting request [CefApp is terminated]");
         }
 
         canvas_.getContext().makeCurrent();

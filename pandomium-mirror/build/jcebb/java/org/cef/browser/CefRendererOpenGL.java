@@ -69,7 +69,7 @@ class CefRendererOpenGL {
 
     if (!gl2.getContext().isHardwareRasterizer()) {
       // Workaround for Windows Remote Desktop which requires pot textures.
-      System.out.println("opengl rendering may be slow as hardware rendering isn't available");
+      CefApp.getLogger().info("opengl rendering may be slow as hardware rendering isn't available");
       use_draw_pixels_ = true;
       return;
     }

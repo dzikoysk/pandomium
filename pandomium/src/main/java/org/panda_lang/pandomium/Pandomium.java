@@ -5,6 +5,7 @@ import org.panda_lang.pandomium.loader.PandomiumProgressListener;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.wrapper.PandomiumCEF;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
+import org.slf4j.Logger;
 
 public class Pandomium {
 
@@ -60,6 +61,10 @@ public class Pandomium {
 
     public PandomiumSettings getSettings() {
         return settings;
+    }
+
+    public static Logger getLogger() {
+        return PandomiumLogger.PANDOMIUM_LOGGER;
     }
 
     public static String getVersion() {

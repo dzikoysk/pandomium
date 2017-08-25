@@ -8,6 +8,7 @@ import org.cef.callback.CefSchemeHandlerFactory;
 import org.cef.handler.CefAppHandler;
 import org.cef.handler.CefAppHandlerAdapter;
 import org.cef.util.SwingThreadBridge;
+import org.slf4j.Logger;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -100,7 +101,7 @@ public class CefApp extends CefAppHandlerAdapter {
         Runtime.getRuntime().addShutdownHook(new Thread("JCEF Shutdown Hook") {
             @Override
             public void run() {
-                System.out.println("Shutdown Hook called");
+                CefApp.getLogger().info("Shutdown Hook called");
 
                 for (Runnable action : shutdownHookActions) {
                     action.run();
@@ -138,6 +139,10 @@ public class CefApp extends CefAppHandlerAdapter {
             throw new IllegalStateException("Must be called before CefApp is initialized");
         }
         CefApp.appHandler = appHandler;
+    }
+
+    public static Logger getLogger() {
+        return CefLogger.CEF_LOGGER;
     }
 
     /**
@@ -235,7 +240,7 @@ public class CefApp extends CefAppHandlerAdapter {
                 setState(CefAppState.SHUTTING_DOWN);
                 if (clients.isEmpty()) {
                     shutdown();
-                    System.out.println("a1");
+                    CefApp.getLogger().info("a1");
                 }
                 else {
                     // shutdown() will be called from clientWasDisposed() when the last
@@ -343,7 +348,7 @@ public class CefApp extends CefAppHandlerAdapter {
                 @Override
                 public void run() {
                     String library_path = getJcefLibPath();
-                    System.out.println("Initialize on " + Thread.currentThread() + " with library path " + library_path);
+                    CefApp.getLogger().info("Initialize on " + Thread.currentThread() + " with library path " + library_path);
 
                     CefSettings settings = CefApp.this.settings != null ? CefApp.this.settings : new CefSettings();
 
@@ -426,7 +431,7 @@ public class CefApp extends CefAppHandlerAdapter {
         cefThreadBridge.invokeLater(new Runnable() {
             @Override
             public void run() {
-                System.out.println("Shutdown on " + Thread.currentThread());
+                CefApp.getLogger().info("Shutdown on " + Thread.currentThread());
 
                 // Shutdown native CEF.
                 N_Shutdown();

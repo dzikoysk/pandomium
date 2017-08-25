@@ -7,11 +7,8 @@ import org.panda_lang.pandomium.settings.categories.NativesSettings;
 import org.panda_lang.pandomium.util.FileUtils;
 import org.panda_lang.pandomium.util.SystemUtils;
 import org.panda_lang.pandomium.util.os.PandomiumOS;
-import sun.misc.Unsafe;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PandomiumLoaderWorker implements Runnable {
 
@@ -58,7 +55,7 @@ public class PandomiumLoaderWorker implements Runnable {
                     continue;
                 }
 
-                System.out.println("You have to create symlink: ln -s " + nativePath + File.separator + name + " " + bin.getAbsolutePath() + File.separator + name);
+                Pandomium.getLogger().warn("You have to create symlink: ln -s " + nativePath + File.separator + name + " " + bin.getAbsolutePath() + File.separator + name);
             }
         }
 

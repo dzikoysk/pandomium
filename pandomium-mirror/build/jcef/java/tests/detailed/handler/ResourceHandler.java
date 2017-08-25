@@ -68,7 +68,7 @@ public class ResourceHandler extends CefResourceHandlerAdapter {
 
     @Override
     public void cancel() {
-        System.out.println("cancel");
+        CefApp.getLogger().info("cancel");
         startPos = 0;
     }
 }

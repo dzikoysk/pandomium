@@ -96,7 +96,7 @@ public class CefApp extends CefAppHandlerAdapter {
         } catch (Throwable err) {
           err.printStackTrace();
         } finally {
-          System.out.println("shutdown complete");
+          CefApp.getLogger().info("shutdown complete");
           self = null;
           lock.unlock();
         }
@@ -236,7 +236,7 @@ public class CefApp extends CefAppHandlerAdapter {
         @Override
         public void run() {
           String library_path = getJcefLibPath();
-          System.out.println("initialize on " + Thread.currentThread() +
+          CefApp.getLogger().info("initialize on " + Thread.currentThread() +
                              " with library path " + library_path);
           isInitialized_ = N_Initialize(library_path, appHandler_);
         }
@@ -254,7 +254,7 @@ public class CefApp extends CefAppHandlerAdapter {
       SwingUtilities.invokeAndWait(new Runnable() {
         @Override
         public void run() {
-          System.out.println("  shutdown on " + Thread.currentThread());
+          CefApp.getLogger().info("  shutdown on " + Thread.currentThread());
           N_Shutdown();
         }
       });

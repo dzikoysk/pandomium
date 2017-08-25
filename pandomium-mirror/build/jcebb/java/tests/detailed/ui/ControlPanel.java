@@ -74,10 +74,10 @@ public class ControlPanel extends JPanel {
                      ? ActionEvent.META_MASK
                      : ActionEvent.CTRL_MASK;
           if ((e.getModifiers() & mask) != 0) {
-            System.out.println("Reloading - ignoring cached values");
+            CefApp.getLogger().info("Reloading - ignoring cached values");
             browser_.reloadIgnoreCache();
           } else {
-            System.out.println("Reloading - using cached values");
+            CefApp.getLogger().info("Reloading - using cached values");
             browser_.reload();
           }
         } else {

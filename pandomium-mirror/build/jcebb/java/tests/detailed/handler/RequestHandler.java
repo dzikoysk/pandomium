@@ -157,24 +157,24 @@ public class RequestHandler extends CefRequestHandlerAdapter {
                                     String url,
                                     String policyUrl,
                                     CefWebPluginInfo info) {
-    System.out.println("Loading Plug-In");
-    System.out.println("    url: " + url);
-    System.out.println("    policyUrl: " + policyUrl);
-    System.out.println("    name: " + info.getName());
-    System.out.println("    version: " + info.getVersion());
-    System.out.println("    path: " + info.getPath());
-    System.out.println("    description: " + info.getDescription() + "\n");
+    CefApp.getLogger().info("Loading Plug-In");
+    CefApp.getLogger().info("    url: " + url);
+    CefApp.getLogger().info("    policyUrl: " + policyUrl);
+    CefApp.getLogger().info("    name: " + info.getName());
+    CefApp.getLogger().info("    version: " + info.getVersion());
+    CefApp.getLogger().info("    path: " + info.getPath());
+    CefApp.getLogger().info("    description: " + info.getDescription() + "\n");
     return false;
   }
 
   @Override
   public void onPluginCrashed(CefBrowser browser, String pluginPath) {
-    System.out.println("Plugin " + pluginPath  + "CRASHED");
+    CefApp.getLogger().info("Plugin " + pluginPath  + "CRASHED");
   }
 
   @Override
   public void onRenderProcessTerminated(CefBrowser browser,
                                         TerminationStatus status) {
-    System.out.println("render process terminated: " + status);
+    CefApp.getLogger().info("render process terminated: " + status);
   }
 }

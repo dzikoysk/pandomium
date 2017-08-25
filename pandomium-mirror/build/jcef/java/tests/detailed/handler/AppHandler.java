@@ -27,10 +27,10 @@ public class AppHandler extends CefAppHandlerAdapter {
     @Override
     public void onRegisterCustomSchemes(CefSchemeRegistrar registrar) {
         if (registrar.addCustomScheme(SearchSchemeHandler.scheme, true, false, false, false, true)) {
-            System.out.println("Added scheme " + SearchSchemeHandler.scheme + "://");
+            CefApp.getLogger().info("Added scheme " + SearchSchemeHandler.scheme + "://");
         }
         if (registrar.addCustomScheme(ClientSchemeHandler.scheme, true, false, false, false, true)) {
-            System.out.println("Added scheme " + ClientSchemeHandler.scheme + "://");
+            CefApp.getLogger().info("Added scheme " + ClientSchemeHandler.scheme + "://");
         }
     }
 
@@ -57,7 +57,7 @@ public class AppHandler extends CefAppHandlerAdapter {
 
     @Override
     public void stateHasChanged(CefAppState state) {
-        System.out.println("CefApp: " + state);
+        CefApp.getLogger().info("CefApp: " + state);
         if (state == CefAppState.TERMINATED) {
             System.exit(0);
         }

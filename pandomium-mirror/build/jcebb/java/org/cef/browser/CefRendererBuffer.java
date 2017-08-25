@@ -24,7 +24,7 @@ class CefRendererBuffer implements CefRenderer {
 
   @Override
   public void render() {
-    System.out.println("Render");
+    CefApp.getLogger().info("Render");
   }
 
   @Override
@@ -33,6 +33,6 @@ class CefRendererBuffer implements CefRenderer {
                          ByteBuffer buffer,
                          int width,
                          int height) {
-    System.out.println("Paint");
+    CefApp.getLogger().info("Paint");
   }
 }

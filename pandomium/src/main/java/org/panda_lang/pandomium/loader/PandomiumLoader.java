@@ -27,7 +27,7 @@ public class PandomiumLoader {
 
         progressListeners.add((state, progress) -> {
             if (state == State.RUNNING) {
-                System.out.println(progress + "%");
+                Pandomium.getLogger().info("Progress: " + progress + "%");
             }
         });
 

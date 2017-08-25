@@ -11,7 +11,7 @@ import org.cef.handler.CefDragHandler;
 public class DragHandler implements CefDragHandler {
     @Override
     public boolean onDragEnter(CefBrowser browser, CefDragData dragData, int mask) {
-        System.out.println("DRAG:");
+        CefApp.getLogger().info("DRAG:");
         System.out.print("  flags:");
         if ((mask & CefDragHandler.DragOperationMask.DRAG_OPERATION_COPY) != 0) {
             System.out.print(" COPY");
@@ -31,7 +31,7 @@ public class DragHandler implements CefDragHandler {
         if ((mask & CefDragHandler.DragOperationMask.DRAG_OPERATION_DELETE) != 0) {
             System.out.print(" DELETE");
         }
-        System.out.println("\n  " + dragData);
+        CefApp.getLogger().info("\n  " + dragData);
         return false;
     }
 }

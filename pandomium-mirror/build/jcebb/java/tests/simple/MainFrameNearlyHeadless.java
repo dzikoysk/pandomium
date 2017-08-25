@@ -35,11 +35,11 @@ public class MainFrameNearlyHeadless extends JFrame {
     CefRenderer cefRenderer = new CefRenderer() {
       @Override
       public void render() {
-        System.out.println("render");
+        CefApp.getLogger().info("render");
       }
       @Override
       public void onPaint(boolean popup, Rectangle[] dirtyRects, ByteBuffer buffer, int width, int height) {
-        System.out.println("Painting rectangles " + dirtyRects.length);
+        CefApp.getLogger().info("Painting rectangles " + dirtyRects.length);
       }
     };
     browser_ = client_.createBrowser(startURL, isTransparent, CefBrowserFactory.RenderType.RENDER_BYTE_BUFFER, null, 800, 600, cefRenderer);

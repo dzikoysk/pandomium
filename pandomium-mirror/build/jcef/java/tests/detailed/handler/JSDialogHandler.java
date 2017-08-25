@@ -20,8 +20,8 @@ public class JSDialogHandler extends CefJSDialogHandlerAdapter {
             BoolRef suppress_message) {
         if (message_text.equalsIgnoreCase("Never displayed")) {
             suppress_message.set(true);
-            System.out.println("The " + dialog_type + " from origin \"" + origin_url + "\" was suppressed.");
-            System.out.println("   The content of the suppressed dialog was: \"" + message_text + "\"");
+            CefApp.getLogger().info("The " + dialog_type + " from origin \"" + origin_url + "\" was suppressed.");
+            CefApp.getLogger().info("   The content of the suppressed dialog was: \"" + message_text + "\"");
         }
         return false;
     }

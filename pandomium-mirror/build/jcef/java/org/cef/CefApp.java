@@ -335,7 +335,7 @@ public class CefApp extends CefAppHandlerAdapter {
                 @Override
                 public void run() {
                     String library_path = getJcefLibPath();
-                    System.out.println("initialize on " + Thread.currentThread() +
+                    CefApp.getLogger().info("initialize on " + Thread.currentThread() +
                             " with library path " + library_path);
 
                     CefSettings settings = settings_ != null ? settings_ :
@@ -412,7 +412,7 @@ public class CefApp extends CefAppHandlerAdapter {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                System.out.println("shutdown on " + Thread.currentThread());
+                CefApp.getLogger().info("shutdown on " + Thread.currentThread());
 
                 // Shutdown native CEF.
                 N_Shutdown();

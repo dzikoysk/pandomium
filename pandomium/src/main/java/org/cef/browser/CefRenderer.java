@@ -4,6 +4,8 @@
 
 package org.cef.browser;
 
+import org.cef.CefApp;
+
 import javax.media.opengl.GL2;
 import java.awt.*;
 import java.nio.ByteBuffer;
@@ -39,7 +41,7 @@ class CefRenderer {
 
         if (!gl2.getContext().isHardwareRasterizer()) {
             // Workaround for Windows Remote Desktop which requires pot textures.
-            System.out.println("opengl rendering may be slow as hardware rendering isn't available");
+            CefApp.getLogger().info("opengl rendering may be slow as hardware rendering isn't available");
             use_draw_pixels_ = true;
             return;
         }

@@ -32,15 +32,15 @@ public class PandomiumNativeLoader {
 
         DependenciesSettings dependenciesSettings = settings.getDependencies();
         PandomiumDownloader downloader = new PandomiumDownloader(loader);
-        System.out.println("Downloading " + dependenciesSettings.getPlatformURL());
+        Pandomium.getLogger().info("Downloading " + dependenciesSettings.getPlatformURL());
         InputStream downloadedStream = downloader.download(dependenciesSettings.getPlatformURL());
         loader.updateProgress(91);
 
-        System.out.println("Unzipping .xz archive");
+        Pandomium.getLogger().info("Unzipping .xz archive");
         downloadedStream = ArchiveUtils.unGzip(downloadedStream);
         loader.updateProgress(95);
 
-        System.out.println("Unpacking .tar archive");
+        Pandomium.getLogger().info("Unpacking .tar archive");
         ArchiveUtils.unpackTar(downloadedStream, nativesDirectory);
         loader.updateProgress(99);
     }
