@@ -58,7 +58,7 @@ public class PandomiumTest {
 ```
 
 #### Download
-If you don't want to use maven you can download the latest version ![here](https://repo.panda-lang.org/org/panda_lang/pandomium/1.0.5/pandomium-1.0.5.jar)
+If you don't want to use maven you can download the latest version [here](https://repo.panda-lang.org/org/panda_lang/pandomium/1.0.5/pandomium-1.0.5.jar)
 
 #### Repository structure
 ```
