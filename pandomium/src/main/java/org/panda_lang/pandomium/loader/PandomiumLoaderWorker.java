@@ -9,6 +9,9 @@ import org.panda_lang.pandomium.util.SystemUtils;
 import org.panda_lang.pandomium.util.os.PandomiumOS;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class PandomiumLoaderWorker implements Runnable {
 
@@ -55,7 +58,11 @@ public class PandomiumLoaderWorker implements Runnable {
                     continue;
                 }
 
-                Pandomium.getLogger().warn("You have to create symlink: ln -s " + nativePath + File.separator + name + " " + bin.getAbsolutePath() + File.separator + name);
+                Path link =  Paths.get(bin.getAbsolutePath() + File.separator + name);
+                Path target = Paths.get(nativePath + File.separator + name);
+
+                Files.createSymbolicLink(link, target);
+                Pandomium.getLogger().info("Creating symlink " + target + " to " + target);
             }
         }
 
