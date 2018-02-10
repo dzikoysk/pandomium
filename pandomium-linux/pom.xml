@@ -5,17 +5,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.panda_lang</groupId>
+        <groupId>org.panda-lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>1.0.5</version>
+        <version>1.0.6</version>
     </parent>
 
     <artifactId>pandomium-linux</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <dependencies>
         <dependency>
-            <groupId>org.panda_lang</groupId>
+            <groupId>org.panda-lang</groupId>
             <artifactId>pandomium</artifactId>
         </dependency>
     </dependencies>

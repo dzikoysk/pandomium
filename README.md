@@ -46,9 +46,9 @@ public class PandomiumTest {
 #### Maven
 ```xml
 <dependency>
-    <groupId>org.panda_lang</groupId>
+    <groupId>org.panda-lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 </dependency>
 
 <repository>

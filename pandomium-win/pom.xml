@@ -4,16 +4,16 @@
 
     <parent>
         <artifactId>pandomium-parent</artifactId>
-        <groupId>org.panda_lang</groupId>
-        <version>1.0.5</version>
+        <groupId>org.panda-lang</groupId>
+        <version>1.0.6</version>
     </parent>
 
     <artifactId>pandomium-win</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <dependencies>
         <dependency>
-            <groupId>org.panda_lang</groupId>
+            <groupId>org.panda-lang</groupId>
             <artifactId>pandomium</artifactId>
         </dependency>
     </dependencies>

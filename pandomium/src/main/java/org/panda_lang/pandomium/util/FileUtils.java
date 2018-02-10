@@ -23,6 +23,10 @@ public class FileUtils {
     }
 
     public static boolean isIn(String fileName, File... files) {
+        if (files == null) {
+            return false;
+        }
+
         for (File file : files) {
             if (file.getName().equals(fileName)) {
                 return true;

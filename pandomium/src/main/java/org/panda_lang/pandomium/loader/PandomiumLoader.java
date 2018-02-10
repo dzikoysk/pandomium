@@ -20,6 +20,7 @@ public class PandomiumLoader {
     }
 
     public void load() {
+        Pandomium.getLogger().info("Launching Pandomium " + Pandomium.getVersion());
         PandomiumLoaderWorker worker = new PandomiumLoaderWorker(this);
 
         PandomiumSettings settings = pandomium.getSettings();

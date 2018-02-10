@@ -10,6 +10,7 @@ import org.panda_lang.pandomium.util.os.PandomiumOS;
 
 import java.io.File;
 import java.io.InputStream;
+import java.net.URL;
 
 public class PandomiumNativeLoader {
 
@@ -31,17 +32,26 @@ public class PandomiumNativeLoader {
         loader.updateProgress(10);
 
         DependenciesSettings dependenciesSettings = settings.getDependencies();
-        PandomiumDownloader downloader = new PandomiumDownloader(loader);
+        URL dependenciesURL = new URL(dependenciesSettings.getPlatformURL());
+
+        long contentLength = PandomiumDownloader.getFileSize(dependenciesURL);
+        Pandomium.getLogger().info("Starting to download " + PandomiumDownloader.toHumanFormat(contentLength) + " of data");
+
         Pandomium.getLogger().info("Downloading " + dependenciesSettings.getPlatformURL());
-        InputStream downloadedStream = downloader.download(dependenciesSettings.getPlatformURL());
+        PandomiumDownloader downloader = new PandomiumDownloader(loader);
+        InputStream downloadedStream = downloader.download(dependenciesURL);
         loader.updateProgress(91);
 
         Pandomium.getLogger().info("Unzipping .xz archive");
         downloadedStream = ArchiveUtils.unGzip(downloadedStream);
         loader.updateProgress(95);
 
-        Pandomium.getLogger().info("Unpacking .tar archive");
+        Pandomium.getLogger().info("Unpacking .tar archive (it can take a while)");
         ArchiveUtils.unpackTar(downloadedStream, nativesDirectory);
+        loader.updateProgress(98);
+
+        Pandomium.getLogger().info("Close connections");
+        downloader.closeConnections();
         loader.updateProgress(99);
     }
 
