@@ -7,6 +7,8 @@ import org.panda_lang.pandomium.wrapper.PandomiumCEF;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
 import org.slf4j.Logger;
 
+import java.awt.*;
+
 public class Pandomium {
 
     private final PandomiumSettings settings;
@@ -21,6 +23,8 @@ public class Pandomium {
     }
 
     public void initialize() {
+        Toolkit.getDefaultToolkit();
+
         loader.addProgressListener((state, progress) -> {
             if (state != PandomiumProgressListener.State.DONE) {
                 return;

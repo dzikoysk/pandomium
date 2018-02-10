@@ -11,7 +11,7 @@ import java.awt.event.WindowEvent;
 
 public class PandomiumTest {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
 
         Pandomium pandomium = new Pandomium(settings);
