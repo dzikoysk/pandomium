@@ -52,13 +52,13 @@ public class PandomiumTest {
 </dependency>
 
 <repository>
-    <id>panda-repo</id>
+    <id>panda-repository</id>
     <url>https://repo.panda-lang.org/</url>
 </repository>
 ```
 
 #### Download
-If you don't want to use maven you can download the latest version [here](https://repo.panda-lang.org/org/panda_lang/pandomium/1.0.5/pandomium-1.0.5.jar)
+If you don't want to use maven you can download the latest version [here](https://repo.panda-lang.org/org/panda-lang/pandomium/1.0.6/pandomium-1.0.6.jar)
 
 #### Repository structure
 ```

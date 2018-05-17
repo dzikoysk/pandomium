@@ -1,12 +1,8 @@
 package org.panda_lang.pandomium.loader;
 
-import org.apache.commons.io.FileUtils;
-
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class PandomiumDownloader {
 
@@ -41,8 +37,12 @@ public class PandomiumDownloader {
         connections.clear();
     }
 
-    protected static String toHumanFormat(long length) {
-        return FileUtils.byteCountToDisplaySize(length);
+    protected static String toHumanFormat(long bytes, boolean si) {
+        int unit = si ? 1000 : 1024;
+        if (bytes < unit) return bytes + " B";
+        int exp = (int) (Math.log(bytes) / Math.log(unit));
+        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp-1) + (si ? "" : "i");
+        return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
     protected static long getFileSize(URL url) throws Exception {
