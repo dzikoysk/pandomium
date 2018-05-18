@@ -1,17 +1,14 @@
 package org.panda_lang.pandomium.loader;
 
-import net.dzikoysk.linuxenv.LinuxJVMEnvironment;
-import org.panda_lang.pandomium.Pandomium;
-import org.panda_lang.pandomium.settings.PandomiumSettings;
-import org.panda_lang.pandomium.settings.categories.NativesSettings;
-import org.panda_lang.pandomium.util.FileUtils;
-import org.panda_lang.pandomium.util.SystemUtils;
-import org.panda_lang.pandomium.util.os.PandomiumOS;
+import net.dzikoysk.linuxenv.*;
+import org.panda_lang.pandomium.*;
+import org.panda_lang.pandomium.settings.*;
+import org.panda_lang.pandomium.settings.categories.*;
+import org.panda_lang.pandomium.util.*;
+import org.panda_lang.pandomium.util.os.*;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.*;
+import java.nio.file.*;
 
 public class PandomiumLoaderWorker implements Runnable {
 
@@ -61,8 +58,12 @@ public class PandomiumLoaderWorker implements Runnable {
                 Path link =  Paths.get(bin.getAbsolutePath() + File.separator + name);
                 Path target = Paths.get(nativePath + File.separator + name);
 
-                Files.createSymbolicLink(link, target);
-                Pandomium.getLogger().info("Creating symlink " + target + " to " + target);
+                try {
+                    Files.createSymbolicLink(link, target);
+                    Pandomium.getLogger().info("Creating symlink " + link + " to " + target);
+                } catch (AccessDeniedException e) {
+                    Pandomium.getLogger().error("Pandomium requires permission to " + bin.toString() + " directory");
+                }
             }
         }
 

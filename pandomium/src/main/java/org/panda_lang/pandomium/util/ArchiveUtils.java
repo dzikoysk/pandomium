@@ -1,9 +1,8 @@
 package org.panda_lang.pandomium.util;
 
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.utils.IOUtils;
-import org.tukaani.xz.XZInputStream;
+import org.apache.commons.compress.archivers.tar.*;
+import org.apache.commons.compress.utils.*;
+import org.tukaani.xz.*;
 
 import java.io.*;
 
@@ -31,7 +30,7 @@ public class ArchiveUtils {
 
     public static void unpackTarArchiveEntry(TarArchiveInputStream tarStream, TarArchiveEntry entry, File outputDirectory) throws IOException {
         String fileName = entry.getName().substring(entry.getName().indexOf("/"), entry.getName().length());
-        File outputFile = new File(outputDirectory,fileName);
+        File outputFile = new File(outputDirectory, fileName);
 
         if (entry.isDirectory()) {
             if (!outputFile.exists()) {
@@ -44,9 +43,18 @@ public class ArchiveUtils {
             return;
         }
 
-        OutputStream outputFileStream = new FileOutputStream(outputFile);
-        IOUtils.copy(tarStream, outputFileStream);
-        outputFileStream.close();
+        if (!outputFile.getParentFile().exists() && outputFile.getParentFile().mkdirs()) {
+            throw new IllegalStateException(String.format("Couldn't create parent directory for %s.", outputFile.getAbsolutePath()));
+        }
+
+        outputFile.getParentFile().mkdirs();
+        outputFile.createNewFile();
+
+        try (OutputStream outputFileStream = new FileOutputStream(outputFile)) {
+            IOUtils.copy(tarStream, outputFileStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
