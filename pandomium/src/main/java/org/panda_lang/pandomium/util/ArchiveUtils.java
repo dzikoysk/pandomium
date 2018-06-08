@@ -43,7 +43,7 @@ public class ArchiveUtils {
             return;
         }
 
-        if (!outputFile.getParentFile().exists() && outputFile.getParentFile().mkdirs()) {
+        if (!outputFile.getParentFile().exists() && !outputFile.getParentFile().mkdirs()) {
             throw new IllegalStateException(String.format("Couldn't create parent directory for %s.", outputFile.getAbsolutePath()));
         }
 
