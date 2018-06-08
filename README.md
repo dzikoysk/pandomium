@@ -51,7 +51,7 @@ public class PandomiumTest {
     <version>1.0.7</version>
 </dependency>
 ```
-```
+```xml
 <repository>
     <id>panda-repository</id>
     <url>https://repo.panda-lang.org/</url>
