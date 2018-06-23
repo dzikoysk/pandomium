@@ -74,6 +74,26 @@ public class PandomiumNativeLoader {
         else if (PandomiumOS.isLinux()) {
             success = success && FileUtils.isIn("cef.pak", directoryContent);
         }
+        
+        // Ensure that 'jcef helper' is executable
+        String cefHelperName = null;
+        if (PandomiumOS.isMacOS()) {
+            cefHelperName = "jcef Helper";
+        }
+        else if (PandomiumOS.isWindows()) {
+            cefHelperName = "jcef_helper.exe";
+        }
+        else if (PandomiumOS.isLinux()) {
+            cefHelperName = "jcef_helper";
+        }
+        if (cefHelperName != null) {
+            for (File file : directoryContent) {
+                if (file.getName().equals(cefHelperName)) {
+                    file.setExecutable(true);
+                    break;
+                }
+            }
+        }
 
         return success;
     }
