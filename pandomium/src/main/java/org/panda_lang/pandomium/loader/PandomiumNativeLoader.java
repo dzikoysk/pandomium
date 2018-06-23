@@ -77,6 +77,7 @@ public class PandomiumNativeLoader {
         
         // Ensure that 'jcef helper' is executable
         String cefHelperName = null;
+
         if (PandomiumOS.isMacOS()) {
             cefHelperName = "jcef Helper";
         }
@@ -86,7 +87,8 @@ public class PandomiumNativeLoader {
         else if (PandomiumOS.isLinux()) {
             cefHelperName = "jcef_helper";
         }
-        if (cefHelperName != null) {
+
+        if (cefHelperName != null && directoryContent != null) {
             for (File file : directoryContent) {
                 if (file.getName().equals(cefHelperName)) {
                     file.setExecutable(true);

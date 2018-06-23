@@ -48,7 +48,7 @@ public class PandomiumTest {
 <dependency>
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 </dependency>
 ```
 ```xml
@@ -59,7 +59,7 @@ public class PandomiumTest {
 ```
 
 #### Download
-If you don't want to use maven you can download the latest version [here](https://repo.panda-lang.org/org/panda-lang/pandomium/1.0.7/pandomium-1.0.7.jar)
+If you don't want to use maven you can download the latest version [here](https://repo.panda-lang.org/org/panda-lang/pandomium/1.0.8/pandomium-1.0.8.jar)
 
 #### Repository structure
 ```
