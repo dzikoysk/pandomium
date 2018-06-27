@@ -48,6 +48,7 @@ buildNumber.properties
 /out/
 /bin/
 /native/
+/workspace/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/

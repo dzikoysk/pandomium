@@ -32,9 +32,9 @@ public class PandomiumSettings {
 
     public static PandomiumSettings getDefaultSettings() {
         return PandomiumSettings.builder()
-                .dependencyURL(PandomiumOSType.OS_WINDOWS, PandomiumConstants.PANDOMIUM_NATIVES_REPOSITORY + "win64-native.tar.xz")
-                .dependencyURL(PandomiumOSType.OS_MAC, PandomiumConstants.PANDOMIUM_NATIVES_REPOSITORY + "mac64-native.tar.xz")
-                .dependencyURL(PandomiumOSType.OS_LINUX, PandomiumConstants.PANDOMIUM_NATIVES_REPOSITORY + "linux64-native.tar.xz")
+                .dependencyURL(PandomiumOSType.OS_WINDOWS, PandomiumConstants.Repository.NATIVES_URL + "win64-native.tar.xz")
+                .dependencyURL(PandomiumOSType.OS_MAC, PandomiumConstants.Repository.NATIVES_URL + "mac64-native.tar.xz")
+                .dependencyURL(PandomiumOSType.OS_LINUX, PandomiumConstants.Repository.NATIVES_URL + "linux64-native.tar.xz")
                 .loadAsync(false)
                 .nativeDirectory("native")
                 .build();
