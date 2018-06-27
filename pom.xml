@@ -47,7 +47,19 @@
                 <version>indev-0.7.13</version>
             </dependency>
 
+            <!-- Windows x64 -->
+            <dependency>
+                <groupId>org.panda-lang.pandomium-natives</groupId>
+                <artifactId>pandomium-natives-win64</artifactId>
+                <version>67.0</version>
+            </dependency>
+
             <!-- Linux x64 -->
+            <dependency>
+                <groupId>org.panda-lang.pandomium-natives</groupId>
+                <artifactId>pandomium-natives-linux64</artifactId>
+                <version>67.0</version>
+            </dependency>
             <dependency>
                 <groupId>net.dzikoysk</groupId>
                 <artifactId>linuxenv</artifactId>

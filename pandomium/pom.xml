@@ -18,7 +18,17 @@
             <artifactId>panda</artifactId>
         </dependency>
 
+        <!-- Windows x64 -->
+        <dependency>
+            <groupId>org.panda-lang.pandomium-natives</groupId>
+            <artifactId>pandomium-natives-win64</artifactId>
+        </dependency>
+
         <!-- Linux x64 -->
+        <dependency>
+            <groupId>org.panda-lang.pandomium-natives</groupId>
+            <artifactId>pandomium-natives-linux64</artifactId>
+        </dependency>
         <dependency>
             <groupId>net.dzikoysk</groupId>
             <artifactId>linuxenv</artifactId>
