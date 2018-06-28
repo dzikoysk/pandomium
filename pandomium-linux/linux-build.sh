@@ -69,4 +69,4 @@ mkdir -p linux64/src/org && cp -r src/java/org linux64/src/org
 strip linux64/natives/libcef.so
 
 # Pack natives
-cd linux64/natives/ && tar -cf - . | xz -9e -c - > ../../linux64/linux64-natives.tar.xz && cd - | pv -p test.zero
+cd linux64/natives/ && tar -cf - . | xz -9e -c - > ../../linux64/linux64-natives.tar.xz && cd -
