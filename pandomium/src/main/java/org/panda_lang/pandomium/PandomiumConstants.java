@@ -12,7 +12,7 @@ public class PandomiumConstants {
 
     public static class Repository {
 
-        public static final String NATIVES_REPOSITORY = "https://pandomium.panda-lang.org/download/native/";
+        public static final String NATIVES_REPOSITORY = "https://pandomium.panda-lang.org/download/natives/";
 
         public static final String NATIVES_URL = NATIVES_REPOSITORY + PANDOMIUM_NATIVE_VERSION + "/";
 

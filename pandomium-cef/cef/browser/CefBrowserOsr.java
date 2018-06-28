@@ -9,12 +9,6 @@ import org.cef.callback.CefDragData;
 import org.cef.handler.CefClientHandler;
 import org.cef.handler.CefRenderHandler;
 
-import javax.media.nativewindow.NativeSurface;
-import javax.media.opengl.GLAutoDrawable;
-import javax.media.opengl.GLCapabilities;
-import javax.media.opengl.GLEventListener;
-import javax.media.opengl.GLProfile;
-import javax.media.opengl.awt.GLCanvas;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

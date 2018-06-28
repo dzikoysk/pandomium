@@ -45,16 +45,6 @@ public class Pandomium {
         return pcef.createClient();
     }
 
-    public void dispose() {
-        if (pcef != null) {
-            pcef.dispose();
-        }
-    }
-
-    public Thread getMainThread() {
-        return mainThread;
-    }
-
     public PandomiumCEF getRaw() {
         return pcef;
     }
@@ -69,6 +59,14 @@ public class Pandomium {
 
     public static Logger getLogger() {
         return PandomiumLogger.PANDOMIUM_LOGGER;
+    }
+
+    public static String getChromiumVersion() {
+        return PandomiumConstants.PANDOMIUM_CHROMIUM_VERSION;
+    }
+
+    public static String getCefVersion() {
+        return PandomiumConstants.PANDOMIUM_CEF_VERSION;
     }
 
     public static String getVersion() {

@@ -13,7 +13,6 @@ public class PandomiumTest {
 
     public static void main(String[] args) {
         PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
-
         Pandomium pandomium = new Pandomium(settings);
         pandomium.initialize();
 
@@ -27,7 +26,6 @@ public class PandomiumTest {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                pandomium.dispose();
                 frame.dispose();
             }
         });
