@@ -21,6 +21,7 @@ find ./java/org -type f -exec sed -i 's/ final /  /g' {} +
 # Modification fixes
 find ./java/org -type f -exec sed -i 's/public TransitionFlags(/TransitionFlags(/g' {} +
 find ./java/org -type f -exec sed -i 's/public TransitionType(/TransitionType(/g' {} +
+find ./java/org -type f -exec sed -i 's/static  int MENU_ID/static final int MENU_ID/g' {} +
 
 # Build natives
 mkdir jcef_build && cd jcef_build
@@ -29,10 +30,12 @@ cmake -G "Xcode" -DPROJECT_ARCH="x86_64" ..
 # Open jcef.xcodeproj in Xcode
 # - Select Scheme > Edit Scheme and change the "Build Configuration" to "Release"
 # - Select Product > Build. Then:
-cd ../tools/
+
+# Test
+cd native/Release && open jcef_app.app && cd -
 
 # Create binary distrib
-./make_distrib.bat macosx64
+cd ../tools/ && ./make_distrib.bat macosx64
 
 cd ../..
 mkdir macosx64

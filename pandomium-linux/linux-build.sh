@@ -19,8 +19,9 @@ find ./java/org -type f -exec sed -i 's/ private / public /g' {} +
 find ./java/org -type f -exec sed -i 's/ final /  /g' {} +
 
 # Modification fixes
-find ./java -type f -exec sed -i 's/public TransitionFlags(/TransitionFlags(/g' {} +
-find ./java -type f -exec sed -i 's/public TransitionType(/TransitionType(/g' {} +
+find ./java/org -type f -exec sed -i 's/public TransitionFlags(/TransitionFlags(/g' {} +
+find ./java/org -type f -exec sed -i 's/public TransitionType(/TransitionType(/g' {} +
+find ./java/org -type f -exec sed -i 's/static  int MENU_ID/static final int MENU_ID/g' {} +
 
 # Build natives
 mkdir jcef_build && cd jcef_build
@@ -39,8 +40,10 @@ make -j4
 cd ../tools/
 
 # Modification fixes
-find ./compile.sh -type f -exec sed -i 's/ java\/tests\/detailed\/\*.java java\/tests\/simple\/\*.java /  /g' {} +
 ./compile.sh linux64
+
+# Test
+./run.bat linux64 Release detailed
 
 # Create binary distrib
 ./make_distrib.sh linux64

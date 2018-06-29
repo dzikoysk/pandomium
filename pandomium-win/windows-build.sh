@@ -20,6 +20,7 @@ find ./java/org -type f -exec sed -i 's/ final /  /g' {} +
 # Modification fixes
 find ./java/org -type f -exec sed -i 's/public TransitionFlags(/TransitionFlags(/g' {} +
 find ./java/org -type f -exec sed -i 's/public TransitionType(/TransitionType(/g' {} +
+find ./java/org -type f -exec sed -i 's/static  int MENU_ID/static final int MENU_ID/g' {} +
 
 # Build natives
 mkdir jcef_build && cd jcef_build
@@ -31,8 +32,10 @@ cmake -G "Visual Studio 15 Win64" ..
 cd ../tools/
 
 # Modification fixes
-find ./compile.bat -type f -exec sed -i 's/ java\/tests\/detailed\/\*.java java\/tests\/simple\/\*.java /  /g' {} +
 ./compile.bat win64
+
+# Test
+./run.bat win64 Release detailed
 
 # Create binary distrib
 ./make_distrib.bat win64
