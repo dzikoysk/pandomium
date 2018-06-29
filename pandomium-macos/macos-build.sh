@@ -32,10 +32,11 @@ cmake -G "Xcode" -DPROJECT_ARCH="x86_64" ..
 # - Select Product > Build. Then:
 
 # Test
+chmod +x native/Release/jcef_app.app
 cd native/Release && open jcef_app.app && cd -
 
 # Create binary distrib
-cd ../tools/ && ./make_distrib.bat macosx64
+cd ../tools/ && ./make_distrib.sh macosx64
 
 cd ../..
 mkdir macosx64
