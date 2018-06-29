@@ -14,14 +14,14 @@ mkdir JCEF67 && cd JCEF67
 git clone https://bitbucket.org/chromiumembedded/java-cef.git src && cd src
 
 # Modify sources
-find ./java/org -type f -exec sed -i 's/ protected / public /g' {} +
-find ./java/org -type f -exec sed -i 's/ private / public /g' {} +
-find ./java/org -type f -exec sed -i 's/ final /  /g' {} +
+find ./java/org -type f -exec sed -i -e 's/ protected / public /g' {} +
+find ./java/org -type f -exec sed -i -e 's/ private / public /g' {} +
+find ./java/org -type f -exec sed -i -e 's/ final /  /g' {} +
 
 # Modification fixes
-find ./java/org -type f -exec sed -i 's/public TransitionFlags(/TransitionFlags(/g' {} +
-find ./java/org -type f -exec sed -i 's/public TransitionType(/TransitionType(/g' {} +
-find ./java/org -type f -exec sed -i 's/static  int MENU_ID/static final int MENU_ID/g' {} +
+find ./java/org -type f -exec sed -i -e 's/public TransitionFlags(/TransitionFlags(/g' {} +
+find ./java/org -type f -exec sed -i -e 's/public TransitionType(/TransitionType(/g' {} +
+find ./java/org -type f -exec sed -i -e 's/static  int MENU_ID/static final int MENU_ID/g' {} +
 
 # Build natives
 mkdir jcef_build && cd jcef_build
