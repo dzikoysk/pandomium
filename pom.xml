@@ -5,7 +5,7 @@
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.8</version>
+    <version>67.0</version>
     <scm>
         <connection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</connection>
         <developerConnection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</developerConnection>
@@ -24,12 +24,13 @@
     </licenses>
 
     <properties>
+        <pandomium.nativeVersion>67.0</pandomium.nativeVersion>
+        <pandomium.version>${project.version}</pandomium.version>
+
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <pandomium.version>${project.version}</pandomium.version>
-        <pandomium.nativeVersion>1.0.0</pandomium.nativeVersion>
     </properties>
 
     <dependencyManagement>
@@ -43,31 +44,22 @@
             <dependency>
                 <groupId>org.panda-lang</groupId>
                 <artifactId>panda</artifactId>
-                <version>indev-0.7.12</version>
-            </dependency>
-
-            <!-- Java Chromium Embedded Framework -->
-            <dependency>
-                <groupId>org.panda_lang.pandomium-dependencies</groupId>
-                <artifactId>universal</artifactId>
-                <version>${pandomium.nativeVersion}</version>
+                <version>indev-0.7.13</version>
             </dependency>
 
             <!-- Windows x64 -->
             <dependency>
-                <groupId>org.panda_lang.pandomium-dependencies</groupId>
-                <artifactId>natives-windows-amd64</artifactId>
-                <version>${pandomium.nativeVersion}</version>
-            </dependency>
-
-            <!-- macOS -->
-            <dependency>
-                <groupId>org.panda_lang.pandomium-dependencies</groupId>
-                <artifactId>natives-macosx-universal</artifactId>
-                <version>${pandomium.nativeVersion}</version>
+                <groupId>org.panda-lang.pandomium-natives</groupId>
+                <artifactId>pandomium-natives-win64</artifactId>
+                <version>67.0</version>
             </dependency>
 
             <!-- Linux x64 -->
+            <dependency>
+                <groupId>org.panda-lang.pandomium-natives</groupId>
+                <artifactId>pandomium-natives-linux64</artifactId>
+                <version>67.0</version>
+            </dependency>
             <dependency>
                 <groupId>net.dzikoysk</groupId>
                 <artifactId>linuxenv</artifactId>

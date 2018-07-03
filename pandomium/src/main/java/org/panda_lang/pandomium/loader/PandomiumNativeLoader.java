@@ -35,7 +35,7 @@ public class PandomiumNativeLoader {
         URL dependenciesURL = new URL(dependenciesSettings.getPlatformURL());
 
         long contentLength = PandomiumDownloader.getFileSize(dependenciesURL);
-        Pandomium.getLogger().info("Starting to download " + PandomiumDownloader.toHumanFormat(contentLength, true) + " of data");
+        Pandomium.getLogger().info("Starting to download " + FileUtils.convertBytes(contentLength) + " of data");
 
         Pandomium.getLogger().info("Downloading " + dependenciesSettings.getPlatformURL());
         PandomiumDownloader downloader = new PandomiumDownloader(loader);

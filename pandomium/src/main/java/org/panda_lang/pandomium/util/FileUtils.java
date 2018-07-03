@@ -1,8 +1,13 @@
 package org.panda_lang.pandomium.util;
 
-import java.io.File;
+import java.io.*;
+import java.text.*;
 
 public class FileUtils {
+
+    public static String convertBytes(long bytes) {
+        return (bytes == -1 ? "<unknown size> " : new DecimalFormat("#0.00").format(bytes / 1024.0 / 1024.0)) + "MB";
+    }
 
     public static boolean delete(File f) {
         if (!f.exists()) {

@@ -4,11 +4,11 @@
     <parent>
         <groupId>org.panda-lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>1.0.8</version>
+        <version>67.0</version>
     </parent>
 
     <artifactId>pandomium</artifactId>
-    <version>1.0.8</version>
+    <version>67.0</version>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -18,25 +18,17 @@
             <artifactId>panda</artifactId>
         </dependency>
 
-        <!-- Java Chromium Embedded Framework  -->
-        <dependency>
-            <groupId>org.panda_lang.pandomium-dependencies</groupId>
-            <artifactId>universal</artifactId>
-        </dependency>
-
         <!-- Windows x64 -->
         <dependency>
-            <groupId>org.panda_lang.pandomium-dependencies</groupId>
-            <artifactId>natives-windows-amd64</artifactId>
-        </dependency>
-
-        <!-- macOS -->
-        <dependency>
-            <groupId>org.panda_lang.pandomium-dependencies</groupId>
-            <artifactId>natives-macosx-universal</artifactId>
+            <groupId>org.panda-lang.pandomium-natives</groupId>
+            <artifactId>pandomium-natives-win64</artifactId>
         </dependency>
 
         <!-- Linux x64 -->
+        <dependency>
+            <groupId>org.panda-lang.pandomium-natives</groupId>
+            <artifactId>pandomium-natives-linux64</artifactId>
+        </dependency>
         <dependency>
             <groupId>net.dzikoysk</groupId>
             <artifactId>linuxenv</artifactId>
@@ -115,7 +107,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Implementation-Title>${project.name}</Implementation-Title>
+                            <Implementation-Title>Pandomium</Implementation-Title>
                             <Implementation-Version>${project.version}</Implementation-Version>
                         </manifestEntries>
                     </archive>

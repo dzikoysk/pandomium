@@ -1,1 +1,0 @@
-install:install-file -DlocalRepositoryPath=pandomium-mirror/maven -DcreateChecksum=true -Dpackaging=jar -Dfile=pandomium-linux/libs/natives-linux-amd64.jar -DgroupId=org.panda_lang.pandomium-dependencies -DartifactId=natives-linux-amd64 -Dversion=1.0.0

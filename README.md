@@ -2,53 +2,26 @@
 Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for the maven projects 
 
 #### Example
-![PandomiumTest.java - Windows x64](https://panda-lang.org/screenshot/5d8KeBJg.png)
+<!-- ![PandomiumTest.java - Windows x64](https://panda-lang.org/screenshot/5d8KeBJg.png) -->
 <!-- ![PandomiumTest.java - Linux x64](https://panda-lang.org/screenshot/5E5ZgE9A.png) -->
-![PandomiumTest.java - Linux x64](https://panda-lang.org/screenshot/bZwbEGmm.png)
+<!-- ![PandomiumTest.java - Linux x64](https://panda-lang.org/screenshot/bZwbEGmm.png) -->
+![PandomiumTest.java - Both x64](https://pandomium.panda-lang.org/github/preview-both.png)
 
 ```java
-public class PandomiumTest {
+Pandomium pandomium = new Pandomium(PandomiumSettings.getDefaultSettings());
+pandomium.initialize();
 
-    public static void main(String[] args) {
-        PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
-
-        Pandomium pandomium = new Pandomium(settings);
-        pandomium.initialize();
-
-        PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.loadURL("https://panda-lang.org");
-
-        JFrame frame = new JFrame();
-        frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
-        frame.pack();
-
-        frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                pandomium.dispose();
-                frame.dispose();
-            }
-        });
-
-        frame.setTitle("Pandomium");
-        frame.setSize(1380, 760);
-        frame.setVisible(true);
-    }
-
-}
+PandomiumClient client = pandomium.createClient();
+PandomiumBrowser browser = client.loadURL("https://panda-lang.org");
 ```
-
-#### Requirements
-* Windows x64 / Linux x64
-* Java 8
+Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/master/pandomium/src/test/java/org/panda_lang/pandomium/PandomiumTest.java)
 
 #### Maven
 ```xml
 <dependency>
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>1.0.8</version>
+    <version>67.0</version>
 </dependency>
 ```
 ```xml
@@ -58,8 +31,16 @@ public class PandomiumTest {
 </repository>
 ```
 
-#### Download
-If you don't want to use maven you can download the latest version [here](https://repo.panda-lang.org/org/panda-lang/pandomium/1.0.8/pandomium-1.0.8.jar)
+If you don't want to use maven you can download the latest version here: [Pandomium 67.0](https://repo.panda-lang.org/org/panda-lang/pandomium/67.0/pandomium-67.0.jar)
+
+#### Supported platforms
+* **OS**: Windows x64 / Linux x64
+* **Java**: Java 8
+
+#### Building
+* [Windows x64](https://github.com/dzikoysk/Pandomium/wiki/Windows-x64-Build)
+* [Linux x64](https://github.com/dzikoysk/Pandomium/wiki/Linux-x64-Build)
+* [macOS](https://github.com/dzikoysk/Pandomium/wiki/macOS-Build)
 
 #### Repository structure
 ```
@@ -77,10 +58,6 @@ pandomium/
    +----/native               Platform specified natives
    +----/src                  Platform implementation
    +----pom.xml               The main maven build script for macOS module
-+--pandomium-repo/            Clone of the remote repository used by Pandomium
-+--pandomium-resources/       Clone of the repositories used to build Pandomium
-   +----/jcebb                Modifed sources of JCEF cloned from JavaChromiumEmbeddedByteBuffer repository
-   +----/jcef                 Clone of the JCEF repository used to build natvies 
 +--pandomium-win/             Windows implementation of Pandomium Library module
    +----/libs                 Platform specified libraries
    +----/native               Platform specified natives
@@ -91,9 +68,9 @@ pandomium/
 
 #### TODO
 * [x] Build natives & jcef
-* [ ] Win32, Linux32 & macOS support
 * [x] Basic implementation
 * [x] Builds available in the maven repository
-* [ ] Pandomium wrapper for JCEF objects
+* [x] Pandomium wrapper for JCEF objects
+* [ ] Win32, Linux32 & macOS support
 * [ ] Advanced Java <-> JS bridge
 * [ ] ByteBuffer implementation

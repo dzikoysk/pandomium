@@ -6,11 +6,9 @@ import java.util.*;
 
 public class PandomiumDownloader {
 
-    private final PandomiumLoader loader;
     private Collection<HttpURLConnection> connections;
 
     public PandomiumDownloader(PandomiumLoader loader) {
-        this.loader = loader;
         this.connections = new ArrayList<>(1);
     }
 
@@ -35,14 +33,6 @@ public class PandomiumDownloader {
         }
 
         connections.clear();
-    }
-
-    protected static String toHumanFormat(long bytes, boolean si) {
-        int unit = si ? 1000 : 1024;
-        if (bytes < unit) return bytes + " B";
-        int exp = (int) (Math.log(bytes) / Math.log(unit));
-        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp-1) + (si ? "" : "i");
-        return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
     protected static long getFileSize(URL url) throws Exception {

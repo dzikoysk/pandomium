@@ -1,10 +1,9 @@
 package org.panda_lang.pandomium;
 
-import org.cef.CefLogger;
-import org.slf4j.Logger;
+import org.slf4j.*;
 
 public class PandomiumLogger {
 
-    public static Logger PANDOMIUM_LOGGER = CefLogger.CEF_LOGGER;
+    public static Logger PANDOMIUM_LOGGER = LoggerFactory.getLogger("JCEF");
 
 }

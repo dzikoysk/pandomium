@@ -13,12 +13,11 @@ public class PandomiumTest {
 
     public static void main(String[] args) {
         PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
-
         Pandomium pandomium = new Pandomium(settings);
         pandomium.initialize();
 
         PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.loadURL("https://google.pl/");
+        PandomiumBrowser browser = client.loadURL("https://amazon.com/");
 
         JFrame frame = new JFrame();
         frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
@@ -27,7 +26,6 @@ public class PandomiumTest {
         frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                pandomium.dispose();
                 frame.dispose();
             }
         });

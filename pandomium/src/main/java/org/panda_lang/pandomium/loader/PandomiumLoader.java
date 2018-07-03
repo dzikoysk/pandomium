@@ -20,8 +20,11 @@ public class PandomiumLoader {
     }
 
     public void load() {
-        Pandomium.getLogger().info("Launching Pandomium " + Pandomium.getVersion());
-        PandomiumLoaderWorker worker = new PandomiumLoaderWorker(this);
+        Pandomium.getLogger().info("#");
+        Pandomium.getLogger().info("# Launching Pandomium " + Pandomium.getVersion());
+        Pandomium.getLogger().info("# Chromium Version: " + Pandomium.getChromiumVersion());
+        Pandomium.getLogger().info("# CEF Version: " + Pandomium.getCefVersion());
+        Pandomium.getLogger().info("#");
 
         PandomiumSettings settings = pandomium.getSettings();
         LoaderSettings loaderSettings = settings.getLoader();
@@ -31,6 +34,8 @@ public class PandomiumLoader {
                 Pandomium.getLogger().info("Progress: " + progress + "%");
             }
         });
+
+        PandomiumLoaderWorker worker = new PandomiumLoaderWorker(this);
 
         if (!loaderSettings.isLoadAsync()) {
             worker.run();
