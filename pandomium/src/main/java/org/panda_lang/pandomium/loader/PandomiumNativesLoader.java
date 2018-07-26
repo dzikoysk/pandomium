@@ -12,9 +12,8 @@ import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
 
-public class PandomiumNativeLoader {
+public class PandomiumNativesLoader {
 
-    @SuppressWarnings({ "unchecked" })
     protected void loadNatives(PandomiumLoader loader) throws Exception {
         Pandomium pandomium = loader.getPandomium();
         PandomiumSettings settings = pandomium.getSettings();

@@ -1,14 +1,11 @@
 package org.panda_lang.pandomium.loader;
 
-import net.dzikoysk.linuxenv.*;
-import org.panda_lang.pandomium.*;
-import org.panda_lang.pandomium.settings.*;
-import org.panda_lang.pandomium.settings.categories.*;
-import org.panda_lang.pandomium.util.*;
-import org.panda_lang.pandomium.util.os.*;
-
-import java.io.*;
-import java.nio.file.*;
+import org.panda_lang.pandomium.Pandomium;
+import org.panda_lang.pandomium.loader.os.PandomiumLinuxNativesLoader;
+import org.panda_lang.pandomium.settings.PandomiumSettings;
+import org.panda_lang.pandomium.settings.categories.NativesSettings;
+import org.panda_lang.pandomium.util.SystemUtils;
+import org.panda_lang.pandomium.util.os.PandomiumOS;
 
 public class PandomiumLoaderWorker implements Runnable {
 
@@ -30,7 +27,7 @@ public class PandomiumLoaderWorker implements Runnable {
     public void load() throws Exception {
         loader.updateProgress(0);
 
-        PandomiumNativeLoader nativeLoader = new PandomiumNativeLoader();
+        PandomiumNativesLoader nativeLoader = new PandomiumNativesLoader();
         nativeLoader.loadNatives(loader);
 
         Pandomium pandomium = loader.getPandomium();
@@ -41,30 +38,8 @@ public class PandomiumLoaderWorker implements Runnable {
         SystemUtils.injectLibraryPath(nativePath);
 
         if (PandomiumOS.isLinux()) {
-            LinuxJVMEnvironment linuxJVMEnvironment = new LinuxJVMEnvironment();
-            linuxJVMEnvironment.setJVMEnvironmentVariable("LD_LIBRARY_PATH", nativePath, 1);
-
-            String javaHome = System.getProperty("java.home");
-            File bin = new File(javaHome + File.separator + "bin");
-
-            String[] symFiles = new String[] { "icudtl.dat", "natives_blob.bin", "snapshot_blob.bin" };
-            File[] binFiles = bin.listFiles();
-
-            for (String name : symFiles) {
-                if (FileUtils.isIn(name, binFiles)) {
-                    continue;
-                }
-
-                Path link =  Paths.get(bin.getAbsolutePath() + File.separator + name);
-                Path target = Paths.get(nativePath + File.separator + name);
-
-                try {
-                    Files.createSymbolicLink(link, target);
-                    Pandomium.getLogger().info("Creating symlink " + link + " to " + target);
-                } catch (AccessDeniedException e) {
-                    Pandomium.getLogger().error("Pandomium requires permission to " + bin.toString() + " directory");
-                }
-            }
+            PandomiumLinuxNativesLoader linuxNativesLoader = new PandomiumLinuxNativesLoader();
+            linuxNativesLoader.loadLinuxNatives(nativePath);
         }
 
         loader.updateProgress(100);

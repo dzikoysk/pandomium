@@ -70,5 +70,9 @@ mkdir -p linux64/src/org && cp -r src/java/org linux64/src/org
 # Remove symbols libcef.so (500MB -> 100MB)
 strip linux64/natives/libcef.so
 
+#
+# Download 'liblinuxenv.so' from github.com/dzikoysk/LinuxEnv and put in the natives directory
+#
+
 # Pack natives
 cd linux64/natives/ && tar -cf - . | xz -9e -c - > ../../linux64/linux64-natives.tar.xz && cd -

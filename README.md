@@ -1,4 +1,4 @@
-# Pandomium [![Build Status](https://travis-ci.org/dzikoysk/Pandomium.svg?branch=master)](https://travis-ci.org/Panda-Programming-Language/Pandomium)
+# Pandomium [![Build Status](https://travis-ci.org/dzikoysk/Pandomium.svg?branch=master)](https://travis-ci.org/Panda-Programming-Language/Pandomium) [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/dzikoysk/Pandomium.svg)](http://isitmaintained.com/project/dzikoysk/Pandomium "Average time to resolve an issue")
 Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for the maven projects 
 
 #### Example
@@ -21,7 +21,7 @@ Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/ma
 <dependency>
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>67.0</version>
+    <version>67.0.1</version>
 </dependency>
 ```
 ```xml
@@ -32,7 +32,7 @@ Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/ma
 ```
 
 If you don't want to use maven you can download the latest version here: 
-* [Pandomium 67.0](https://repo.panda-lang.org/org/panda-lang/pandomium/67.0/pandomium-67.0.jar)
+* [Pandomium 67.0.1](https://repo.panda-lang.org/org/panda-lang/pandomium/67.0.1/pandomium-67.0.1.jar)
 * [Natives](https://pandomium.panda-lang.org/download/natives/)
 
 #### Supported platforms
