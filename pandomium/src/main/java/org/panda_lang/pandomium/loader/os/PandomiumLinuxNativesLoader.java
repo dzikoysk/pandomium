@@ -43,11 +43,15 @@ public class PandomiumLinuxNativesLoader {
         File[] nativeFiles = nativesDirectory.listFiles();
 
         for (String name : libFiles) {
-            if (FileUtils.isIn(name, binFiles)) {
+            if (FileUtils.isIn(name, nativeFiles)) {
                 continue;
             }
 
-            Files.copy(Pandomium.class.getResourceAsStream("/" + name), new File(nativesDirectory, name).toPath());
+            try {
+                Files.copy(Pandomium.class.getResourceAsStream("/" + name), new File(nativesDirectory, name).toPath());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
