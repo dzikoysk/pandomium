@@ -38,7 +38,7 @@ public class PandomiumLinuxNativesLoader {
             }
         }
 
-        String[] libFiles = new String[] { "libgluegen-rt.so", "libjogl_desktop.so", "ibnativewindow_awt.so", "ibnativewindow_x11.so", "libnewt.so" };
+        String[] libFiles = new String[] { "libgluegen-rt.so", "libjogl_desktop.so", "libnativewindow_awt.so", "libnativewindow_x11.so", "libnewt.so" };
         File nativesDirectory = new File(nativePath);
         File[] nativeFiles = nativesDirectory.listFiles();
 
