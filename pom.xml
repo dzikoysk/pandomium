@@ -24,8 +24,6 @@
     </licenses>
 
     <properties>
-        <pandomium.version>${project.version}</pandomium.version>
-
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -38,7 +36,7 @@
             <dependency>
                 <groupId>org.panda-lang</groupId>
                 <artifactId>pandomium</artifactId>
-                <version>${pandomium.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.panda-lang</groupId>
@@ -131,7 +129,7 @@
                     <archive>
                         <manifestEntries>
                             <Implementation-Title>Pandomium-Parent</Implementation-Title>
-                            <Implementation-Version>${pandomium.version}</Implementation-Version>
+                            <Implementation-Version>${project.version}</Implementation-Version>
                         </manifestEntries>
                     </archive>
                 </configuration>
