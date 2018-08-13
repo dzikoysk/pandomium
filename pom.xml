@@ -5,7 +5,7 @@
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium-parent</artifactId>
     <packaging>pom</packaging>
-    <version>67.0.2</version>
+    <version>67.0.3</version>
     <scm>
         <connection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</connection>
         <developerConnection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</developerConnection>
@@ -24,7 +24,6 @@
     </licenses>
 
     <properties>
-        <pandomium.nativeVersion>67.0</pandomium.nativeVersion>
         <pandomium.version>${project.version}</pandomium.version>
 
         <java.version>1.8</java.version>
@@ -44,7 +43,7 @@
             <dependency>
                 <groupId>org.panda-lang</groupId>
                 <artifactId>panda</artifactId>
-                <version>indev-0.8.0</version>
+                <version>indev-0.8.87</version>
             </dependency>
 
             <!-- Windows x64 -->
@@ -58,7 +57,7 @@
             <dependency>
                 <groupId>org.panda-lang.pandomium-natives</groupId>
                 <artifactId>pandomium-natives-linux64</artifactId>
-                <version>67.0</version>
+                <version>67.0.3</version>
             </dependency>
             <dependency>
                 <groupId>net.dzikoysk</groupId>
@@ -132,7 +131,7 @@
                     <archive>
                         <manifestEntries>
                             <Implementation-Title>Pandomium-Parent</Implementation-Title>
-                            <Implementation-Version>${java.version}</Implementation-Version>
+                            <Implementation-Version>${pandomium.version}</Implementation-Version>
                         </manifestEntries>
                     </archive>
                 </configuration>

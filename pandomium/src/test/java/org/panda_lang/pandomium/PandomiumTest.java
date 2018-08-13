@@ -1,5 +1,6 @@
 package org.panda_lang.pandomium;
 
+import jogamp.common.Debug;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.wrapper.PandomiumBrowser;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
@@ -17,7 +18,7 @@ public class PandomiumTest {
         pandomium.initialize();
 
         PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.loadURL("https://amazon.com/");
+        PandomiumBrowser browser = client.loadURL("https://google.com");
 
         JFrame frame = new JFrame();
         frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
