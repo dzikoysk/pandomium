@@ -1,6 +1,5 @@
 package org.panda_lang.pandomium;
 
-import jogamp.common.Debug;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.wrapper.PandomiumBrowser;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
@@ -13,7 +12,10 @@ import java.awt.event.WindowEvent;
 public class PandomiumTest {
 
     public static void main(String[] args) {
-        PandomiumSettings settings = PandomiumSettings.getDefaultSettings();
+        PandomiumSettings settings = PandomiumSettings.getDefaultSettingsBuilder()
+                .proxy("localhost", 20) // blank page
+                .build();
+
         Pandomium pandomium = new Pandomium(settings);
         pandomium.initialize();
 

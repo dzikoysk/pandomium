@@ -7,12 +7,14 @@ import org.panda_lang.pandomium.util.os.*;
 
 public class PandomiumSettings {
 
+    private final CommandLineSettings commandLine;
     private final DependenciesSettings dependencies;
     private final NativesSettings natives;
     private final LoaderSettings loader;
     private final CefSettings cef;
 
-    protected PandomiumSettings(DependenciesSettings dependencies, NativesSettings natives, LoaderSettings loader) {
+    protected PandomiumSettings(CommandLineSettings commandLine, DependenciesSettings dependencies, NativesSettings natives, LoaderSettings loader) {
+        this.commandLine = commandLine;
         this.dependencies = dependencies;
         this.natives = natives;
         this.loader = loader;
@@ -33,6 +35,10 @@ public class PandomiumSettings {
         return dependencies;
     }
 
+    public CommandLineSettings getCommandLine() {
+        return commandLine;
+    }
+
     public CefSettings getCefSettings() {
         return cef;
     }
@@ -41,14 +47,17 @@ public class PandomiumSettings {
         return new PandomiumSettingsBuilder();
     }
 
-    public static PandomiumSettings getDefaultSettings() {
+    public static PandomiumSettingsBuilder getDefaultSettingsBuilder() {
         return PandomiumSettings.builder()
                 .dependencyURL(PandomiumOSType.OS_WINDOWS, PandomiumConstants.Repository.NATIVES_URL + "win64-natives.tar.xz")
                 .dependencyURL(PandomiumOSType.OS_MAC, PandomiumConstants.Repository.NATIVES_URL + "mac64-natives.tar.xz")
                 .dependencyURL(PandomiumOSType.OS_LINUX, PandomiumConstants.Repository.NATIVES_URL + "linux64-natives.tar.xz")
                 .nativeDirectory("natives")
-                .loadAsync(false)
-                .build();
+                .loadAsync(false);
+    }
+
+    public static PandomiumSettings getDefaultSettings() {
+        return getDefaultSettingsBuilder().build();
     }
 
 }

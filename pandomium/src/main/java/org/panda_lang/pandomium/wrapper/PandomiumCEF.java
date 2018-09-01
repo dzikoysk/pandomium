@@ -2,6 +2,7 @@ package org.panda_lang.pandomium.wrapper;
 
 import org.cef.*;
 import org.panda_lang.pandomium.*;
+import org.panda_lang.pandomium.settings.PandomiumSettings;
 
 public class PandomiumCEF {
 
@@ -13,7 +14,8 @@ public class PandomiumCEF {
     }
 
     public void initialize() {
-        this.cefApp = CefApp.getInstance(pandomium.getSettings().getCefSettings());
+        PandomiumSettings settings = pandomium.getSettings();
+        this.cefApp = CefApp.getInstance(settings.getCommandLine().getArguments(), settings.getCefSettings());
     }
 
     public PandomiumClient createClient() {
