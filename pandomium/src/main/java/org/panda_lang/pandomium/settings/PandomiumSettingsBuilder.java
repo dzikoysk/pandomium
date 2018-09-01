@@ -1,5 +1,6 @@
 package org.panda_lang.pandomium.settings;
 
+import org.panda_lang.pandomium.settings.categories.CommandLineSettings;
 import org.panda_lang.pandomium.settings.categories.DependenciesSettings;
 import org.panda_lang.pandomium.settings.categories.LoaderSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
@@ -9,14 +10,26 @@ import java.io.File;
 
 public class PandomiumSettingsBuilder {
 
+    private CommandLineSettings commandLineSettings;
     private DependenciesSettings dependenciesSettings;
     private NativesSettings nativesSettings;
     private LoaderSettings loaderSettings;
 
     public PandomiumSettingsBuilder() {
+        this.commandLineSettings = new CommandLineSettings();
         this.dependenciesSettings = new DependenciesSettings();
         this.nativesSettings = new NativesSettings();
         this.loaderSettings = new LoaderSettings();
+    }
+
+    public PandomiumSettingsBuilder proxy(String hostname, int port) {
+        commandLineSettings.addArgument("--proxy-server=" + hostname + ":" + port);
+        return this;
+    }
+
+    public PandomiumSettingsBuilder argument(String argument) {
+        commandLineSettings.addArgument(argument);
+        return this;
     }
 
     public PandomiumSettingsBuilder dependencyURL(PandomiumOSType os, String url) {
@@ -56,7 +69,7 @@ public class PandomiumSettingsBuilder {
     }
 
     public PandomiumSettings build() {
-        return new PandomiumSettings(dependenciesSettings, nativesSettings, loaderSettings);
+        return new PandomiumSettings(commandLineSettings, dependenciesSettings, nativesSettings, loaderSettings);
     }
 
 }
