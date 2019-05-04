@@ -31,7 +31,7 @@ Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/ma
 </repository>
 ```
 
-If you don't want to use maven you can download the latest version here: 
+If you don't want to use maven you can download the latest version here (without dependencies): 
 * [Pandomium 67.0.5](https://repo.panda-lang.org/org/panda-lang/pandomium/67.0.5/pandomium-67.0.5.jar)
 * [Natives](https://pandomium.panda-lang.org/download/natives/)
 

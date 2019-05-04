@@ -13,14 +13,14 @@ public class PandomiumTest {
 
     public static void main(String[] args) {
         PandomiumSettings settings = PandomiumSettings.getDefaultSettingsBuilder()
-                .proxy("localhost", 20) // blank page
+                //.proxy("localhost", 20) // blank page
                 .build();
 
         Pandomium pandomium = new Pandomium(settings);
         pandomium.initialize();
 
         PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.loadURL("https://google.com");
+        PandomiumBrowser browser = client.loadURL("http://google.com");
 
         JFrame frame = new JFrame();
         frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
