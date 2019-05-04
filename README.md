@@ -1,3 +1,5 @@
+This is only a development fork of the Pandomium project. Find the original project and its releases https://github.com/dzikoysk/Pandomium
+
 # Pandomium [![Build Status](https://travis-ci.org/dzikoysk/Pandomium.svg?branch=master)](https://travis-ci.org/Panda-Programming-Language/Pandomium) [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/dzikoysk/Pandomium.svg)](http://isitmaintained.com/project/dzikoysk/Pandomium "Average time to resolve an issue")
 Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for the maven projects 
 
