@@ -22,4 +22,8 @@ public class PandomiumCEF {
         return new PandomiumClient(this,  this.cefApp.createClient());
     }
 
+    public CefApp getCefApp() {
+        return cefApp;
+    }
+
 }
