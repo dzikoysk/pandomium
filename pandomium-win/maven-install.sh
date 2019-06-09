@@ -3,4 +3,4 @@ install:install-file
     -Dfile=pandomium-win/jcef-win64.jar
     -DgroupId=org.panda-lang.pandomium-natives
     -DartifactId=pandomium-natives-win64
-    -Dversion=67.0
+    -Dversion=73.0

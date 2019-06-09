@@ -21,7 +21,7 @@ Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/ma
 <dependency>
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium</artifactId>
-    <version>67.0.6</version>
+    <version>73.0</version>
 </dependency>
 ```
 ```xml
@@ -32,7 +32,7 @@ Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/ma
 ```
 
 If you don't want to use maven you can download the latest version here (without dependencies): 
-* [Pandomium 67.0.6](https://repo.panda-lang.org/org/panda-lang/pandomium/67.0.6/pandomium-67.0.6.jar)
+* [Pandomium 73.0](https://repo.panda-lang.org/org/panda-lang/pandomium/73.0/pandomium-73.0.jar)
 * [Natives](https://pandomium.panda-lang.org/download/natives/)
 
 #### Supported platforms
