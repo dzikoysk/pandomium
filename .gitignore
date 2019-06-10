@@ -1,3 +1,7 @@
+### Project ###
+/workspace/
+JCEF
+
 ### Maven ###
 target/
 pom.xml.tag
@@ -46,7 +50,6 @@ buildNumber.properties
 
 # IntelliJ
 /out/
-/bin/
 /native/
 /workspace/
 
@@ -66,7 +69,6 @@ crashlytics-build.properties
 *.pydevproject
 .metadata
 .gradle
-bin/
 tmp/
 *.tmp
 *.bak
