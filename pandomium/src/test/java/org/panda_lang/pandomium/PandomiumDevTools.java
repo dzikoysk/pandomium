@@ -9,11 +9,10 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class PandomiumTest {
+final class PandomiumDevTools {
 
     public static void main(String[] args) {
         PandomiumSettings settings = PandomiumSettings.getDefaultSettingsBuilder()
-                //.proxy("localhost", 20) // blank page
                 .build();
 
         Pandomium pandomium = new Pandomium(settings);
@@ -24,7 +23,14 @@ public class PandomiumTest {
 
         JFrame frame = new JFrame();
         frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
+        SwingUtilities.invokeLater(() -> init(frame, "Pandomium"));
 
+        JFrame devToolsFrame = new JFrame();
+        devToolsFrame.getContentPane().add(browser.getCefBrowser().getDevTools().getUIComponent(), BorderLayout.CENTER);
+        SwingUtilities.invokeLater(() -> init(devToolsFrame, "Pandomium DevTools"));
+    }
+
+    private static void init(JFrame frame, String title) {
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -33,7 +39,7 @@ public class PandomiumTest {
             }
         });
 
-        frame.setTitle("Pandomium");
+        frame.setTitle(title);
         frame.setSize(1720, 840);
         frame.setVisible(true);
     }

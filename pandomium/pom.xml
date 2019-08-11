@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.panda-lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>67.0.4</version>
+        <version>67.0.6</version>
     </parent>
 
     <artifactId>pandomium</artifactId>
@@ -62,18 +62,6 @@
                         <phase>deploy</phase>
                         <goals>
                             <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
                         </goals>
                     </execution>
                 </executions>
