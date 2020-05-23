@@ -7,9 +7,9 @@
     <packaging>pom</packaging>
     <version>73.0</version>
     <scm>
-        <connection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</connection>
-        <developerConnection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</developerConnection>
-        <url>https://github.com/Panda-Programming-Language/Pandomium</url>
+        <connection>scm:git:https://github.com/dzikoysk/pandomium.git</connection>
+        <developerConnection>scm:git:https://github.com/dzikoysk/pandomium.git</developerConnection>
+        <url>https://github.com/dzikoysk/pandomium</url>
     </scm>
     <modules>
         <module>pandomium</module>
