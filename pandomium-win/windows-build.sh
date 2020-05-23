@@ -5,8 +5,8 @@
 #
 # Requirements:
 #   Git for Windows
-#   CMake for WIndows
-#   Visual Stdio 2017 (Windows 10 SDK, C++ Support)
+#   CMake for Windows
+#   Visual Studio 2019 (Windows 10 SDK, C++ Support)
 #   Python 2.7 added to PATH
 #   JDK 8 added to PATH
 #
@@ -26,7 +26,7 @@ find ./java/org -type f -exec sed -i 's/static  int MENU_ID/static final int MEN
 
 # Build natives
 mkdir jcef_build && cd jcef_build
-cmake -G "Visual Studio 15 Win64" ..
+cmake -G "Visual Studio 16 2019" ..
 sync
 
 echo ""
@@ -68,14 +68,14 @@ cp -r ./src/binary_distrib/win64/bin/lib/win64 ./win64/natives
 cd ./win64/natives/ && tar -cf - . | xz -9e -c - > ../../win64/jcef-win64/win64-natives.tar.xz && cd -
 
 # Create fat jar
-cd win64 && jar -cvf pandomium-natives-win64-73.0.jar -C ./jcef-win64 .
+cd win64 && jar -cvf pandomium-natives-win64-81.2.jar -C ./jcef-win64 .
 
 # Deploy
-"../../pandomium-tools/maven/bin/mvn" -s $HOME/.m2/settings.xml deploy:deploy-file \
+"../../../pandomium-tools/maven/bin/mvn" -s $HOME/.m2/settings.xml deploy:deploy-file \
  -DrepositoryId="panda-repository" \
  -Durl="https://repo.panda-lang.org/releases" \
  -Dpackaging="jar" \
- -Dfile="./win64/pandomium-natives-win64-73.0.jar" \
+ -Dfile="./pandomium-natives-win64-81.2.jar" \
  -DgroupId="org.panda-lang.pandomium-natives" \
  -DartifactId="pandomium-natives-win64" \
- -Dversion="73.0"
+ -Dversion="81.2"

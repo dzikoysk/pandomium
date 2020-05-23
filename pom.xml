@@ -5,7 +5,7 @@
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium-parent</artifactId>
     <packaging>pom</packaging>
-    <version>73.0</version>
+    <version>81.2</version>
     <scm>
         <connection>scm:git:https://github.com/dzikoysk/pandomium.git</connection>
         <developerConnection>scm:git:https://github.com/dzikoysk/pandomium.git</developerConnection>
