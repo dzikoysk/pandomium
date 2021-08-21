@@ -18,7 +18,7 @@
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -41,7 +41,21 @@
             <dependency>
                 <groupId>org.panda-lang</groupId>
                 <artifactId>panda</artifactId>
-                <version>indev-0.8.87</version>
+                <version>indev-19.5.22</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.tinylog</groupId>
+                        <artifactId>tinylog-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.tinylog</groupId>
+                        <artifactId>tinylog-impl</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.tinylog</groupId>
+                        <artifactId>slf4j-tinylog</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <!-- Windows x64 -->
@@ -95,6 +109,35 @@
         <defaultGoal>clean install</defaultGoal>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <source>8</source>
+                            <doclint>none</doclint>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>deploy</phase>
+                        <goals><goal>jar-no-fork</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <dependencies>
@@ -122,7 +165,23 @@
                     </archive>
                 </configuration>
             </plugin>
+
+            <!-- explicitly define maven-deploy-plugin after other to force exec order -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.0.0-M1</version>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
 </project>
