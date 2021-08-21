@@ -1,5 +1,7 @@
 package org.panda_lang.pandomium.settings;
 
+import net.dzikoysk.dynamiclogger.Logger;
+import net.dzikoysk.dynamiclogger.backend.PrintStreamLogger;
 import org.panda_lang.pandomium.settings.categories.CommandLineSettings;
 import org.panda_lang.pandomium.settings.categories.DependenciesSettings;
 import org.panda_lang.pandomium.settings.categories.LoaderSettings;
@@ -10,16 +12,15 @@ import java.io.File;
 
 public class PandomiumSettingsBuilder {
 
-    private CommandLineSettings commandLineSettings;
-    private DependenciesSettings dependenciesSettings;
-    private NativesSettings nativesSettings;
-    private LoaderSettings loaderSettings;
+    private Logger logger = new PrintStreamLogger(System.out, System.err);
+    private final CommandLineSettings commandLineSettings = new CommandLineSettings();
+    private final DependenciesSettings dependenciesSettings = new DependenciesSettings();
+    private final NativesSettings nativesSettings = new NativesSettings();
+    private final LoaderSettings loaderSettings = new LoaderSettings();
 
-    public PandomiumSettingsBuilder() {
-        this.commandLineSettings = new CommandLineSettings();
-        this.dependenciesSettings = new DependenciesSettings();
-        this.nativesSettings = new NativesSettings();
-        this.loaderSettings = new LoaderSettings();
+    public PandomiumSettingsBuilder logger(Logger logger) {
+        this.logger = logger;
+        return this;
     }
 
     public PandomiumSettingsBuilder proxy(String hostname, int port) {
@@ -69,7 +70,7 @@ public class PandomiumSettingsBuilder {
     }
 
     public PandomiumSettings build() {
-        return new PandomiumSettings(commandLineSettings, dependenciesSettings, nativesSettings, loaderSettings);
+        return new PandomiumSettings(logger, commandLineSettings, dependenciesSettings, nativesSettings, loaderSettings);
     }
 
 }

@@ -20,18 +20,18 @@ public class PandomiumLoader {
     }
 
     public void load() {
-        Pandomium.getLogger().info("#");
-        Pandomium.getLogger().info("# Launching Pandomium " + Pandomium.getVersion());
-        Pandomium.getLogger().info("# Chromium Version: " + Pandomium.getChromiumVersion());
-        Pandomium.getLogger().info("# CEF Version: " + Pandomium.getCefVersion());
-        Pandomium.getLogger().info("#");
+        pandomium.getLogger().info("#");
+        pandomium.getLogger().info("# Launching Pandomium " + Pandomium.getVersion());
+        pandomium.getLogger().info("# Chromium Version: " + Pandomium.getChromiumVersion());
+        pandomium.getLogger().info("# CEF Version: " + Pandomium.getCefVersion());
+        pandomium.getLogger().info("#");
 
         PandomiumSettings settings = pandomium.getSettings();
         LoaderSettings loaderSettings = settings.getLoader();
 
         progressListeners.add((state, progress) -> {
             if (state == State.RUNNING) {
-                Pandomium.getLogger().info("Progress: " + progress + "%");
+                pandomium.getLogger().info("Progress: " + progress + "%");
             }
         });
 

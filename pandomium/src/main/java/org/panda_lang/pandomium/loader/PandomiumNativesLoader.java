@@ -34,22 +34,22 @@ public class PandomiumNativesLoader {
         URL dependenciesURL = new URL(dependenciesSettings.getPlatformURL());
 
         long contentLength = PandomiumDownloader.getFileSize(dependenciesURL);
-        Pandomium.getLogger().info("Starting to download " + FileUtils.convertBytes(contentLength) + " of data");
+        pandomium.getLogger().info("Starting to download " + FileUtils.convertBytes(contentLength) + " of data");
 
-        Pandomium.getLogger().info("Downloading " + dependenciesSettings.getPlatformURL());
+        pandomium.getLogger().info("Downloading " + dependenciesSettings.getPlatformURL());
         PandomiumDownloader downloader = new PandomiumDownloader(loader);
         InputStream downloadedStream = downloader.download(dependenciesURL);
         loader.updateProgress(91);
 
-        Pandomium.getLogger().info("Unzipping .xz archive");
+        pandomium.getLogger().info("Unzipping .xz archive");
         downloadedStream = ArchiveUtils.unGzip(downloadedStream);
         loader.updateProgress(95);
 
-        Pandomium.getLogger().info("Unpacking .tar archive (it can take a while)");
+        pandomium.getLogger().info("Unpacking .tar archive (it can take a while)");
         ArchiveUtils.unpackTar(downloadedStream, nativesDirectory);
         loader.updateProgress(98);
 
-        Pandomium.getLogger().info("Close connections");
+        pandomium.getLogger().info("Close connections");
         downloader.closeConnections();
         loader.updateProgress(99);
     }

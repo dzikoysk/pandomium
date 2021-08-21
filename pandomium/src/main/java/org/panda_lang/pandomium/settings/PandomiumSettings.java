@@ -1,5 +1,6 @@
 package org.panda_lang.pandomium.settings;
 
+import net.dzikoysk.dynamiclogger.Logger;
 import org.cef.*;
 import org.panda_lang.pandomium.*;
 import org.panda_lang.pandomium.settings.categories.*;
@@ -7,13 +8,15 @@ import org.panda_lang.pandomium.util.os.*;
 
 public class PandomiumSettings {
 
+    private final Logger logger;
     private final CommandLineSettings commandLine;
     private final DependenciesSettings dependencies;
     private final NativesSettings natives;
     private final LoaderSettings loader;
     private final CefSettings cef;
 
-    protected PandomiumSettings(CommandLineSettings commandLine, DependenciesSettings dependencies, NativesSettings natives, LoaderSettings loader) {
+    protected PandomiumSettings(Logger logger, CommandLineSettings commandLine, DependenciesSettings dependencies, NativesSettings natives, LoaderSettings loader) {
+        this.logger = logger;
         this.commandLine = commandLine;
         this.dependencies = dependencies;
         this.natives = natives;
@@ -41,6 +44,10 @@ public class PandomiumSettings {
 
     public CefSettings getCefSettings() {
         return cef;
+    }
+
+    public Logger getLogger() {
+        return logger;
     }
 
     public static PandomiumSettingsBuilder builder() {

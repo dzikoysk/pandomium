@@ -2,7 +2,7 @@ package org.panda_lang.pandomium;
 
 public class PandomiumConstants {
 
-    public static final String PANDOMIUM_VERSION = "67.0.6";
+    public static final String PANDOMIUM_VERSION = "67.0.7";
 
     public static final String PANDOMIUM_NATIVE_VERSION = "67.0";
 

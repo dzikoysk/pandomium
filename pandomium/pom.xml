@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.panda-lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>67.0.6</version>
+        <version>67.0.7</version>
     </parent>
 
     <artifactId>pandomium</artifactId>
@@ -40,6 +40,10 @@
         <dependency>
             <groupId>org.tukaani</groupId>
             <artifactId>xz</artifactId>
+        </dependency>
+        <dependency>
+            <artifactId>dynamic-logger</artifactId>
+            <groupId>net.dzikoysk</groupId>
         </dependency>
     </dependencies>
 

@@ -1,5 +1,6 @@
 package org.panda_lang.pandomium.loader.os;
 
+import net.dzikoysk.dynamiclogger.Journalist;
 import net.dzikoysk.linuxenv.LinuxJVMEnvironment;
 import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.util.FileUtils;
@@ -12,7 +13,7 @@ import java.nio.file.Paths;
 
 public class PandomiumLinuxNativesLoader {
 
-    public void loadLinuxNatives(String nativePath) throws Exception {
+    public void loadLinuxNatives(Journalist journalist, String nativePath) throws Exception {
         LinuxJVMEnvironment linuxJVMEnvironment = new LinuxJVMEnvironment();
         linuxJVMEnvironment.setJVMEnvironmentVariable("LD_LIBRARY_PATH", nativePath, 1);
 
@@ -32,9 +33,9 @@ public class PandomiumLinuxNativesLoader {
 
             try {
                 Files.createSymbolicLink(link, target);
-                Pandomium.getLogger().info("Creating symlink " + link + " to " + target);
-            } catch (AccessDeniedException e) {
-                Pandomium.getLogger().error("Pandomium requires permission to " + bin.toString() + " directory");
+                journalist.getLogger().info("Creating symlink " + link + " to " + target);
+            } catch (AccessDeniedException exception) {
+                journalist.getLogger().error("Pandomium requires permission to " + bin.toString() + " directory");
             }
         }
 
@@ -49,8 +50,8 @@ public class PandomiumLinuxNativesLoader {
 
             try {
                 Files.copy(Pandomium.class.getResourceAsStream("/" + name), new File(nativesDirectory, name).toPath());
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (Exception exception) {
+                exception.printStackTrace();
             }
         }
     }

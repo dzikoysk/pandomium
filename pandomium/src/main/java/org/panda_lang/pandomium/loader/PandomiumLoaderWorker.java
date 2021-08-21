@@ -39,7 +39,7 @@ public class PandomiumLoaderWorker implements Runnable {
 
         if (PandomiumOS.isLinux()) {
             PandomiumLinuxNativesLoader linuxNativesLoader = new PandomiumLinuxNativesLoader();
-            linuxNativesLoader.loadLinuxNatives(nativePath);
+            linuxNativesLoader.loadLinuxNatives(pandomium, nativePath);
         }
 
         loader.updateProgress(100);

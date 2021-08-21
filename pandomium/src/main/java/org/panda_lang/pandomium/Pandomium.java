@@ -1,15 +1,16 @@
 package org.panda_lang.pandomium;
 
+import net.dzikoysk.dynamiclogger.Journalist;
+import net.dzikoysk.dynamiclogger.Logger;
 import org.panda_lang.pandomium.loader.PandomiumLoader;
 import org.panda_lang.pandomium.loader.PandomiumProgressListener;
 import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.wrapper.PandomiumCEF;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
-import org.slf4j.Logger;
 
 import java.awt.*;
 
-public class Pandomium {
+public class Pandomium implements Journalist {
 
     private final PandomiumSettings settings;
     private final PandomiumLoader loader;
@@ -57,8 +58,9 @@ public class Pandomium {
         return settings;
     }
 
-    public static Logger getLogger() {
-        return PandomiumLogger.PANDOMIUM_LOGGER;
+    @Override
+    public Logger getLogger() {
+        return settings.getLogger();
     }
 
     public static String getChromiumVersion() {
