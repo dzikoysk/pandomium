@@ -26,10 +26,13 @@ jobs:
       # Use grep to find the line containing file URL
       # Use cut and tr to extract the URL
       # Use wget to download it
+      #| tar xvz -C ./extract-dir
       - name: Download latest stable JCEF builds
         run: |
           cd ${{ github.workspace }} 
-          curl -s https://api.github.com/repos/jgm/pandoc/releases/latest | grep "https://github.com/jcefbuild/jcefbuild/releases/download/*.zip" | cut -d : -f 2,3 | tr -d \" | wget -qi - 
+          URL=$(curl -L -s https://api.github.com/repos/jgm/pandoc/releases/latest | grep -o -E "https://github.com/jcefbuild/jcefbuild/releases/download/*.zip")
+          echo URL
+          curl -L -s $URL 
           ls
       
       # Maybe create a pandonium release instead and attach the jcef builds to it, instead of doing the below
