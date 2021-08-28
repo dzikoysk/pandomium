@@ -10,7 +10,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Person to greet'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'Peter'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -22,14 +22,6 @@ jobs:
       - name: Clone pandonium repository
         uses: actions/checkout@v2
         
-
-      
-      
-      # Use curl to get the JSON response for the latest release
-      # Use grep to find the line containing file URL
-      # Use cut and tr to extract the URL
-      # Use wget to download it
-      #| tar xvz -C ./extract-dir
       - name: Download JRE
         uses: actions/setup-java@v2
         with:
@@ -39,9 +31,8 @@ jobs:
       - name: Run pandonium-builder
         run: | 
           cd ${{ github.workspace }} 
-          java -jar pandonium-builder.jar
+          java -jar pandonium-builder.jar scope:update-JCEF
       
-      # Maybe create a pandonium release instead and attach the jcef builds to it, instead of doing the below
       - name: Commit changes
         run: |
           git config --global user.name 'Update-JCEF-Action'
