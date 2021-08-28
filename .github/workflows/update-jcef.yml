@@ -22,11 +22,7 @@ jobs:
       - name: Clone pandonium repository
         uses: actions/checkout@v2
         
-      - name: Check if curl is installed
-        run: curl --help
-        
-      - name: Check if grep is installed
-        run: grep --help
+
       
       
       # Use curl to get the JSON response for the latest release
@@ -34,9 +30,16 @@ jobs:
       # Use cut and tr to extract the URL
       # Use wget to download it
       #| tar xvz -C ./extract-dir
-      - name: Download latest stable JCEF builds
-        run: curl -s https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest \ | grep "https://github.com/jcefbuild/jcefbuild/releases/download/.*zip" \ | cut -d '"' -f 4 \ | tr -d \" \ | wget -qi -
-
+      - name: Download JRE
+        uses: actions/setup-java@v2
+        with:
+         distribution: 'zulu' # See 'Supported distributions' for available options
+         java-version: '11'
+         
+      - name: Run pandonium-builder
+        run: | 
+          cd ${{ github.workspace }} 
+          java -jar pandonium-builder.jar
       
       # Maybe create a pandonium release instead and attach the jcef builds to it, instead of doing the below
       - name: Commit changes
