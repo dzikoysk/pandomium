@@ -19,9 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     
-      - name: Download/Clone pandonium repository
+      - name: Clone pandonium repository
         uses: actions/checkout@v2
-      - run: echo "Successfully cloned/downloaded the ${{ github.repository }} repository."
       
       # Use curl to get the JSON response for the latest release
       # Use grep to find the line containing file URL
@@ -30,13 +29,13 @@ jobs:
       - name: Download latest stable JCEF builds
         run: |
           cd ${{ github.workspace }} \
+          | ls \
           | curl -s https://api.github.com/repos/jgm/pandoc/releases/latest \
           | grep "https://github.com/jcefbuild/jcefbuild/releases/download/*.zip" \
           | cut -d : -f 2,3 \
           | tr -d \" \
           | wget -qi - \
           | ls
-      - run: echo "Successfully downloaded latest stabled JCEF builds."
       
       # Maybe create a pandonium release instead and attach the jcef builds to it, instead of doing the below
       - name: Commit changes
