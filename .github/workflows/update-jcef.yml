@@ -21,6 +21,13 @@ jobs:
     
       - name: Clone pandonium repository
         uses: actions/checkout@v2
+        
+      - name: Check if curl is installed
+        run: curl
+        
+      - name: Check if grep is installed
+        run: grep
+      
       
       # Use curl to get the JSON response for the latest release
       # Use grep to find the line containing file URL
