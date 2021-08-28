@@ -30,7 +30,7 @@ jobs:
       - name: Download latest stable JCEF builds
         run: |
           cd ${{ github.workspace }} 
-          URL=$(curl -L -s https://api.github.com/repos/jgm/pandoc/releases/latest | grep -o -E "https://github.com/jcefbuild/jcefbuild/releases/download/*.zip")
+          URL=$(curl -L -s https://api.github.com/repos/jgm/pandoc/releases/latest | grep -o -E "https://github.com/jcefbuild/jcefbuild/releases/download/.*zip")
           echo URL
           curl -L -s $URL 
           ls
