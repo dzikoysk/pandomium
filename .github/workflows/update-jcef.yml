@@ -29,11 +29,7 @@ jobs:
       - name: Download latest stable JCEF builds
         run: |
           cd ${{ github.workspace }} 
-          curl -s https://api.github.com/repos/jgm/pandoc/releases/latest
-          grep "https://github.com/jcefbuild/jcefbuild/releases/download/*.zip"
-          cut -d : -f 2,3
-          tr -d \" 
-          wget -qi - 
+          curl -s https://api.github.com/repos/jgm/pandoc/releases/latest | grep "https://github.com/jcefbuild/jcefbuild/releases/download/*.zip" | cut -d : -f 2,3 | tr -d \" | wget -qi - 
           ls
       
       # Maybe create a pandonium release instead and attach the jcef builds to it, instead of doing the below
