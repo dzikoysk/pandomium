@@ -1,0 +1,38 @@
+name: Update JCEF
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Person to greet'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  Update-JCEF:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Download/Clone pandonium repository
+        uses: actions/checkout@v2
+      - run: echo "Successfully cloned/downloaded the ${{ github.repository }} repository."
+      
+      # Find a way of doing the below.
+      - name: Download latest stable JCEF builds
+        run: |
+          cd ${{ github.workspace }} 
+      - run: echo "Successfully downloaded latest stabled JCEF builds."
+      
+      # Maybe create a pandonium release instead and attach the jcef builds to it, instead of doing the below
+      - name: Commit changes
+        run: |
+          git config --global user.name 'Update-JCEF-Action'
+          git config --global user.email 'Update-JCEF-Action@users.noreply.github.com'
+          git commit -am "Updated JCEF builds."
+          git push
