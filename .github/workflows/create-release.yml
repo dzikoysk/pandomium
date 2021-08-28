@@ -1,4 +1,4 @@
-name: Update JCEF
+name: Create release
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -15,7 +15,7 @@ on:
         required: true
 
 jobs:
-  Update-JCEF:
+  Create-Release:
     runs-on: ubuntu-latest
     steps:
     
@@ -31,7 +31,9 @@ jobs:
       - name: Run pandonium-builder
         run: | 
           cd ${{ github.workspace }} 
-          java -jar pandonium-builder.jar scope:update-JCEF
+          java -jar pandonium-builder.jar scope:create-release
+          
+      # TODO actually create a release with actions and add assets via actions
       
       - name: Commit changes
         run: |
