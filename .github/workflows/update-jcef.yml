@@ -35,28 +35,7 @@ jobs:
       # Use wget to download it
       #| tar xvz -C ./extract-dir
       - name: Download latest stable JCEF builds
-        run: |
-          download() {
-          cd ${{ github.workspace }} 
-          URL=$(curl -L -s https://api.github.com/repos/jgm/pandoc/releases/latest | grep -o -E "https://github.com/jcefbuild/jcefbuild/releases/download/.*zip")
-          echo $URL
-          curl -L -s $URL 
-          ls
-          }
-          trap download 0
-
-          error() {
-          local parent_lineno="$1"
-          local message="$2"
-          local code="${3:-1}"
-          if [[ -n "$message" ]] ; then
-          echo "Error on or near line ${parent_lineno}: ${message}; exiting with status ${code}"
-          else
-          echo "Error on or near line ${parent_lineno}; exiting with status ${code}"
-          fi
-          exit "${code}"
-          }
-          trap 'error ${LINENO}' ERR
+        run: curl -s https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest \ | grep "https://github.com/jcefbuild/jcefbuild/releases/download/.*zip" \ | cut -d '"' -f 4 \ | tr -d \" \ | wget -qi -
 
       
       # Maybe create a pandonium release instead and attach the jcef builds to it, instead of doing the below
