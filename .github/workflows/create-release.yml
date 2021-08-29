@@ -35,4 +35,4 @@ jobs:
       - name: Run Pandonium-Builder.jar
         run: | 
           cd ${{ github.workspace }} 
-          java -jar Pandonium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{env.GITHUB_REPOSITORY}}
+          java -jar Pandonium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}}
