@@ -92,3 +92,4 @@ mvn install:install-file\
     -DgroupId=org.panda-lang.pandomium-natives\
     -DartifactId=pandomium-natives-linux64\
     -Dversion=81.2
+

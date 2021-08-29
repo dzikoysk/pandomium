@@ -6,11 +6,11 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      name:
+      version:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'Pandonium version'
         # Default value if no value is explicitly provided
-        default: 'Peter'
+        default: '1.0.0'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -35,4 +35,10 @@ jobs:
       - name: Run Pandonium-Builder.jar
         run: | 
           cd ${{ github.workspace }} 
-          java -jar Pandonium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}}
+          java -jar Pandonium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
+
+      - name: Run maven-install.sh
+          run: |
+            cd ${{ github.workspace }}
+            sh ./maven-install.sh
+

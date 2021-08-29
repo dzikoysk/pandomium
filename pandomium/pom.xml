@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.panda-lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>67.0.7</version>
+        <version>67.0.7</version> <!-- Pandonium-Builder.jar sets this to the latest version, before publishing. -->
     </parent>
 
     <artifactId>pandomium</artifactId>
