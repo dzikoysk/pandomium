@@ -10,10 +10,6 @@
     <artifactId>pandomium</artifactId>
 
     <repositories>
-        <repository>
-            <id>gdx-releases</id>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
         <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
         <!-- Main Maven repository -->
         <repository>
@@ -26,6 +22,10 @@
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>gdx-releases</id>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
         </repository>
     </repositories>
 
