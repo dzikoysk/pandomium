@@ -3,8 +3,8 @@ package org.panda_lang.pandomium.settings.categories;
 import java.io.File;
 
 public class NativesSettings {
-
     private File nativeDirectory;
+    private String downloadURL;
 
     public File getNativeDirectory() {
         return nativeDirectory;
@@ -18,4 +18,11 @@ public class NativesSettings {
         this.nativeDirectory = nativeDirectory;
     }
 
+    public String getDownloadURL() {
+        return downloadURL;
+    }
+
+    public void setDownloadURL(String downloadURL) {
+        this.downloadURL = downloadURL;
+    }
 }

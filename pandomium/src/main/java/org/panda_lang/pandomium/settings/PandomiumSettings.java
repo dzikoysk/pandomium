@@ -5,7 +5,7 @@ import org.cef.CefSettings;
 import org.panda_lang.pandomium.settings.categories.CommandLineSettings;
 import org.panda_lang.pandomium.settings.categories.LoaderSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
-import org.panda_lang.pandomium.util.UtilsOS;
+import org.panda_lang.pandomium.util.OSUtils;
 
 public class PandomiumSettings {
 
@@ -22,7 +22,7 @@ public class PandomiumSettings {
         this.loader = loader;
 
         this.cef = new CefSettings();
-        this.cef.windowless_rendering_enabled = UtilsOS.isLinux();
+        this.cef.windowless_rendering_enabled = OSUtils.isLinux();
     }
 
     public static PandomiumSettingsBuilder builder() {

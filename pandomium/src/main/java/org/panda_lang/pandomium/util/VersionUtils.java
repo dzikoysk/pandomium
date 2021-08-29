@@ -11,11 +11,9 @@ package org.panda_lang.pandomium.util;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * Utility for doing version comparison. <br>
- *
  * @author Osiris-Team
  */
-public class UtilsVersion {
+public class VersionUtils {
 
     /**
      * Compares the current version with the latest

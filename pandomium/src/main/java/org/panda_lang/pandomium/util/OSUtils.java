@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * @author Osiris-Team
  */
-public class UtilsOS {
+public class OSUtils {
     public static OperatingSystemType OS_TYPE;
     public static OperatingSystemArchitectureType OS_ARCH;
 
     static {
         String actualOsArchitecture = System.getProperty("os.arch").toLowerCase();
-        for (UtilsOS.OperatingSystemArchitectureType type :
-                UtilsOS.OperatingSystemArchitectureType.values()) {
+        for (OSUtils.OperatingSystemArchitectureType type :
+                OSUtils.OperatingSystemArchitectureType.values()) {
             if (actualOsArchitecture.equals(type.toString().toLowerCase())) // Not comparing the actual names because the enum has more stuff matching one name
                 OS_ARCH = type;
         }
@@ -26,72 +26,44 @@ public class UtilsOS {
             boolean is64 = arch != null && arch.endsWith("64")
                     || wow64Arch != null && wow64Arch.endsWith("64"); // Otherwise its 32bit
             if (is64)
-                OS_ARCH = UtilsOS.OperatingSystemArchitectureType.X64;
+                OS_ARCH = OSUtils.OperatingSystemArchitectureType.X64;
             else
-                OS_ARCH = UtilsOS.OperatingSystemArchitectureType.X32;
+                OS_ARCH = OSUtils.OperatingSystemArchitectureType.X32;
         }
 
         // Set the operating systems type
         String actualOsType = System.getProperty("os.name").toLowerCase();
         if (actualOsType.contains("alpine"))
-            OS_TYPE = UtilsOS.OperatingSystemType.ALPINE_LINUX;
+            OS_TYPE = OSUtils.OperatingSystemType.ALPINE_LINUX;
         if (actualOsType.contains("win"))
-            OS_TYPE = UtilsOS.OperatingSystemType.WINDOWS;
+            OS_TYPE = OSUtils.OperatingSystemType.WINDOWS;
         else if (actualOsType.contains("mac"))
-            OS_TYPE = UtilsOS.OperatingSystemType.MAC;
+            OS_TYPE = OSUtils.OperatingSystemType.MAC;
         else if (actualOsType.contains("aix"))
-            OS_TYPE = UtilsOS.OperatingSystemType.AIX;
+            OS_TYPE = OSUtils.OperatingSystemType.AIX;
         else if (actualOsType.contains("nix")
                 || actualOsType.contains("nux"))
-            OS_TYPE = UtilsOS.OperatingSystemType.LINUX;
+            OS_TYPE = OSUtils.OperatingSystemType.LINUX;
         else if (actualOsType.contains("sunos"))
-            OS_TYPE = UtilsOS.OperatingSystemType.SOLARIS;
+            OS_TYPE = OSUtils.OperatingSystemType.SOLARIS;
         else
-            OS_TYPE = UtilsOS.OperatingSystemType.LINUX;
+            OS_TYPE = OSUtils.OperatingSystemType.LINUX;
     }
 
-    public static boolean isLinux(){
+    public static boolean isLinux() {
         return OS_TYPE.equals(OperatingSystemType.LINUX);
     }
 
-    public static boolean isWindows(){
+    public static boolean isWindows() {
         return OS_TYPE.equals(OperatingSystemType.WINDOWS);
     }
 
-    public static boolean isMac(){
+    public static boolean isMac() {
         return OS_TYPE.equals(OperatingSystemType.MAC);
     }
 
     // ENUMS:
 
-
-    public enum VendorProjectType {
-        JDK("jdk"),
-        VALHALLA("valhalla"),
-        METROPOLIS("metropolis"),
-        JFR("jfr"),
-        SHENANDOAH("shenandoah");
-
-        private final String name;
-
-        VendorProjectType(String name) {
-            this.name = name;
-        }
-    }
-
-    public enum ImageType {
-        JDK("jdk"),
-        JRE("jre"),
-        TEST_IMAGE("testimage"),
-        DEBUG_IMAGE("debugimage"),
-        STATIC_LIBS("staticlibs");
-
-        private final String name;
-
-        ImageType(String name) {
-            this.name = name;
-        }
-    }
 
     public enum OperatingSystemArchitectureType {
         X64("x64", "64"),
@@ -140,14 +112,4 @@ public class UtilsOS {
         }
     }
 
-    public enum ReleaseType {
-        GENERAL_AVAILABILITY("ga"),
-        EARLY_ACCESS("ea");
-
-        private final String name;
-
-        ReleaseType(String name) {
-            this.name = name;
-        }
-    }
 }
