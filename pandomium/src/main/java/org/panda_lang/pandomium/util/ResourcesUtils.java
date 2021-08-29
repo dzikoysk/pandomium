@@ -28,8 +28,7 @@ public class ResourcesUtils {
         final File file = new File(element);
         if (file.isDirectory()) {
             retval.addAll(getResourcesFromDirectory(file, pattern));
-        }
-        else {
+        } else {
             retval.addAll(getResourcesFromJarFile(file, pattern));
         }
         return retval;
@@ -76,8 +75,7 @@ public class ResourcesUtils {
         for (File file : fileList) {
             if (file.isDirectory()) {
                 resources.addAll(getResourcesFromDirectory(file, pattern));
-            }
-            else {
+            } else {
                 try {
                     String fileName = file.getCanonicalPath();
                     boolean accept = pattern.matcher(fileName).matches();

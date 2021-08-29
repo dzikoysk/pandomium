@@ -2,7 +2,7 @@ package org.panda_lang.pandomium.wrapper;
 
 import org.cef.CefClient;
 import org.cef.browser.CefBrowser;
-import org.panda_lang.pandomium.util.os.PandomiumOS;
+import org.panda_lang.pandomium.util.UtilsOS;
 
 public class PandomiumClient {
 
@@ -23,7 +23,7 @@ public class PandomiumClient {
     }
 
     private PandomiumBrowser createBrowser(String url) {
-        CefBrowser browser = cefClient.createBrowser(url, PandomiumOS.isLinux(), PandomiumOS.isLinux());
+        CefBrowser browser = cefClient.createBrowser(url, UtilsOS.isLinux(), UtilsOS.isLinux());
         return new PandomiumBrowser(browser);
     }
 

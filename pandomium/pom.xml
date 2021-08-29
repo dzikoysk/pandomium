@@ -9,6 +9,26 @@
 
     <artifactId>pandomium</artifactId>
 
+    <repositories>
+        <repository>
+            <id>gdx-releases</id>
+            <url>https://oss.sonatype.org/content/repositories/releases/</url>
+        </repository>
+        <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
+        <!-- Main Maven repository -->
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <!-- Panda -->
         <dependency>
@@ -34,6 +54,16 @@
 
         <!-- Utilities -->
         <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>5.0.0-alpha.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.Osiris-Team</groupId>
+            <artifactId>AutoPlug-Core</artifactId>
+            <version>11.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-compress</artifactId>
         </dependency>
@@ -46,13 +76,6 @@
             <groupId>net.dzikoysk</groupId>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>gdx-releases</id>
-            <url>https://oss.sonatype.org/content/repositories/releases/</url>
-        </repository>
-    </repositories>
 
     <build>
         <defaultGoal>clean install</defaultGoal>

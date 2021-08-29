@@ -1,15 +1,21 @@
 package org.panda_lang.pandomium.settings.categories;
 
+import java.io.File;
+
 public class NativesSettings {
 
-    private String nativeDirectory;
+    private File nativeDirectory;
 
-    public void setNativeDirectory(String nativeDirectory) {
-        this.nativeDirectory = nativeDirectory;
+    public File getNativeDirectory() {
+        return nativeDirectory;
     }
 
-    public String getNativeDirectory() {
-        return nativeDirectory;
+    public void setNativeDirectory(String nativeDirectory) {
+        setNativeDirectory(new File(nativeDirectory));
+    }
+
+    public void setNativeDirectory(File nativeDirectory) {
+        this.nativeDirectory = nativeDirectory;
     }
 
 }
