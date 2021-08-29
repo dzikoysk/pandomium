@@ -22,16 +22,16 @@ jobs:
       - name: Clone pandonium repository
         uses: actions/checkout@v2
         
-      - name: Download JRE
+      - name: Download/Install JRE
         uses: actions/setup-java@v2
         with:
          distribution: 'zulu' # See 'Supported distributions' for available options
-         java-version: '11'
+         java-version: '14'
          
-      - name: Run pandonium-builder
+      - name: Run Pandonium-Builder.jar
         run: | 
           cd ${{ github.workspace }} 
-          java -jar pandonium-builder.jar scope:create-release
+          java -jar Pandonium-Builder.jar o-auth-token:${{secrets.GITHUB_TOKEN}}
           
       # TODO actually create a release with actions and add assets via actions
       
