@@ -27,17 +27,12 @@ jobs:
         with:
          distribution: 'zulu' # See 'Supported distributions' for available options
          java-version: '14'
-         
+
+      # Creates a new release with latest builds. Steps:
+      # 1. Downloads latest JCEF builds
+      # 2. Extracts latest JCEF builds and creates new natives zips and jat jars
+      # 3. Creates release and attaches/uploads natives & fat-jars as assets
       - name: Run Pandonium-Builder.jar
         run: | 
           cd ${{ github.workspace }} 
-          java -jar Pandonium-Builder.jar o-auth-token:${{secrets.GITHUB_TOKEN}}
-          
-      # TODO actually create a release with actions and add assets via actions
-      
-      - name: Commit changes
-        run: |
-          git config --global user.name 'Update-JCEF-Action'
-          git config --global user.email 'Update-JCEF-Action@users.noreply.github.com'
-          git commit -am "Updated JCEF builds."
-          git push
+          java -jar Pandonium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{secrets.GITHUB_REPOSITORY}}
