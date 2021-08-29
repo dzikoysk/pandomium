@@ -38,7 +38,7 @@ jobs:
           java -jar Pandonium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
 
       - name: Run maven-install.sh
-          run: |
+        run: |
             cd ${{ github.workspace }}
             sh ./maven-install.sh
 
