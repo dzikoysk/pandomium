@@ -69,7 +69,8 @@ public class U {
     public static void saveXMLToFile(Document xml, File file) throws TransformerException {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();
-        transformer.setOutputProperty(OutputKeys.INDENT, "no");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "0");
         DOMSource source = new DOMSource(xml);
         transformer.transform(source, new StreamResult(file));
     }

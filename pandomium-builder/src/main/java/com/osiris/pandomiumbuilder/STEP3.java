@@ -55,11 +55,11 @@ public class STEP3 {
                 Node dependencies = U.findNodes(pandomiumPom, "/project/dependencies").item(0);
                 Node dependency = null;
                 try {
-                    dependency = U.findNodes(pandomiumPom, "/project/dependencies[groupId=="+groupIdNAME+"]").item(0);
+                    dependency = U.findNodes(pandomiumPom, "/project/dependencies/dependency/groupId[text()='"+groupIdNAME+"']").item(0);
                 } catch (Exception ignored){}
 
                 if (dependency != null)
-                    pandomiumPom.removeChild(dependency);
+                    dependencies.removeChild(dependency.getParentNode());
 
                 dependency = pandomiumPom.createElement( "dependency");
                 dependencies.appendChild(dependency);
@@ -83,11 +83,12 @@ public class STEP3 {
                 Node dependencies = U.findNodes(pandomiumParentPom, "/project/dependencyManagement/dependencies").item(0);
                 Node dependency = null;
                 try {
-                    dependency = U.findNodes(pandomiumParentPom, "/project/dependencyManagement/dependencies[groupId=="+groupIdNAME+"]").item(0);
+                    dependency = U.findNodes(pandomiumParentPom, "/project/dependencyManagement/dependencies/dependency/groupId[text()='"+groupIdNAME+"']").item(0);
                 } catch (Exception ignored){}
 
                 if (dependency != null)
-                    pandomiumParentPom.removeChild(dependency);
+                    dependencies.removeChild(dependency.getParentNode());
+
 
                 dependency = pandomiumParentPom.createElement( "dependency");
                 dependencies.appendChild(dependency);
