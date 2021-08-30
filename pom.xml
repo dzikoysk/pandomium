@@ -39,7 +39,7 @@
                         
         
         <module>pandomium</module>
-                    
+        <module>pandomium-builder</module>
     
     </modules>
             
