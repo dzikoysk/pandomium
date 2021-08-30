@@ -32,11 +32,11 @@ jobs:
       # 1. Downloads latest JCEF builds
       # 2. Extracts latest JCEF builds and creates new natives zips and jat jars
       # 3. Creates release and attaches/uploads natives & fat-jars as assets
-      - name: Run Pandonium-Builder.jar
+      - name: Run Pandomium-Builder.jar
         run: | 
           cd ${{ github.workspace }} 
           ls
-          java -jar Pandonium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
+          java -jar Pandomium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
 
       - name: Run maven-install.sh
         run: |
