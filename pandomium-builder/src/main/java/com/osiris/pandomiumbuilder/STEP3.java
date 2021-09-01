@@ -122,7 +122,7 @@ public class STEP3 {
             for (File fatJar :
                     fatJars) {
                 bw.write("\n");
-                bw.write("mvn --batch-mode deploy:deploy-file -Durl=scp://"+ PATH_TO_MAVEN_REPO +"\\\n");
+                bw.write("mvn --batch-mode deploy:deploy-file -Durl="+ MAVEN_REPO_URL +"\\\n");
                 bw.write("                       -DrepositoryId="+MAVEN_REPO_ID+" \\\n");
                 bw.write("                       -Dfile="+fatJar.getName()+" \\\n");
                 bw.write("                       -DgroupId="+groupIdNAME+" \\\n");

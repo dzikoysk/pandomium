@@ -40,8 +40,8 @@ public class STEP1 {
                 VERSION = value;
             else if (command.equalsIgnoreCase("release_notes_url"))
                 RELEASE_NOTES_URL = value;
-            else if (command.equalsIgnoreCase("path_to_maven_repo"))
-                PATH_TO_MAVEN_REPO = value;
+            else if (command.equalsIgnoreCase("maven_repo_url"))
+                MAVEN_REPO_URL = value;
             else if (command.equalsIgnoreCase("maven_repo_id"))
                 MAVEN_REPO_ID = value;
         }
@@ -64,7 +64,7 @@ public class STEP1 {
             throw new Exception("Argument 'path_to_maven_repo' is missing! Add it in this format:" +
                     " 'version:1.0.0' to '... -jar Pandomium-Builder.jar <argument1> <argument2>...'.");
 
-        if (PATH_TO_MAVEN_REPO == null)
+        if (MAVEN_REPO_URL == null)
             throw new Exception("Argument 'version' is missing! Add it in this format:" +
                     " 'path_to_maven_repo:host.com/path/to/repo' to '... -jar Pandomium-Builder.jar <argument1> <argument2>...'.");
 

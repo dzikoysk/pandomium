@@ -13,7 +13,7 @@ public class Main {
      * Needed arguments: <br>
      * o_auth_token <small>| Must be given if you want to create and publish a release on GitHub.</small> <br>
      * owner_and_repo <small>| Format: Owner/Repository. The repository where to create the release.</small> <br>
-     * path_to_maven_repo <small>| The maven repos scp-url. Format: host.com/path/to/repo</small> <br>
+     * maven_repo_url <small>| The maven repos url. Example: https://repo.panda-lang.org/releases</small> <br>
      * maven_repo_id <small>| Must be given, to publish the os-specific fat-jars to the maven repo.</small> <br>
      * version <small>| Pandomiums version.</small> <br><br>
      * Optional arguments: <br>

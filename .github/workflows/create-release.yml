@@ -40,7 +40,7 @@ jobs:
         run: | 
           cd ${{ github.workspace }} 
           ls
-          java -jar Pandomium-Builder.jar maven_repo_id:panda-repository path_to_maven_repo:repo.panda-lang.org o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
+          java -jar Pandomium-Builder.jar maven_repo_id:panda-repository maven_repo_url:https://repo.panda-lang.org/releases o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
 
       - name: Publish packages
         run: |

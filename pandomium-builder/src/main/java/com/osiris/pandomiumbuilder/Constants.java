@@ -10,5 +10,5 @@ public class Constants {
     public static String VERSION;
     public static String RELEASE_NOTES_URL = "";
     public static String MAVEN_REPO_ID;
-    public static String PATH_TO_MAVEN_REPO;
+    public static String MAVEN_REPO_URL;
 }

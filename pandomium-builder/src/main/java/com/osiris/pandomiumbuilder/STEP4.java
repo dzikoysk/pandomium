@@ -14,6 +14,7 @@ import java.nio.file.Files;
 import java.util.List;
 
 import static com.osiris.pandomiumbuilder.Constants.RELEASE_NOTES_URL;
+import static com.osiris.pandomiumbuilder.Constants.VERSION;
 
 public class STEP4 {
 
@@ -26,7 +27,21 @@ public class STEP4 {
         GHRelease release = new GHReleaseBuilder(repo, fullTagName)
                 .prerelease(false)
                 .name(fullTagName)
-                .body("Release notes: " + RELEASE_NOTES_URL)
+                .body("#### Maven\n" +
+                        "```xml\n" +
+                        "<dependency>\n" +
+                        "    <groupId>org.panda-lang</groupId>\n" +
+                        "    <artifactId>pandomium</artifactId>\n" +
+                        "    <version>"+VERSION+"</version>\n" +
+                        "</dependency>\n" +
+                        "```\n" +
+                        "```xml\n" +
+                        "<repository>\n" +
+                        "    <id>panda-repository</id>\n" +
+                        "    <url>https://repo.panda-lang.org/</url>\n" +
+                        "</repository>\n" +
+                        "```\n" +
+                        "Release notes: " + RELEASE_NOTES_URL)
                 .create();
         System.out.println("Success!");
         System.out.println("Uploading assets to release...");

@@ -206,41 +206,18 @@
     
 
 </dependencyManagement>
-    
-
 <repositories>
-        
-
 <repository>
-            
-
 <id>panda-repository</id>
-            
-
 <url>https://repo.panda-lang.org/</url>
-        
-
 </repository>
-    
-
 </repositories>
-    
 
 <distributionManagement>
-        
-
 <repository>
-            
-
 <id>panda-repository</id>
-            
-
 <url>https://repo.panda-lang.org/releases</url>
-        
-
 </repository>
-    
-
 </distributionManagement>
     
 
