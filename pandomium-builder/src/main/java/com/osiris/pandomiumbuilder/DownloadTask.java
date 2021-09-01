@@ -56,10 +56,10 @@ public class DownloadTask extends BetterThread {
     public void runAtStart() throws Exception {
         super.runAtStart();
 
-        if (dest==null)
-            dest = new File(System.getProperty("user.dir")+"/"+new File(new URL(url).getFile()).getName());
-        else if(dest.isDirectory()){
-            dest = new File(dest+"/"+new File(new URL(url).getFile()).getName());
+        if (dest == null)
+            dest = new File(System.getProperty("user.dir") + "/" + new File(new URL(url).getFile()).getName());
+        else if (dest.isDirectory()) {
+            dest = new File(dest + "/" + new File(new URL(url).getFile()).getName());
         }
         // Or dest is already a file and we got no problems
 

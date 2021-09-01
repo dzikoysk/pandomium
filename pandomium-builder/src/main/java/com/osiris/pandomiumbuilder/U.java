@@ -19,15 +19,28 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Utils
+ * Utils class.
  */
 public class U {
+
+    public static boolean deleteDirectoryRecursively(File directoryToBeDeleted) {
+        File[] allContents = directoryToBeDeleted.listFiles();
+        if (allContents != null) {
+            for (File file : allContents) {
+                deleteDirectoryRecursively(file);
+            }
+        }
+        return directoryToBeDeleted.delete();
+    }
 
     public static String getFileNameWithoutExt(File file) throws NotLoadedException {
         return getFileNameWithoutExt(file.getName());
@@ -41,7 +54,7 @@ public class U {
         FileInputStream fileIS = new FileInputStream(file);
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
-        return  builder.parse(fileIS);
+        return builder.parse(fileIS);
     }
 
     public static Document toXML(String fileAsString) throws IOException, SAXException, ParserConfigurationException {
@@ -55,12 +68,12 @@ public class U {
         return (NodeList) xPath.compile(exp).evaluate(doc, XPathConstants.NODESET);
     }
 
-    public static List<Node> findNodesWithText(NodeList nodesList, String text){
+    public static List<Node> findNodesWithText(NodeList nodesList, String text) {
         List<Node> results = new ArrayList<>();
         Node n = null;
         for (int i = 0; i < nodesList.getLength(); i++) {
             n = nodesList.item(i);
-            if(n.getTextContent()!=null && n.getTextContent().equals(text))
+            if (n.getTextContent() != null && n.getTextContent().equals(text))
                 results.add(n);
         }
         return results;

@@ -17,7 +17,9 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.osiris.pandomiumbuilder.Main.*;
+import static com.osiris.pandomiumbuilder.Constants.DIR;
+import static com.osiris.pandomiumbuilder.Constants.VERSION;
+import static com.osiris.pandomiumbuilder.U.deleteDirectoryRecursively;
 
 public class STEP2 {
     public List<File> fatJars;
@@ -36,36 +38,36 @@ public class STEP2 {
                 downloadedJCEFBuilds) {
 
             // Do natives stuff:
-            File tempDir = new File(DIR+"/temp-dir");
+            File tempDir = new File(DIR + "/temp-dir");
             if (!tempDir.exists()) tempDir.mkdirs();
-            System.out.println("Created temp-dir: "+tempDir);
-            System.out.println("Extracting "+downloadedJCEFBuild.getName()+" to temp-dir...");
+            System.out.println("Created temp-dir: " + tempDir);
+            System.out.println("Extracting " + downloadedJCEFBuild.getName() + " to temp-dir...");
             ArchiverFactory.createArchiver(downloadedJCEFBuild)
                     .extract(downloadedJCEFBuild, tempDir);
-            System.out.println("Extracted "+downloadedJCEFBuild.getName()+" to temp-dir.");
-            File source = new File(tempDir+"/java-cef-build-bin/bin/lib").listFiles()[0];
+            System.out.println("Extracted " + downloadedJCEFBuild.getName() + " to temp-dir.");
+            File source = new File(tempDir + "/java-cef-build-bin/bin/lib").listFiles()[0];
 
-            File nativeProperties = new File(source+"/pandomium-natives.properties");
+            File nativeProperties = new File(source + "/pandomium-natives.properties");
             if (nativeProperties.exists()) nativeProperties.delete();
-            try(BufferedWriter bw = new BufferedWriter(new FileWriter(nativeProperties))){
-                bw.write("full-version="+fullTagName+"\n");
-                bw.write("pandomium-version="+VERSION+"\n");
-                bw.write("jcef-version="+tagNameJCEF+"\n");
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(nativeProperties))) {
+                bw.write("full-version=" + fullTagName + "\n");
+                bw.write("pandomium-version=" + VERSION + "\n");
+                bw.write("jcef-version=" + tagNameJCEF + "\n");
                 bw.flush();
             }
 
-            File zipFile = new File(DIR+"/jcef-"+U.getFileNameWithoutExt(downloadedJCEFBuild)+"-natives.zip");
+            File zipFile = new File(DIR + "/jcef-" + U.getFileNameWithoutExt(downloadedJCEFBuild) + "-natives.zip");
             if (zipFile.exists()) zipFile.delete(); // No need to create new, that's done below in addFolder()
             System.out.println("Creating natives...");
             ZipFile nativesZip = new ZipFile(zipFile);
             nativesZip.addFolder(source);
-            System.out.println("Created natives: "+nativesZip.getFile().getAbsolutePath());
+            System.out.println("Created natives: " + nativesZip.getFile().getAbsolutePath());
             filesToUpload.add(nativesZip.getFile());
 
             // Do fat jar stuff:
             class FilesFinder implements FileVisitor<Path> {
-                private Path startingDir;
-                private List<File> results = new ArrayList<>();
+                private final Path startingDir;
+                private final List<File> results = new ArrayList<>();
 
                 public FilesFinder(Path startingDir) throws IOException {
                     this.startingDir = startingDir;
@@ -106,10 +108,10 @@ public class STEP2 {
                 }
             }
 
-            File tempFatJar = new File(tempDir+"/fat-jar");
+            File tempFatJar = new File(tempDir + "/fat-jar");
             if (!tempFatJar.exists()) tempFatJar.mkdirs();
 
-            File startingDir = new File(tempDir+"/java-cef-build-bin/bin"); // Extract and combine the jar files in this folder to the tempFatJar folder
+            File startingDir = new File(tempDir + "/java-cef-build-bin/bin"); // Extract and combine the jar files in this folder to the tempFatJar folder
             for (File f :
                     new FilesFinder(startingDir.toPath()).getResults()) {
                 ArchiverFactory.createArchiver(ArchiveFormat.JAR)
@@ -119,10 +121,10 @@ public class STEP2 {
             System.out.println("Creating fat jar...");
             ArchiverFactory.createArchiver(downloadedJCEFBuild)
                     .extract(downloadedJCEFBuild, tempDir);
-            String archiveName2 = "jcef-"+U.getFileNameWithoutExt(downloadedJCEFBuild)+"-fat";
+            String archiveName2 = "jcef-" + U.getFileNameWithoutExt(downloadedJCEFBuild) + "-fat";
             File fatJar = ArchiverFactory.createArchiver(ArchiveFormat.JAR)
                     .create(archiveName2, DIR, tempFatJar); // archive name, destination and source
-            System.out.println("Created fat jar: "+fatJar.getAbsolutePath());
+            System.out.println("Created fat jar: " + fatJar.getAbsolutePath());
             filesToUpload.add(fatJar);
             fatJars.add(fatJar);
             System.out.println("Deleting temp-dir...");
