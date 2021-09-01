@@ -27,6 +27,10 @@ jobs:
         with:
          distribution: 'zulu' # See 'Supported distributions' for available options
          java-version: '14'
+         # For publishing to the maven repo
+         server-id: panda-repository
+         server-username: MAVEN_USERNAME
+         server-password: MAVEN_PASSWORD
 
       # Creates a new release with latest builds. Steps:
       # 1. Downloads latest JCEF builds
@@ -36,11 +40,12 @@ jobs:
         run: | 
           cd ${{ github.workspace }} 
           ls
-          java -jar Pandomium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
+          java -jar Pandomium-Builder.jar maven_repo_id:panda-repository path_to_maven_repo:repo.panda-lang.org o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
 
-      - name: Run maven-install.sh
+      - name: Publish packages
         run: |
-            cd ${{ github.workspace }}
-            ls
-            sh ./maven-install.sh
-
+          cd ${{ github.workspace }}
+          sh ./maven-publish.sh
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}

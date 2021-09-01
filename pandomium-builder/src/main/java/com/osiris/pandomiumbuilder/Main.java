@@ -1,30 +1,6 @@
 package com.osiris.pandomiumbuilder;
 
-import net.lingala.zip4j.ZipFile;
-import org.kohsuke.github.*;
-import org.rauschig.jarchivelib.ArchiveFormat;
-import org.rauschig.jarchivelib.ArchiverFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
 public class Main {
-    public static File DIR;
-    public static boolean isAbortOnWarning = false;
-    public static String O_AUTH_TOKEN;
-    public static String OWNER_AND_REPO;
-    public static String VERSION;
-    public static String RELEASE_NOTES_URL = "";
 
     /**
      * Tested and working on JDK/JRE 14. <br>
@@ -35,8 +11,10 @@ public class Main {
      * </pre>
      * Note that the order in which the arguments are passed doesn't matter. <br><br>
      * Needed arguments: <br>
-     * o_auth_token <small>| Must be given if you want to create and publish a release.</small> <br>
+     * o_auth_token <small>| Must be given if you want to create and publish a release on GitHub.</small> <br>
      * owner_and_repo <small>| Format: Owner/Repository. The repository where to create the release.</small> <br>
+     * path_to_maven_repo <small>| The maven repos scp-url. Format: host.com/path/to/repo</small> <br>
+     * maven_repo_id <small>| Must be given, to publish the os-specific fat-jars to the maven repo.</small> <br>
      * version <small>| Pandomiums version.</small> <br><br>
      * Optional arguments: <br>
      * dir <small>| The working directory path. If not given the current working directory is used. If not existing gets created.</small> <br>
@@ -49,15 +27,4 @@ public class Main {
         STEP3 step3 = new STEP3(step1.fullTagName, step2.fatJars);
         new STEP4(step1.fullTagName, step1.tagNameJCEF, step3.repo, step2.filesToUpload);
     }
-
-    public static boolean deleteDirectoryRecursively(File directoryToBeDeleted) {
-        File[] allContents = directoryToBeDeleted.listFiles();
-        if (allContents != null) {
-            for (File file : allContents) {
-                deleteDirectoryRecursively(file);
-            }
-        }
-        return directoryToBeDeleted.delete();
-    }
-
 }
