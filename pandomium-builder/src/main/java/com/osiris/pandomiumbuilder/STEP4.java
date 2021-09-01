@@ -32,7 +32,7 @@ public class STEP4 {
                         "<dependency>\n" +
                         "    <groupId>org.panda-lang</groupId>\n" +
                         "    <artifactId>pandomium</artifactId>\n" +
-                        "    <version>"+VERSION+"</version>\n" +
+                        "    <version>"+fullTagName+"</version>\n" +
                         "</dependency>\n" +
                         "```\n" +
                         "```xml\n" +

@@ -127,7 +127,7 @@ public class STEP3 {
                 bw.write("                       -Dfile="+fatJar.getName()+" \\\n");
                 bw.write("                       -DgroupId="+groupIdNAME+" \\\n");
                 bw.write("                       -DartifactId="+U.getFileNameWithoutExt(fatJar)+" \\\n");
-                bw.write("                       -Dversion="+VERSION+" \\\n");
+                bw.write("                       -Dversion="+fullTagName+" \\\n");
                 bw.write("                       -Dpackaging=jar \\\n");
                 bw.write("                       -DgeneratePom=true \\\n");
                 bw.write("                       -DgeneratePom.description=\"Contains OS-specific JCEF code.\" \\\n");
