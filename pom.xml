@@ -3,254 +3,319 @@
     
 
 
+
 <modelVersion>4.0.0</modelVersion>
     
 
 
+
 <groupId>org.panda-lang</groupId>
     
+
 
 
 <artifactId>pandomium-parent</artifactId>
     
 
 
+
 <packaging>pom</packaging>
     
 
 
-<version>1.0.0-ALPHA2-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
+
+<version>1.0.0-ALPHA3-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
     
+
 
 
 <!-- Pandonium-Builder.jar sets this to the latest version, before publishing. -->
     
 
 
+
 <scm>
         
+
 
 
 <connection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</connection>
         
 
 
+
 <developerConnection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</developerConnection>
         
+
 
 
 <url>https://github.com/Panda-Programming-Language/Pandomium</url>
     
 
 
+
 </scm>
     
+
 
 
 <modules>
         
 
 
+
 <module>pandomium</module>
         
+
 
 
 <module>pandomium-builder</module>
     
 
 
+
 </modules>
     
+
 
 
 <licenses>
         
 
 
+
 <license>
             
+
 
 
 <name>Apache License, Version 2.0</name>
             
 
 
+
 <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             
+
 
 
 <distribution>repo</distribution>
         
 
 
+
 </license>
     
+
 
 
 </licenses>
     
 
 
+
 <properties>
         
+
 
 
 <java.version>1.8</java.version>
         
 
 
+
 <maven.compiler.source>${java.version}</maven.compiler.source>
         
+
 
 
 <maven.compiler.target>${java.version}</maven.compiler.target>
         
 
 
+
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
+
 
 
 </properties>
     
 
 
+
 <dependencyManagement>
         
+
 
 
 <dependencies>
             
 
 
+
 <!-- Pandomium -->
             
+
 
 
 <dependency>
                 
 
 
+
 <groupId>org.panda-lang</groupId>
                 
+
 
 
 <artifactId>pandomium</artifactId>
                 
 
 
+
 <version>${project.version}</version>
             
+
 
 
 </dependency>
             
 
 
+
 <dependency>
                 
+
 
 
 <groupId>org.panda-lang</groupId>
                 
 
 
+
 <artifactId>panda</artifactId>
                 
+
 
 
 <version>0.5.0-alpha</version>
             
 
 
+
 </dependency>
             
+
 
 
 <dependency>
                 
 
 
+
 <groupId>net.dzikoysk</groupId>
                 
+
 
 
 <artifactId>linuxenv</artifactId>
                 
 
 
+
 <version>1.0.0</version>
             
 
 
+
 </dependency>
             
+
 
 
 <!-- Utilities -->
             
 
 
+
 <dependency>
                 
+
 
 
 <groupId>org.apache.commons</groupId>
                 
 
 
+
 <artifactId>commons-compress</artifactId>
                 
+
 
 
 <version>1.21</version>
             
 
 
+
 </dependency>
             
 
 
+
 <dependency>
                 
+
 
 
 <groupId>org.tukaani</groupId>
                 
 
 
+
 <artifactId>xz</artifactId>
                 
+
 
 
 <version>1.6</version>
             
 
 
+
 </dependency>
             
+
 
 
 <dependency>
                 
 
 
+
 <artifactId>dynamic-logger</artifactId>
                 
+
 
 
 <groupId>net.dzikoysk</groupId>
                 
 
 
+
 <version>1.0.3</version>
             
+
 
 
 </dependency>
             
             
         
+
+
+
 
 
 
@@ -271,368 +336,460 @@
     
 
 
+
 </dependencyManagement>
     
+
 
 
 <repositories>
         
 
 
+
 <repository>
             
 
 
+
 <id>panda-repository</id>
             
+
 
 
 <url>https://repo.panda-lang.org/</url>
         
 
 
+
 </repository>
     
+
 
 
 </repositories>
     
 
 
+
 <distributionManagement>
         
+
 
 
 <repository>
             
 
 
+
 <id>panda-repository</id>
             
+
 
 
 <url>https://repo.panda-lang.org/releases</url>
         
 
 
+
 </repository>
     
+
 
 
 </distributionManagement>
     
 
 
+
 <build>
         
+
 
 
 <defaultGoal>clean install</defaultGoal>
         
 
 
+
 <plugins>
             
+
 
 
 <plugin>
                 
 
 
+
 <groupId>org.apache.maven.plugins</groupId>
                 
+
 
 
 <artifactId>maven-javadoc-plugin</artifactId>
                 
 
 
+
 <version>3.2.0</version>
                 
+
 
 
 <executions>
                     
 
 
+
 <execution>
                         
+
 
 
 <id>attach-javadocs</id>
                         
 
 
+
 <goals>
                             
+
 
 
 <goal>jar</goal>
                         
 
 
+
 </goals>
                         
 
 
+
 <configuration>
                             
+
 
 
 <source>8</source>
                             
 
 
+
 <doclint>none</doclint>
                         
+
 
 
 </configuration>
                     
 
 
+
 </execution>
                 
+
 
 
 </executions>
             
 
 
+
 </plugin>
             
+
 
 
 <plugin>
                 
 
 
+
 <groupId>org.apache.maven.plugins</groupId>
                 
+
 
 
 <artifactId>maven-source-plugin</artifactId>
                 
 
 
+
 <version>3.2.1</version>
                 
+
 
 
 <executions>
                     
 
 
+
 <execution>
                         
+
 
 
 <id>attach-sources</id>
                         
 
 
+
 <phase>deploy</phase>
                         
 
 
+
 <goals>
                             
+
 
 
 <goal>jar-no-fork</goal>
                         
 
 
+
 </goals>
                     
+
 
 
 </execution>
                 
 
 
+
 </executions>
             
+
 
 
 </plugin>
             
 
 
+
 <plugin>
                 
+
 
 
 <artifactId>maven-compiler-plugin</artifactId>
                 
 
 
+
 <version>3.3</version>
                 
+
 
 
 <dependencies>
                     
 
 
+
 <dependency>
                         
+
 
 
 <groupId>org.codehaus.plexus</groupId>
                         
 
 
+
 <artifactId>plexus-compiler-eclipse</artifactId>
                         
+
 
 
 <version>2.5</version>
                     
 
 
+
 </dependency>
                 
+
 
 
 </dependencies>
                 
 
 
+
 <configuration>
                     
+
 
 
 <source>${java.version}</source>
                     
 
 
+
 <target>${java.version}</target>
                 
+
 
 
 </configuration>
             
 
 
+
 </plugin>
             
+
 
 
 <plugin>
                 
 
 
+
 <groupId>org.apache.maven.plugins</groupId>
                 
+
 
 
 <artifactId>maven-jar-plugin</artifactId>
                 
 
 
+
 <version>2.6</version>
                 
+
 
 
 <configuration>
                     
 
 
+
 <archive>
                         
+
 
 
 <manifestEntries>
                             
 
 
+
 <Implementation-Title>Pandomium-Parent</Implementation-Title>
                             
+
 
 
 <Implementation-Version>${project.version}</Implementation-Version>
                         
 
 
+
 </manifestEntries>
                     
+
 
 
 </archive>
                 
 
 
+
 </configuration>
             
 
 
+
 </plugin>
             
+
 
 
 <!-- explicitly define maven-deploy-plugin after other to force exec order -->
             
 
 
+
 <plugin>
                 
+
 
 
 <groupId>org.apache.maven.plugins</groupId>
                 
 
 
+
 <artifactId>maven-deploy-plugin</artifactId>
                 
+
 
 
 <version>3.0.0-M1</version>
                 
 
 
+
 <executions>
                     
+
 
 
 <execution>
                         
 
 
+
 <id>deploy</id>
                         
+
 
 
 <phase>deploy</phase>
                         
 
 
+
 <goals>
                             
+
 
 
 <goal>deploy</goal>
                         
 
 
+
 </goals>
                     
+
 
 
 </execution>
                 
 
 
+
 </executions>
             
+
 
 
 </plugin>
         
 
 
+
 </plugins>
     
+
 
 
 </build>
