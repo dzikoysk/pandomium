@@ -5,19 +5,27 @@
 
 
 
+
 <modelVersion>4.0.0</modelVersion>
     
 
 
 
 
+
 <parent>
+
 <groupId>org.panda-lang</groupId>
+
 <artifactId>pandomium-parent</artifactId>
-<version>1.0.0-ALPHA4-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
+
+<version>1.0.0-ALPHA5-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
+
 <!-- Pandonium-Builder.jar sets this to the latest version, before publishing. -->
+
 </parent>
     
+
 
 
 
@@ -28,15 +36,16 @@
 
 
 
+
 <repositories>
-
-    <repository>
-        <id>panda-repository</id>
-        <url>https://repo.panda-lang.org</url>
-
-    </repository>
-
-
+    
+<repository>
+        
+<id>panda-repository</id>
+        
+<url>https://repo.panda-lang.org</url>
+    
+</repository>
 
 <!-- The order of definitions matters. Explicitly defining central here to make sure it has the highest priority. -->
         
@@ -44,23 +53,31 @@
 
 
 
+
 <!-- Main Maven repository -->
 
-
 <repository>
+
 <id>central</id>
+
 <url>https://repo.maven.apache.org/maven2</url>
+
 <snapshots>
+
 <enabled>false</enabled>
+
 </snapshots>
+
 </repository>
         
+
 
 
 <repository>
 
 <id>gdx-releases</id>
             
+
 
 <url>https://oss.sonatype.org/content/repositories/releases/</url>
 
@@ -74,14 +91,17 @@
 
 
 
+
 <!-- Panda -->
         
 
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -92,8 +112,10 @@
 
 
 
+
 <artifactId>panda</artifactId>
         
+
 
 
 
@@ -104,14 +126,17 @@
 
 
 
+
 <dependency>
             
 
 
 
 
+
 <groupId>net.dzikoysk</groupId>
             
+
 
 
 
@@ -122,8 +147,10 @@
 
 
 
+
 </dependency>
         
+
 
 
 
@@ -134,8 +161,10 @@
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -146,8 +175,10 @@
 
 
 
+
 <artifactId>okhttp</artifactId>
             
+
 
 
 
@@ -158,14 +189,17 @@
 
 
 
+
 </dependency>
         
 
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -176,8 +210,10 @@
 
 
 
+
 <artifactId>gson</artifactId>
             
+
 
 
 
@@ -188,14 +224,17 @@
 
 
 
+
 </dependency>
         
 
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -206,8 +245,10 @@
 
 
 
+
 <artifactId>commons-compress</artifactId>
         
+
 
 
 
@@ -218,8 +259,10 @@
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -230,14 +273,17 @@
 
 
 
+
 <artifactId>xz</artifactId>
         
 
 
 
 
+
 </dependency>
         
+
 
 
 
@@ -248,8 +294,10 @@
 
 
 
+
 <artifactId>dynamic-logger</artifactId>
             
+
 
 
 
@@ -260,10 +308,14 @@
 
 
 
+
 </dependency>
         
         
     
+
+
+
 
 
 
@@ -294,8 +346,10 @@
 
 
 
+
 <build>
         
+
 
 
 
@@ -306,14 +360,17 @@
 
 
 
+
 <plugins>
             
 
 
 
 
+
 <plugin>
                 
+
 
 
 
@@ -324,8 +381,10 @@
 
 
 
+
 <version>3.3</version>
                 
+
 
 
 
@@ -336,8 +395,10 @@
 
 
 
+
 <dependency>
                         
+
 
 
 
@@ -348,8 +409,10 @@
 
 
 
+
 <artifactId>plexus-compiler-eclipse</artifactId>
                         
+
 
 
 
@@ -360,8 +423,10 @@
 
 
 
+
 </dependency>
                 
+
 
 
 
@@ -372,8 +437,10 @@
 
 
 
+
 <configuration>
                     
+
 
 
 
@@ -384,8 +451,10 @@
 
 
 
+
 <target>${java.version}</target>
                 
+
 
 
 
@@ -396,14 +465,17 @@
 
 
 
+
 </plugin>
             
 
 
 
 
+
 <plugin>
                 
+
 
 
 
@@ -414,8 +486,10 @@
 
 
 
+
 <artifactId>maven-jar-plugin</artifactId>
                 
+
 
 
 
@@ -426,8 +500,10 @@
 
 
 
+
 <configuration>
                     
+
 
 
 
@@ -438,8 +514,10 @@
 
 
 
+
 <manifestEntries>
                             
+
 
 
 
@@ -450,8 +528,10 @@
 
 
 
+
 <Implementation-Version>${project.version}</Implementation-Version>
                         
+
 
 
 
@@ -462,8 +542,10 @@
 
 
 
+
 </archive>
                 
+
 
 
 
@@ -474,8 +556,10 @@
 
 
 
+
 </plugin>
             
+
 
 
 
@@ -486,8 +570,10 @@
 
 
 
+
 <artifactId>maven-deploy-plugin</artifactId>
                 
+
 
 
 
@@ -498,8 +584,10 @@
 
 
 
+
 <executions>
                     
+
 
 
 
@@ -510,8 +598,10 @@
 
 
 
+
 <id>default-deploy</id>
                         
+
 
 
 
@@ -522,8 +612,10 @@
 
 
 
+
 <goals>
                             
+
 
 
 
@@ -534,8 +626,10 @@
 
 
 
+
 </goals>
                     
+
 
 
 
@@ -546,8 +640,10 @@
 
 
 
+
 </executions>
             
+
 
 
 
@@ -558,8 +654,10 @@
 
 
 
+
 </plugins>
     
+
 
 
 
