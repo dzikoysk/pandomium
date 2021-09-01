@@ -4,8 +4,10 @@
 
 
 
+
 <modelVersion>4.0.0</modelVersion>
     
+
 
 
 
@@ -14,8 +16,10 @@
 
 
 
+
 <groupId>org.panda-lang</groupId>
         
+
 
 
 
@@ -24,8 +28,10 @@
 
 
 
-<version>1.0.0-ALPHA3-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
+
+<version>1.0.0-ALPHA4-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
         
+
 
 
 
@@ -34,8 +40,10 @@
 
 
 
+
 </parent>
     
+
 
 
 
@@ -44,8 +52,10 @@
 
 
 
+
 <repositories>
         
+
 
 
 
@@ -54,13 +64,16 @@
 
 
 
+
 <!-- Main Maven repository -->
         
 
 
 
+
 <repository>
             
+
 
 
 
@@ -69,8 +82,10 @@
 
 
 
+
 <url>https://repo.maven.apache.org/maven2</url>
             
+
 
 
 
@@ -79,8 +94,10 @@
 
 
 
+
 <enabled>false</enabled>
             
+
 
 
 
@@ -89,8 +106,10 @@
 
 
 
+
 </repository>
         
+
 
 
 
@@ -99,8 +118,10 @@
 
 
 
+
 <id>gdx-releases</id>
             
+
 
 
 
@@ -109,8 +130,10 @@
 
 
 
+
 </repository>
     
+
 
 
 
@@ -119,8 +142,10 @@
 
 
 
+
 <dependencies>
         
+
 
 
 
@@ -129,8 +154,10 @@
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -139,8 +166,10 @@
 
 
 
+
 <artifactId>panda</artifactId>
         
+
 
 
 
@@ -149,13 +178,16 @@
 
 
 
+
 <dependency>
             
 
 
 
+
 <groupId>net.dzikoysk</groupId>
             
+
 
 
 
@@ -164,8 +196,10 @@
 
 
 
+
 </dependency>
         
+
 
 
 
@@ -174,8 +208,10 @@
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -184,8 +220,10 @@
 
 
 
+
 <artifactId>okhttp</artifactId>
             
+
 
 
 
@@ -194,13 +232,16 @@
 
 
 
+
 </dependency>
         
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -209,8 +250,10 @@
 
 
 
+
 <artifactId>gson</artifactId>
             
+
 
 
 
@@ -219,13 +262,16 @@
 
 
 
+
 </dependency>
         
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -234,8 +280,10 @@
 
 
 
+
 <artifactId>commons-compress</artifactId>
         
+
 
 
 
@@ -244,8 +292,10 @@
 
 
 
+
 <dependency>
             
+
 
 
 
@@ -254,13 +304,16 @@
 
 
 
+
 <artifactId>xz</artifactId>
         
 
 
 
+
 </dependency>
         
+
 
 
 
@@ -269,8 +322,10 @@
 
 
 
+
 <artifactId>dynamic-logger</artifactId>
             
+
 
 
 
@@ -279,10 +334,14 @@
 
 
 
+
 </dependency>
         
         
     
+
+
+
 
 
 
@@ -309,8 +368,10 @@
 
 
 
+
 <build>
         
+
 
 
 
@@ -319,13 +380,16 @@
 
 
 
+
 <plugins>
             
 
 
 
+
 <plugin>
                 
+
 
 
 
@@ -334,8 +398,10 @@
 
 
 
+
 <version>3.3</version>
                 
+
 
 
 
@@ -344,8 +410,10 @@
 
 
 
+
 <dependency>
                         
+
 
 
 
@@ -354,8 +422,10 @@
 
 
 
+
 <artifactId>plexus-compiler-eclipse</artifactId>
                         
+
 
 
 
@@ -364,8 +434,10 @@
 
 
 
+
 </dependency>
                 
+
 
 
 
@@ -374,8 +446,10 @@
 
 
 
+
 <configuration>
                     
+
 
 
 
@@ -384,8 +458,10 @@
 
 
 
+
 <target>${java.version}</target>
                 
+
 
 
 
@@ -394,13 +470,16 @@
 
 
 
+
 </plugin>
             
 
 
 
+
 <plugin>
                 
+
 
 
 
@@ -409,8 +488,10 @@
 
 
 
+
 <artifactId>maven-jar-plugin</artifactId>
                 
+
 
 
 
@@ -419,8 +500,10 @@
 
 
 
+
 <configuration>
                     
+
 
 
 
@@ -429,8 +512,10 @@
 
 
 
+
 <manifestEntries>
                             
+
 
 
 
@@ -439,8 +524,10 @@
 
 
 
+
 <Implementation-Version>${project.version}</Implementation-Version>
                         
+
 
 
 
@@ -449,8 +536,10 @@
 
 
 
+
 </archive>
                 
+
 
 
 
@@ -459,8 +548,10 @@
 
 
 
+
 </plugin>
             
+
 
 
 
@@ -469,8 +560,10 @@
 
 
 
+
 <artifactId>maven-deploy-plugin</artifactId>
                 
+
 
 
 
@@ -479,8 +572,10 @@
 
 
 
+
 <executions>
                     
+
 
 
 
@@ -489,8 +584,10 @@
 
 
 
+
 <id>default-deploy</id>
                         
+
 
 
 
@@ -499,8 +596,10 @@
 
 
 
+
 <goals>
                             
+
 
 
 
@@ -509,8 +608,10 @@
 
 
 
+
 </goals>
                     
+
 
 
 
@@ -519,8 +620,10 @@
 
 
 
+
 </executions>
             
+
 
 
 
@@ -529,8 +632,10 @@
 
 
 
+
 </plugins>
     
+
 
 
 

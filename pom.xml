@@ -4,13 +4,16 @@
 
 
 
+
 <modelVersion>4.0.0</modelVersion>
     
 
 
 
+
 <groupId>org.panda-lang</groupId>
     
+
 
 
 
@@ -19,13 +22,16 @@
 
 
 
+
 <packaging>pom</packaging>
     
 
 
 
-<version>1.0.0-ALPHA3-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
+
+<version>1.0.0-ALPHA4-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
     
+
 
 
 
@@ -34,8 +40,10 @@
 
 
 
+
 <scm>
         
+
 
 
 
@@ -44,8 +52,10 @@
 
 
 
+
 <developerConnection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</developerConnection>
         
+
 
 
 
@@ -54,8 +64,10 @@
 
 
 
+
 </scm>
     
+
 
 
 
@@ -64,8 +76,10 @@
 
 
 
+
 <module>pandomium</module>
         
+
 
 
 
@@ -74,8 +88,10 @@
 
 
 
+
 </modules>
     
+
 
 
 
@@ -84,8 +100,10 @@
 
 
 
+
 <license>
             
+
 
 
 
@@ -94,8 +112,10 @@
 
 
 
+
 <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             
+
 
 
 
@@ -104,8 +124,10 @@
 
 
 
+
 </license>
     
+
 
 
 
@@ -114,8 +136,10 @@
 
 
 
+
 <properties>
         
+
 
 
 
@@ -124,8 +148,10 @@
 
 
 
+
 <maven.compiler.source>${java.version}</maven.compiler.source>
         
+
 
 
 
@@ -134,8 +160,10 @@
 
 
 
+
 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
+
 
 
 
@@ -144,8 +172,10 @@
 
 
 
+
 <dependencyManagement>
         
+
 
 
 
@@ -154,8 +184,10 @@
 
 
 
+
 <!-- Pandomium -->
             
+
 
 
 
@@ -164,8 +196,10 @@
 
 
 
+
 <groupId>org.panda-lang</groupId>
                 
+
 
 
 
@@ -174,8 +208,10 @@
 
 
 
+
 <version>${project.version}</version>
             
+
 
 
 
@@ -184,8 +220,10 @@
 
 
 
+
 <dependency>
                 
+
 
 
 
@@ -194,8 +232,10 @@
 
 
 
+
 <artifactId>panda</artifactId>
                 
+
 
 
 
@@ -204,8 +244,10 @@
 
 
 
+
 </dependency>
             
+
 
 
 
@@ -214,8 +256,10 @@
 
 
 
+
 <groupId>net.dzikoysk</groupId>
                 
+
 
 
 
@@ -224,13 +268,16 @@
 
 
 
+
 <version>1.0.0</version>
             
 
 
 
+
 </dependency>
             
+
 
 
 
@@ -239,8 +286,10 @@
 
 
 
+
 <dependency>
                 
+
 
 
 
@@ -249,8 +298,10 @@
 
 
 
+
 <artifactId>commons-compress</artifactId>
                 
+
 
 
 
@@ -259,13 +310,16 @@
 
 
 
+
 </dependency>
             
 
 
 
+
 <dependency>
                 
+
 
 
 
@@ -274,8 +328,10 @@
 
 
 
+
 <artifactId>xz</artifactId>
                 
+
 
 
 
@@ -284,8 +340,10 @@
 
 
 
+
 </dependency>
             
+
 
 
 
@@ -294,8 +352,10 @@
 
 
 
+
 <artifactId>dynamic-logger</artifactId>
                 
+
 
 
 
@@ -304,8 +364,10 @@
 
 
 
+
 <version>1.0.3</version>
             
+
 
 
 
@@ -313,6 +375,9 @@
             
             
         
+
+
+
 
 
 
@@ -337,8 +402,10 @@
 
 
 
+
 </dependencyManagement>
     
+
 
 
 
@@ -347,13 +414,16 @@
 
 
 
+
 <repository>
             
 
 
 
+
 <id>panda-repository</id>
             
+
 
 
 
@@ -362,8 +432,10 @@
 
 
 
+
 </repository>
     
+
 
 
 
@@ -372,8 +444,10 @@
 
 
 
+
 <distributionManagement>
         
+
 
 
 
@@ -382,8 +456,10 @@
 
 
 
+
 <id>panda-repository</id>
             
+
 
 
 
@@ -392,8 +468,10 @@
 
 
 
+
 </repository>
     
+
 
 
 
@@ -402,8 +480,10 @@
 
 
 
+
 <build>
         
+
 
 
 
@@ -412,8 +492,10 @@
 
 
 
+
 <plugins>
             
+
 
 
 
@@ -422,8 +504,10 @@
 
 
 
+
 <groupId>org.apache.maven.plugins</groupId>
                 
+
 
 
 
@@ -432,8 +516,10 @@
 
 
 
+
 <version>3.2.0</version>
                 
+
 
 
 
@@ -442,8 +528,10 @@
 
 
 
+
 <execution>
                         
+
 
 
 
@@ -452,8 +540,10 @@
 
 
 
+
 <goals>
                             
+
 
 
 
@@ -462,13 +552,16 @@
 
 
 
+
 </goals>
                         
 
 
 
+
 <configuration>
                             
+
 
 
 
@@ -477,8 +570,10 @@
 
 
 
+
 <doclint>none</doclint>
                         
+
 
 
 
@@ -487,8 +582,10 @@
 
 
 
+
 </execution>
                 
+
 
 
 
@@ -497,8 +594,10 @@
 
 
 
+
 </plugin>
             
+
 
 
 
@@ -507,8 +606,10 @@
 
 
 
+
 <groupId>org.apache.maven.plugins</groupId>
                 
+
 
 
 
@@ -517,8 +618,10 @@
 
 
 
+
 <version>3.2.1</version>
                 
+
 
 
 
@@ -527,8 +630,10 @@
 
 
 
+
 <execution>
                         
+
 
 
 
@@ -537,13 +642,16 @@
 
 
 
+
 <phase>deploy</phase>
                         
 
 
 
+
 <goals>
                             
+
 
 
 
@@ -552,8 +660,10 @@
 
 
 
+
 </goals>
                     
+
 
 
 
@@ -562,8 +672,10 @@
 
 
 
+
 </executions>
             
+
 
 
 
@@ -572,8 +684,10 @@
 
 
 
+
 <plugin>
                 
+
 
 
 
@@ -582,8 +696,10 @@
 
 
 
+
 <version>3.3</version>
                 
+
 
 
 
@@ -592,8 +708,10 @@
 
 
 
+
 <dependency>
                         
+
 
 
 
@@ -602,8 +720,10 @@
 
 
 
+
 <artifactId>plexus-compiler-eclipse</artifactId>
                         
+
 
 
 
@@ -612,8 +732,10 @@
 
 
 
+
 </dependency>
                 
+
 
 
 
@@ -622,8 +744,10 @@
 
 
 
+
 <configuration>
                     
+
 
 
 
@@ -632,8 +756,10 @@
 
 
 
+
 <target>${java.version}</target>
                 
+
 
 
 
@@ -642,8 +768,10 @@
 
 
 
+
 </plugin>
             
+
 
 
 
@@ -652,8 +780,10 @@
 
 
 
+
 <groupId>org.apache.maven.plugins</groupId>
                 
+
 
 
 
@@ -662,8 +792,10 @@
 
 
 
+
 <version>2.6</version>
                 
+
 
 
 
@@ -672,8 +804,10 @@
 
 
 
+
 <archive>
                         
+
 
 
 
@@ -682,8 +816,10 @@
 
 
 
+
 <Implementation-Title>Pandomium-Parent</Implementation-Title>
                             
+
 
 
 
@@ -692,8 +828,10 @@
 
 
 
+
 </manifestEntries>
                     
+
 
 
 
@@ -702,13 +840,16 @@
 
 
 
+
 </configuration>
             
 
 
 
+
 </plugin>
             
+
 
 
 
@@ -717,8 +858,10 @@
 
 
 
+
 <plugin>
                 
+
 
 
 
@@ -727,8 +870,10 @@
 
 
 
+
 <artifactId>maven-deploy-plugin</artifactId>
                 
+
 
 
 
@@ -737,8 +882,10 @@
 
 
 
+
 <executions>
                     
+
 
 
 
@@ -747,8 +894,10 @@
 
 
 
+
 <id>deploy</id>
                         
+
 
 
 
@@ -757,8 +906,10 @@
 
 
 
+
 <goals>
                             
+
 
 
 
@@ -767,8 +918,10 @@
 
 
 
+
 </goals>
                     
+
 
 
 
@@ -777,8 +930,10 @@
 
 
 
+
 </executions>
             
+
 
 
 
@@ -787,8 +942,10 @@
 
 
 
+
 </plugins>
     
+
 
 
 
