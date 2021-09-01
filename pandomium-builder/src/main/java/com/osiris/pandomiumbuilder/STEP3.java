@@ -151,16 +151,12 @@ public class STEP3 {
         commitFile(treeBuilder, mavenInstallScript);
         commitFile(treeBuilder, pandomiumParentPomFile);
         commitFile(treeBuilder, pandomiumPomFile);
-        for (File fatJar :
-                fatJars) {
-            commitFile(treeBuilder, fatJar);
-        }
         String treeSha = treeBuilder.create().getSha();
         GHCommit commit = repo.createCommit().message("Add files")
                 .tree(treeSha)
-                .message(fullTagName + " - Updated files")
-                .author("author", "pandomium@builder.com", new Date())
-                .committer("committer", "pandomium@builder.com", new Date())
+                .message(fullTagName)
+                .author("Pandonium-Builder", "pandomium@builder.com", new Date())
+                .committer("Pandonium-Builder", "pandomium@builder.com", new Date())
                 .parent(mainRef.getObject().getSha())
                 .create();
         String commitSha = commit.getSHA1();
