@@ -1,9 +1,14 @@
 package org.panda_lang.pandomium.loader;
 
+
+import net.dzikoysk.dynamiclogger.Logger;
 import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.loader.PandomiumProgressListener.State;
-import org.panda_lang.pandomium.settings.PandomiumSettings;
+import org.panda_lang.pandomium.loader.os.PandomiumLinuxNativesLoader;
 import org.panda_lang.pandomium.settings.categories.LoaderSettings;
+import org.panda_lang.pandomium.util.JarUtils;
+import org.panda_lang.pandomium.util.OSUtils;
+import org.panda_lang.pandomium.util.SystemUtils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,39 +16,70 @@ import java.util.Collection;
 public class PandomiumLoader {
 
     private final Pandomium pandomium;
+    private final Logger log;
     private final Collection<PandomiumProgressListener> progressListeners;
     private int progress;
 
     public PandomiumLoader(Pandomium pandomium) {
         this.pandomium = pandomium;
+        this.log = pandomium.getLogger();
         this.progressListeners = new ArrayList<>();
     }
 
     public void load() {
-        pandomium.getLogger().info("#");
-        pandomium.getLogger().info("# Launching Pandomium " + Pandomium.getVersion());
-        pandomium.getLogger().info("# Chromium Version: " + Pandomium.getChromiumVersion());
-        pandomium.getLogger().info("# CEF Version: " + Pandomium.getCefVersion());
-        pandomium.getLogger().info("#");
 
-        PandomiumSettings settings = pandomium.getSettings();
-        LoaderSettings loaderSettings = settings.getLoader();
+        String version = null;
+        try {
+            version = new JarUtils().getVersion();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        log.info("# ");
+        log.info("# Launching Pandonium");
+        log.info("# " + version);
+        log.info("# Determined '" + OSUtils.OS_ARCH.name() + "' as operating systems architecture.");
+        log.info("# Determined '" + OSUtils.OS_TYPE.name() + "' as operating system.");
+        log.info("# ");
+
+        LoaderSettings loaderSettings = pandomium.getSettings().getLoader();
 
         progressListeners.add((state, progress) -> {
             if (state == State.RUNNING) {
-                pandomium.getLogger().info("Progress: " + progress + "%");
+                log.info("Progress: " + progress + "%");
             }
         });
 
-        PandomiumLoaderWorker worker = new PandomiumLoaderWorker(this);
 
-        if (!loaderSettings.isLoadAsync()) {
-            worker.run();
-            return;
-        }
+        Runnable runnable = () -> {
+            try {
+                this.updateProgress(0);
 
-        Thread loaderThread = new Thread(worker, "Pandomium Loader Thread");
-        loaderThread.start();
+                PandomiumNativesLoader nativeLoader = new PandomiumNativesLoader();
+                nativeLoader.loadNatives(this);
+
+                Pandomium pandomium = this.getPandomium();
+                String nativePath = pandomium.getSettings().getNatives().getNativeDirectory().getAbsolutePath();
+                SystemUtils.injectLibraryPath(nativePath);
+
+                if (OSUtils.isLinux()) {
+                    PandomiumLinuxNativesLoader linuxNativesLoader = new PandomiumLinuxNativesLoader();
+                    linuxNativesLoader.loadLinuxNatives(pandomium, nativePath);
+                }
+
+                this.updateProgress(100);
+                this.callListeners(PandomiumProgressListener.State.DONE);
+            } catch (Exception e) {
+                log.error("Failed to install JCEF natives update. Message: " + e.getMessage());
+                e.printStackTrace();
+            }
+        };
+
+        if (loaderSettings.isLoadAsync())
+            new Thread(runnable, "Pandomium Loader Thread").start();
+        else
+            runnable.run();
+
     }
 
     protected void updateProgress(int newProgress) {

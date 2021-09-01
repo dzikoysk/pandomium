@@ -1,8 +1,9 @@
 package org.panda_lang.pandomium.util;
 
-import org.apache.commons.compress.archivers.tar.*;
-import org.apache.commons.compress.utils.*;
-import org.tukaani.xz.*;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
+import org.apache.commons.compress.utils.IOUtils;
+import org.tukaani.xz.XZInputStream;
 
 import java.io.*;
 
@@ -29,7 +30,7 @@ public class ArchiveUtils {
     }
 
     public static void unpackTarArchiveEntry(TarArchiveInputStream tarStream, TarArchiveEntry entry, File outputDirectory) throws IOException {
-        String fileName = entry.getName().substring(entry.getName().indexOf("/"), entry.getName().length());
+        String fileName = entry.getName().substring(entry.getName().indexOf("/"));
         File outputFile = new File(outputDirectory, fileName);
 
         if (entry.isDirectory()) {

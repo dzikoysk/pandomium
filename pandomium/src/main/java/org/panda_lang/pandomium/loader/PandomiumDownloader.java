@@ -1,15 +1,26 @@
 package org.panda_lang.pandomium.loader;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class PandomiumDownloader {
 
-    private Collection<HttpURLConnection> connections;
+    private final Collection<HttpURLConnection> connections;
 
     public PandomiumDownloader(PandomiumLoader loader) {
         this.connections = new ArrayList<>(1);
+    }
+
+    protected static long getFileSize(URL url) throws Exception {
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        long length = conn.getContentLengthLong();
+        conn.disconnect();
+
+        return length;
     }
 
     public InputStream download(URL url) throws Exception {
@@ -26,22 +37,12 @@ public class PandomiumDownloader {
         for (HttpURLConnection connection : connections) {
             try {
                 connection.disconnect();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 // mute
             }
         }
 
         connections.clear();
-    }
-
-    protected static long getFileSize(URL url) throws Exception {
-        HttpURLConnection  conn = (HttpURLConnection) url.openConnection();
-
-        long length = conn.getContentLengthLong();
-        conn.disconnect();
-
-        return length;
     }
 
 }

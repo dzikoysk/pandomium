@@ -23,6 +23,18 @@ public class Pandomium implements Journalist {
         this.mainThread = Thread.currentThread();
     }
 
+    public static String getChromiumVersion() {
+        return PandomiumConstants.PANDOMIUM_CHROMIUM_VERSION;
+    }
+
+    public static String getCefVersion() {
+        return PandomiumConstants.PANDOMIUM_CEF_VERSION;
+    }
+
+    public static String getVersion() {
+        return PandomiumConstants.PANDOMIUM_VERSION;
+    }
+
     public void initialize() {
         Toolkit.getDefaultToolkit();
 
@@ -61,18 +73,6 @@ public class Pandomium implements Journalist {
     @Override
     public Logger getLogger() {
         return settings.getLogger();
-    }
-
-    public static String getChromiumVersion() {
-        return PandomiumConstants.PANDOMIUM_CHROMIUM_VERSION;
-    }
-
-    public static String getCefVersion() {
-        return PandomiumConstants.PANDOMIUM_CEF_VERSION;
-    }
-
-    public static String getVersion() {
-        return PandomiumConstants.PANDOMIUM_VERSION;
     }
 
 }

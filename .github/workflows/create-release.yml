@@ -1,0 +1,46 @@
+name: Create release
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      version:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Pandonium version'
+        # Default value if no value is explicitly provided
+        default: '1.0.0'
+        # Input has to be provided for the workflow to run
+        required: true
+
+jobs:
+  Create-Release:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Clone pandonium repository
+        uses: actions/checkout@v2
+        
+      - name: Download/Install JRE
+        uses: actions/setup-java@v2
+        with:
+         distribution: 'zulu' # See 'Supported distributions' for available options
+         java-version: '14'
+
+      # Creates a new release with latest builds. Steps:
+      # 1. Downloads latest JCEF builds
+      # 2. Extracts latest JCEF builds and creates new natives zips and jat jars
+      # 3. Creates release and attaches/uploads natives & fat-jars as assets
+      - name: Run Pandomium-Builder.jar
+        run: | 
+          cd ${{ github.workspace }} 
+          ls
+          java -jar Pandomium-Builder.jar o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
+
+      - name: Run maven-install.sh
+        run: |
+            cd ${{ github.workspace }}
+            ls
+            sh ./maven-install.sh
+

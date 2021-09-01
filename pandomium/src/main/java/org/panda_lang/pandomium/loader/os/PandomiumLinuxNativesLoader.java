@@ -20,7 +20,7 @@ public class PandomiumLinuxNativesLoader {
         String javaHome = System.getProperty("java.home");
         File bin = new File(javaHome + File.separator + "bin");
 
-        String[] symFiles = new String[] { "icudtl.dat", "natives_blob.bin", "snapshot_blob.bin" };
+        String[] symFiles = new String[]{"icudtl.dat", "natives_blob.bin", "snapshot_blob.bin"};
         File[] binFiles = bin.listFiles();
 
         for (String name : symFiles) {
@@ -28,18 +28,18 @@ public class PandomiumLinuxNativesLoader {
                 continue;
             }
 
-            Path link =  Paths.get(bin.getAbsolutePath() + File.separator + name);
+            Path link = Paths.get(bin.getAbsolutePath() + File.separator + name);
             Path target = Paths.get(nativePath + File.separator + name);
 
             try {
                 Files.createSymbolicLink(link, target);
                 journalist.getLogger().info("Creating symlink " + link + " to " + target);
             } catch (AccessDeniedException exception) {
-                journalist.getLogger().error("Pandomium requires permission to " + bin.toString() + " directory");
+                journalist.getLogger().error("Pandomium requires permission to " + bin + " directory");
             }
         }
 
-        String[] libFiles = new String[] { "libgluegen-rt.so", "libjogl_desktop.so", "libnativewindow_awt.so", "libnativewindow_x11.so", "libnewt.so" };
+        String[] libFiles = new String[]{"libgluegen-rt.so", "libjogl_desktop.so", "libnativewindow_awt.so", "libnativewindow_x11.so", "libnewt.so"};
         File nativesDirectory = new File(nativePath);
         File[] nativeFiles = nativesDirectory.listFiles();
 
