@@ -31,8 +31,8 @@ public class STEP3 {
 
         File pandomiumPomFile = new File(DIR + "/pandomium/pom.xml");
         File pandomiumParentPomFile = new File(DIR + "/pom.xml");
-        Document pandomiumPom = U.toXML(new File(DIR + "/pandomium/pom.xml"));
-        Document pandomiumParentPom = U.toXML(new File(DIR + "/pom.xml"));
+        Document pandomiumPom = U.toXML(pandomiumPomFile);
+        Document pandomiumParentPom = U.toXML(pandomiumParentPomFile);
 
         // Update the projects versions in its pom.xml files
         U.findNodes(pandomiumPom, "//version").item(0)
@@ -53,7 +53,7 @@ public class STEP3 {
 
         // Append new:
         for (File fatJar :
-                Arrays.asList(new File("win32-fat.jar"), new File("win64-fat.jar"))) {
+                fatJars) {
             try {
                 Node dependencies = U.findNodes(pandomiumPom, "/project/dependencies").item(0);
                 Node dependency = null;
