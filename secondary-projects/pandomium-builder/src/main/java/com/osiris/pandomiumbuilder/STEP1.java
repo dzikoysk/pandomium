@@ -82,7 +82,7 @@ public class STEP1 {
                         .getJsonObject("https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest")
                         .getAsJsonArray("assets")) {
             String downloadURL = element.getAsJsonObject().get("browser_download_url").getAsString();
-            if (downloadURL.endsWith(".tar.xz"))
+            if (downloadURL.endsWith(".zip"))
                 downloadURLS.add(downloadURL);
         }
 
