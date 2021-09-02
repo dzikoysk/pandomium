@@ -30,7 +30,7 @@ public class JarUtils {
 
     @NotNull
     public Properties getPandoniumPropertiesFromJar(@NotNull String path) throws Exception {
-        return getPropertiesFromJar(path, "autoplug");
+        return getPropertiesFromJar(path, "pandomium");
     }
 
     /**

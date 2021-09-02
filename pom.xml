@@ -42,7 +42,7 @@
 
 
 <!-- Pandonium-Builder.jar sets this to the latest version, before publishing. -->
-    
+
 
 
 
@@ -86,22 +86,7 @@
 <modules>
         
 
-
-
-
-
 <module>pandomium</module>
-        
-
-
-
-
-
-<module>pandomium-builder</module>
-    
-
-
-
 
 
 </modules>
@@ -154,19 +139,15 @@
 
 
 </licenses>
-    
 
 
 
 
 
+    <!--Important for the Pandomium-Builder and detecting the right version to download natives.-->
 <properties>
-        
-
-
-
-
-
+    <version>${project.version}</version>
+    <installation-path>./${name}.jar</installation-path>
 <java.version>1.8</java.version>
         
 
@@ -1093,18 +1074,25 @@
 
 
 </plugin>
-        
 
-
-
-
+    <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>properties-maven-plugin</artifactId>
+        <version>1.0.0</version>
+        <executions>
+            <execution>
+                <phase>generate-resources</phase>
+                <goals>
+                    <goal>write-project-properties</goal>
+                </goals>
+                <configuration>
+                    <outputFile>${project.build.outputDirectory}/pandomium.properties</outputFile>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
 
 </plugins>
-    
-
-
-
-
 
 </build>
 
