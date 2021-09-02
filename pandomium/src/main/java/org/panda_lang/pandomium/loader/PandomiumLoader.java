@@ -36,8 +36,7 @@ public class PandomiumLoader {
         }
 
         log.info("# ");
-        log.info("# Launching Pandonium");
-        log.info("# " + version);
+        log.info("# Launching Pandonium v"+version);
         log.info("# Determined '" + OSUtils.OS_ARCH.name() + "' as operating systems architecture.");
         log.info("# Determined '" + OSUtils.OS_TYPE.name() + "' as operating system.");
         log.info("# ");
@@ -49,7 +48,6 @@ public class PandomiumLoader {
                 log.info("Progress: " + progress + "%");
             }
         });
-
 
         Runnable runnable = () -> {
             try {

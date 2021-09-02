@@ -82,7 +82,7 @@ public class STEP1 {
                         .getJsonObject("https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest")
                         .getAsJsonArray("assets")) {
             String downloadURL = element.getAsJsonObject().get("browser_download_url").getAsString();
-            if (downloadURL.endsWith(".zip"))
+            if (downloadURL.endsWith(".tar.xz"))
                 downloadURLS.add(downloadURL);
         }
 
@@ -114,7 +114,7 @@ public class STEP1 {
         BetterThreadManager manager = new BetterThreadManager();
         for (String downloadURL :
                 downloadURLS) {
-            new DownloadTask("Download", manager, downloadURL, DIR, "zip")
+            new DownloadTask("Download", manager, downloadURL, DIR, "all")
                     .start();
         }
 

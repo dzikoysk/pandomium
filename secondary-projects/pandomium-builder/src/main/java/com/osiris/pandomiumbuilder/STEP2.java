@@ -1,6 +1,7 @@
 package com.osiris.pandomiumbuilder;
 
 import com.osiris.dyml.exceptions.NotLoadedException;
+import com.osiris.pandomiumbuilder.tar.TarXz;
 import net.lingala.zip4j.ZipFile;
 import org.rauschig.jarchivelib.ArchiveFormat;
 import org.rauschig.jarchivelib.ArchiverFactory;
@@ -56,13 +57,11 @@ public class STEP2 {
                 bw.flush();
             }
 
-            File zipFile = new File(DIR + "/jcef-" + U.getFileNameWithoutExt(downloadedJCEFBuild) + "-natives.zip");
-            if (zipFile.exists()) zipFile.delete(); // No need to create new, that's done below in addFolder()
             System.out.println("Creating natives...");
-            ZipFile nativesZip = new ZipFile(zipFile);
-            nativesZip.addFolder(source);
-            System.out.println("Created natives: " + nativesZip.getFile().getAbsolutePath());
-            filesToUpload.add(nativesZip.getFile());
+            File nativesTar = new TarXz("jcef-" + U.getFileNameWithoutExt(downloadedJCEFBuild) + "-natives")
+                    .addFile(source).createInDir(DIR);
+            System.out.println("Created natives: " + nativesTar.getAbsolutePath());
+            filesToUpload.add(nativesTar);
 
             // Do fat jar stuff:
             class FilesFinder implements FileVisitor<Path> {

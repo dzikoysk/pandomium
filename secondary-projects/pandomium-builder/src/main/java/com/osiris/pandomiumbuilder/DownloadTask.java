@@ -82,11 +82,8 @@ public class DownloadTask extends BetterThread {
                 throw new Exception("Download of '" + dest.getName() + "' failed because of null content type!");
             else if (!body.contentType().type().equals("application"))
                 throw new Exception("Download of '" + dest.getName() + "' failed because of invalid content type: " + body.contentType().type());
-            else if (!body.contentType().subtype().equals("java-archive")
-                    && !body.contentType().subtype().equals("jar")
-                    && !body.contentType().subtype().equals("octet-stream")) {
-                if (allowedSubContentTypes == null)
-                    throw new Exception("Download of '" + dest.getName() + "' failed because of invalid sub-content type: " + body.contentType().subtype());
+
+            if (allowedSubContentTypes!=null && !Arrays.asList(allowedSubContentTypes).contains("all")){
                 if (!Arrays.asList(allowedSubContentTypes).contains(body.contentType().subtype()))
                     throw new Exception("Download of '" + dest.getName() + "' failed because of invalid sub-content type: " + body.contentType().subtype());
             }

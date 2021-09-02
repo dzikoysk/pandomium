@@ -7,6 +7,7 @@ import org.panda_lang.pandomium.settings.categories.NativesSettings;
 import org.panda_lang.pandomium.util.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -93,17 +94,24 @@ public class PandomiumNativesLoader {
         loader.updateProgress(99);
     }
 
-    private boolean checkNative(File directory) {
-        if (!directory.exists()) {
+    private boolean checkNative(File nativesDir) throws Exception {
+        if (!nativesDir.exists()) {
             return false;
         }
 
-        if (!directory.isDirectory()) {
-            FileUtils.handleFileResult(directory.delete(), "Couldn't delete directory %s", directory.getAbsolutePath());
+        if (!nativesDir.isDirectory()) {
+            FileUtils.handleFileResult(nativesDir.delete(), "Couldn't delete directory %s", nativesDir.getAbsolutePath());
             return false;
         }
 
-        File[] directoryContent = directory.listFiles();
+        File nativeProperties = new File(nativesDir+"/pandomium-natives.properties");
+        if (!nativeProperties.exists())
+            return false;
+
+        if(!new FileUtils().getProperties(nativeProperties).getProperty("full-version").trim().equalsIgnoreCase(new JarUtils().getVersion().trim()))
+            return false;
+
+        File[] directoryContent = nativesDir.listFiles();
         boolean success = FileUtils.isIn("libcef.so", directoryContent) || FileUtils.isIn("libcef.dll", directoryContent);
 
         if (OSUtils.isWindows()) {

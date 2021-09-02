@@ -1,9 +1,19 @@
 package org.panda_lang.pandomium.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.Properties;
 
 public class FileUtils {
+
+    public Properties getProperties(File file) throws IOException {
+        Properties p = new Properties();
+        p.load(new FileInputStream(file));
+        return p;
+    }
 
     public static String convertBytes(long bytes) {
         return (bytes == -1 ? "<unknown size> " : new DecimalFormat("#0.00").format(bytes / 1024.0 / 1024.0)) + "MB";
