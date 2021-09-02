@@ -43,7 +43,7 @@ public class PandomiumNativesLoader {
                             .getJsonObject("https://api.github.com/repos/" + ownerAndRepo + "/releases/tags/" + version)
                             .getAsJsonArray("assets")) {
                 String url = element.getAsJsonObject().get("browser_download_url").getAsString();
-                if (url.endsWith(".zip"))
+                if (url.endsWith(".tar.xz"))
                     downloadURLS.add(url);
             }
 
@@ -52,12 +52,12 @@ public class PandomiumNativesLoader {
             for (String url :
                     downloadURLS) {
                 String fileName = new File(url).getName();
-                for (String os :
+                for (String osAlias :
                         OSUtils.OS_TYPE.getAliases()) {
-                    if (fileName.contains(os))
-                        for (String arch :
+                    if (fileName.contains(osAlias))
+                        for (String archAlias :
                                 OSUtils.OS_ARCH.getAliases()) {
-                            if (fileName.contains(arch)) {
+                            if (fileName.contains(archAlias)) {
                                 downloadURL = url;
                                 break;
                             }
