@@ -8,10 +8,7 @@ Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicate
 ![PandomiumTest.java - Both x64](https://pandomium.panda-lang.org/github/preview-both.png)
 
 ```java
-Pandomium pandomium = new Pandomium(PandomiumSettings.getDefaultSettings());
-pandomium.initialize();
-
-PandomiumClient client = pandomium.createClient();
+PandomiumClient client = Pandomium.get().createClient();
 PandomiumBrowser browser = client.loadURL("https://panda-lang.org");
 ```
 Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/master/pandomium/src/test/java/org/panda_lang/pandomium/PandomiumTest.java)

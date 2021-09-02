@@ -1,38 +1,67 @@
 package org.panda_lang.pandomium.wrapper;
 
+import org.cef.CefApp;
 import org.cef.CefClient;
 import org.cef.browser.CefBrowser;
-import org.panda_lang.pandomium.util.OSUtils;
+import org.cef.browser.CefRequestContext;
 
 public class PandomiumClient {
-
-    private final PandomiumCEF pandomiumCEF;
+    private final CefApp cefApp;
     private final CefClient cefClient;
+    private boolean isOffscreenRendered;
+    private boolean isTransparent;
+    private CefRequestContext context;
 
-    public PandomiumClient(PandomiumCEF pandomiumCEF, CefClient cefClient) {
-        this.pandomiumCEF = pandomiumCEF;
-        this.cefClient = cefClient;
+    /**
+     * Initialises a new {@link PandomiumClient} object.
+     *
+     * @param cefApp              the application context.
+     * @param isOffscreenRendered should the browser be rendered offscreen.
+     * @param isTransparent       should the browser be transparent.
+     */
+    public PandomiumClient(CefApp cefApp, boolean isOffscreenRendered, boolean isTransparent) {
+        this.cefApp = cefApp;
+        this.cefClient = cefApp.createClient();
+        this.isOffscreenRendered = isOffscreenRendered;
+        this.isTransparent = isTransparent;
     }
 
-    public PandomiumBrowser loadURL(String url) {
+    public CefBrowser createBrowser(String url) {
+        return cefClient.createBrowser(url, isOffscreenRendered, isTransparent, context = CefRequestContext.getGlobalContext());
+    }
+
+    /**
+     * Same as {@link #createBrowser(String)}.
+     */
+    public CefBrowser loadURL(String url) {
         return createBrowser(url);
-    }
-
-    protected PandomiumBrowser loadContent(String content) {
-        return null; // TODO
-    }
-
-    private PandomiumBrowser createBrowser(String url) {
-        CefBrowser browser = cefClient.createBrowser(url, OSUtils.isLinux(), OSUtils.isLinux());
-        return new PandomiumBrowser(browser);
     }
 
     public CefClient getCefClient() {
         return cefClient;
     }
 
-    public PandomiumCEF getPandomiumCEF() {
-        return pandomiumCEF;
+    public CefApp getCefApp() {
+        return cefApp;
     }
 
+    public CefRequestContext getContext() {
+        return context;
+    }
+
+    public boolean isOffscreenRendered() {
+        return isOffscreenRendered;
+    }
+
+    public void setOffscreenRendered(boolean offscreenRendered) {
+        isOffscreenRendered = offscreenRendered;
+    }
+
+    public boolean isTransparent() {
+        return isTransparent;
+    }
+
+    public void setTransparent(boolean transparent) {
+        isTransparent = transparent;
+    }
 }

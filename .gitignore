@@ -1,6 +1,7 @@
 ### Pandomium ###
 JCEF/
 debug.log
+**/natives
 
 ### Maven ###
 target/

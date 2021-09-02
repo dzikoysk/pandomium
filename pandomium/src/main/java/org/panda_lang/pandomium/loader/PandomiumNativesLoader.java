@@ -2,12 +2,13 @@ package org.panda_lang.pandomium.loader;
 
 import com.google.gson.JsonElement;
 import org.panda_lang.pandomium.Pandomium;
-import org.panda_lang.pandomium.settings.PandomiumSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
-import org.panda_lang.pandomium.util.*;
+import org.panda_lang.pandomium.util.ArchiveUtils;
+import org.panda_lang.pandomium.util.FileUtils;
+import org.panda_lang.pandomium.util.JsonUtils;
+import org.panda_lang.pandomium.util.OSUtils;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -18,9 +19,8 @@ public class PandomiumNativesLoader {
 
     protected void loadNatives(PandomiumLoader loader) throws Exception {
         Pandomium pandomium = loader.getPandomium();
-        PandomiumSettings settings = pandomium.getSettings();
 
-        NativesSettings nativesSettings = settings.getNatives();
+        NativesSettings nativesSettings = pandomium.getNatives();
         File nativesDirectory = nativesSettings.getNativeDirectory();
 
         if (checkNative(nativesDirectory)) {
@@ -36,11 +36,10 @@ public class PandomiumNativesLoader {
         // Fetch download url or user custom download url for natives
         if (nativesSettings.getDownloadURL() == null) {
             String ownerAndRepo = "dzikoysk/pandomium";
-            String version = new JarUtils().getVersion();
             List<String> downloadURLS = new ArrayList<>();
             for (JsonElement element :
                     new JsonUtils()
-                            .getJsonObject("https://api.github.com/repos/" + ownerAndRepo + "/releases/tags/" + version)
+                            .getJsonObject("https://api.github.com/repos/" + ownerAndRepo + "/releases/tags/" + Pandomium.FULL_VERSION)
                             .getAsJsonArray("assets")) {
                 String url = element.getAsJsonObject().get("browser_download_url").getAsString();
                 if (url.endsWith(".tar.xz"))
@@ -104,11 +103,11 @@ public class PandomiumNativesLoader {
             return false;
         }
 
-        File nativeProperties = new File(nativesDir+"/pandomium-natives.properties");
+        File nativeProperties = new File(nativesDir + "/pandomium-natives.properties");
         if (!nativeProperties.exists())
             return false;
 
-        if(!new FileUtils().getProperties(nativeProperties).getProperty("full-version").trim().equalsIgnoreCase(new JarUtils().getVersion().trim()))
+        if (!new FileUtils().getProperties(nativeProperties).getProperty("full-version").trim().equalsIgnoreCase(Pandomium.FULL_VERSION.trim()))
             return false;
 
         File[] directoryContent = nativesDir.listFiles();

@@ -1,7 +1,6 @@
 package org.panda_lang.pandomium;
 
-import org.panda_lang.pandomium.settings.PandomiumSettings;
-import org.panda_lang.pandomium.wrapper.PandomiumBrowser;
+import org.cef.browser.CefBrowser;
 import org.panda_lang.pandomium.wrapper.PandomiumClient;
 
 import javax.swing.*;
@@ -12,21 +11,17 @@ import java.awt.event.WindowEvent;
 final class PandomiumDevTools {
 
     public static void main(String[] args) {
-        PandomiumSettings settings = PandomiumSettings.getDefaultSettingsBuilder()
-                .build();
-
-        Pandomium pandomium = new Pandomium(settings);
-        pandomium.initialize();
+        Pandomium pandomium = Pandomium.buildNewWithDefaults();
 
         PandomiumClient client = pandomium.createClient();
-        PandomiumBrowser browser = client.loadURL("http://google.com");
+        CefBrowser browser = client.loadURL("http://google.com");
 
         JFrame frame = new JFrame();
-        frame.getContentPane().add(browser.toAWTComponent(), BorderLayout.CENTER);
+        frame.getContentPane().add(browser.getUIComponent(), BorderLayout.CENTER);
         SwingUtilities.invokeLater(() -> init(frame, "Pandomium"));
 
         JFrame devToolsFrame = new JFrame();
-        devToolsFrame.getContentPane().add(browser.getCefBrowser().getDevTools().getUIComponent(), BorderLayout.CENTER);
+        devToolsFrame.getContentPane().add(browser.getDevTools().getUIComponent(), BorderLayout.CENTER);
         SwingUtilities.invokeLater(() -> init(devToolsFrame, "Pandomium DevTools"));
     }
 

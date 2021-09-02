@@ -1,36 +1,33 @@
-package org.panda_lang.pandomium.settings;
+package org.panda_lang.pandomium;
 
 import net.dzikoysk.dynamiclogger.Logger;
 import net.dzikoysk.dynamiclogger.backend.PrintStreamLogger;
 import org.panda_lang.pandomium.settings.categories.CommandLineSettings;
-import org.panda_lang.pandomium.settings.categories.LoaderSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
 
 import java.io.File;
 
-public class PandomiumSettingsBuilder {
-
+public class PandomiumBuilder {
     private final CommandLineSettings commandLineSettings = new CommandLineSettings();
     private final NativesSettings nativesSettings = new NativesSettings();
-    private final LoaderSettings loaderSettings = new LoaderSettings();
     private Logger logger = new PrintStreamLogger(System.out, System.err);
 
-    public PandomiumSettingsBuilder logger(Logger logger) {
+    public PandomiumBuilder logger(Logger logger) {
         this.logger = logger;
         return this;
     }
 
-    public PandomiumSettingsBuilder proxy(String hostname, int port) {
+    public PandomiumBuilder proxy(String hostname, int port) {
         commandLineSettings.addArgument("--proxy-server=" + hostname + ":" + port);
         return this;
     }
 
-    public PandomiumSettingsBuilder argument(String argument) {
+    public PandomiumBuilder argument(String argument) {
         commandLineSettings.addArgument(argument);
         return this;
     }
 
-    public PandomiumSettingsBuilder nativeDirectory(String nativeDirectory) {
+    public PandomiumBuilder nativeDirectory(String nativeDirectory) {
         File file = new File(nativeDirectory);
 
         if (!file.exists()) {
@@ -43,13 +40,9 @@ public class PandomiumSettingsBuilder {
         return this;
     }
 
-    public PandomiumSettingsBuilder loadAsync(boolean async) {
-        loaderSettings.setLoadAsync(async);
-        return this;
-    }
 
-    public PandomiumSettings build() {
-        return new PandomiumSettings(logger, commandLineSettings, nativesSettings, loaderSettings);
+    public Pandomium build() {
+        return new Pandomium(logger, commandLineSettings, nativesSettings);
     }
 
 }

@@ -4,7 +4,6 @@ import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.utils.IOUtils;
 import org.tukaani.xz.XZInputStream;
-import org.tukaani.xz.XZOutputStream;
 
 import java.io.*;
 
