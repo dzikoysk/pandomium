@@ -11,7 +11,7 @@ import java.awt.event.WindowEvent;
 final class PandomiumDevTools {
 
     public static void main(String[] args) {
-        Pandomium pandomium = Pandomium.buildNewWithDefaults();
+        Pandomium pandomium = Pandomium.buildDefault();
 
         PandomiumClient client = pandomium.createClient();
         CefBrowser browser = client.loadURL("http://google.com");

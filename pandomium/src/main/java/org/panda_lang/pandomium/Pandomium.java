@@ -18,8 +18,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Pandomium implements Journalist {
     public static String FULL_VERSION = null;
-    private static ReentrantLock LOCK = new ReentrantLock();
-    private static Pandomium LATEST_PANDOMIUM;
 
     static {
         try {
@@ -40,21 +38,6 @@ public class Pandomium implements Journalist {
     }
 
     /**
-     * Creates a new {@link Pandomium} instance or returns the last created one.
-     */
-    public static Pandomium get(){
-        LOCK.lock();
-        try{
-            if (LATEST_PANDOMIUM == null) Pandomium.buildNewWithDefaults();
-        } catch (Exception exception) {
-            LOCK.unlock();
-            throw exception;
-        }
-        LOCK.unlock();
-        return LATEST_PANDOMIUM;
-    }
-
-    /**
      * Creates a new {@link PandomiumBuilder} object with default values and returns it.
      */
     public static PandomiumBuilder builder() {
@@ -65,7 +48,7 @@ public class Pandomium implements Journalist {
     /**
      * Creates a new {@link Pandomium} object with default values and returns it.
      */
-    public static Pandomium buildNewWithDefaults() {
+    public static Pandomium buildDefault() {
         return builder().build();
     }
 
@@ -80,8 +63,6 @@ public class Pandomium implements Journalist {
 
 
     public Pandomium(Logger logger, CommandLineSettings commandLine, NativesSettings natives) {
-        LATEST_PANDOMIUM = this;
-
         this.logger = logger;
         this.commandLine = commandLine;
         this.natives = natives;

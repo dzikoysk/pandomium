@@ -11,7 +11,8 @@ import java.awt.event.WindowEvent;
 public class PandomiumTest {
 
     public static void main(String[] args) {
-        PandomiumClient client = Pandomium.get().createClient();
+        Pandomium pandomium = Pandomium.buildDefault();
+        PandomiumClient client = pandomium.createClient();
         CefBrowser browser = client.loadURL("http://google.com");
 
         JFrame frame = new JFrame();
@@ -30,7 +31,7 @@ public class PandomiumTest {
         frame.setVisible(true);
 
         // For background tasks:
-        PandomiumClient offscreenClient = Pandomium.get().createOffscreenClient();
+        PandomiumClient offscreenClient = Pandomium.buildDefault().createOffscreenClient();
         offscreenClient.loadURL("http://google.com");
     }
 
