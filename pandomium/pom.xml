@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.panda-lang</groupId>
         <artifactId>pandomium-parent</artifactId>
-        <version>1.0.0-ALPHA9-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
+        <version>1.1.0-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131</version>
         <!-- Pandonium-Builder.jar sets this to the latest version, before publishing. -->
     </parent>
     <artifactId>pandomium</artifactId>
