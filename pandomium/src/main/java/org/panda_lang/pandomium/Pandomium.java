@@ -14,7 +14,6 @@ import org.panda_lang.pandomium.wrapper.PandomiumClient;
 
 import java.awt.*;
 import java.io.File;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Pandomium implements Journalist {
     public static String FULL_VERSION = null;
@@ -59,7 +58,7 @@ public class Pandomium implements Journalist {
     private final PandomiumLoader loader;
     private final Thread mainThread;
 
-    private CefApp cefApp = null;
+    private static CefApp CEF_APP = null;
 
 
     public Pandomium(Logger logger, CommandLineSettings commandLine, NativesSettings natives) {
@@ -72,18 +71,20 @@ public class Pandomium implements Journalist {
         this.loader = new PandomiumLoader(this);
         this.mainThread = Thread.currentThread();
 
-        // Init:
-        Toolkit.getDefaultToolkit();
+        if (CEF_APP==null || (CefApp.getState()!=null && CefApp.getState().equals(CefApp.CefAppState.TERMINATED))){ // To ensure, init is only called once per runtime
+            // Init:
+            Toolkit.getDefaultToolkit();
 
-        loader.addProgressListener((state, progress) -> {
-            if (state != PandomiumProgressListener.State.DONE) {
-                return;
-            }
+            loader.addProgressListener((state, progress) -> {
+                if (state != PandomiumProgressListener.State.DONE) {
+                    return;
+                }
 
-            this.cefApp = CefApp.getInstance(this.getCommandLine().getArguments(), this.getCefSettings());
-        });
+                CEF_APP = CefApp.getInstance(this.getCommandLine().getArguments(), this.getCefSettings());
+            });
 
-        loader.load();
+            loader.load();
+        }
     }
 
     /**
@@ -101,12 +102,12 @@ public class Pandomium implements Journalist {
     }
 
     public PandomiumClient createClient(boolean isOffscreenRendered, boolean isTransparent) {
-        if (cefApp == null) throw new RuntimeException("Pandomium is not initialized yet!");
-        return new PandomiumClient(this.cefApp, isOffscreenRendered, isTransparent);
+        if (CEF_APP == null) throw new RuntimeException("Pandomium is not initialized yet!");
+        return new PandomiumClient(this.CEF_APP, isOffscreenRendered, isTransparent);
     }
 
     public CefApp getCefApp() {
-        return cefApp;
+        return CEF_APP;
     }
 
     public PandomiumLoader getLoader() {
