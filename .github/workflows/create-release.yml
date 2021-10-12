@@ -13,6 +13,10 @@ on:
         default: '1.0.0'
         # Input has to be provided for the workflow to run
         required: true
+      jcef-tag-name:
+        description: 'JCEF tag name (optional)'
+        default: ''
+        required: false
 
 jobs:
   Create-Release:
@@ -40,7 +44,7 @@ jobs:
         run: | 
           cd ${{ github.workspace }} 
           ls
-          java -jar Pandomium-Builder.jar maven_repo_id:panda-repository maven_repo_url:https://repo.panda-lang.org/releases o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }}
+          java -jar Pandomium-Builder.jar maven_repo_id:panda-repository maven_repo_url:https://repo.panda-lang.org/releases o_auth_token:${{secrets.GITHUB_TOKEN}} owner_and_repo:${{github.repository}} version:${{ github.event.inputs.version }} jcef_tag_name:${{ github.event.inputs.jcef-tag-name }}
 
       - name: Publish packages
         run: |

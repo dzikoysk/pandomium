@@ -1,6 +1,8 @@
 package com.osiris.pandomiumbuilder;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.osiris.autoplug.core.json.JsonTools;
 import com.osiris.betterthread.BetterThread;
 import com.osiris.betterthread.BetterThreadManager;
@@ -23,6 +25,7 @@ public class STEP1 {
         System.out.println("STEP 1: Download the latest JCEF builds.");
         System.out.println(" ");
 
+        String customJcefTagName = null;
         for (String arg :
                 args) {
             // Example "dir:C://User/John" get splits into command="dir" and value="C://User/John"
@@ -44,6 +47,10 @@ public class STEP1 {
                 MAVEN_REPO_URL = value;
             else if (command.equalsIgnoreCase("maven_repo_id"))
                 MAVEN_REPO_ID = value;
+            else if (command.equalsIgnoreCase("jcef_tag_name")){
+                if (!value.trim().isEmpty())
+                    customJcefTagName = value;
+            }
         }
 
         if (DIR == null)
@@ -72,19 +79,40 @@ public class STEP1 {
             throw new Exception("Argument 'maven_repo_id' is missing! Add it in this format:" +
                     " 'maven_repo_id:REPO_ID_HERE' to '... -jar Pandomium-Builder.jar <argument1> <argument2>...'.");
 
-        tagNameJCEF = new JsonTools()
-                .getJsonObject("https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest")
-                .get("tag_name").getAsString();
-        fullTagName = VERSION + "-JCEF-" + tagNameJCEF;
         List<String> downloadURLS = new ArrayList<>();
-        for (JsonElement element :
-                new JsonTools()
-                        .getJsonObject("https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest")
-                        .getAsJsonArray("assets")) {
-            String downloadURL = element.getAsJsonObject().get("browser_download_url").getAsString();
-            if (downloadURL.endsWith(".zip"))
-                downloadURLS.add(downloadURL);
+        if (customJcefTagName==null){
+            JsonObject latestRelease = new JsonTools()
+                    .getJsonObject("https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest");
+            tagNameJCEF = latestRelease.get("tag_name").getAsString();
+            fullTagName = VERSION + "-JCEF-" + tagNameJCEF;
+            for (JsonElement element :
+                    latestRelease.getAsJsonArray("assets")) {
+                String downloadURL = element.getAsJsonObject().get("browser_download_url").getAsString();
+                if (downloadURL.endsWith(".zip"))
+                    downloadURLS.add(downloadURL);
+            }
+        } else{ // Since a custom jcef tag name is provided we use that instead of the latest tag name
+            tagNameJCEF = customJcefTagName;
+            fullTagName = VERSION + "-JCEF-" + tagNameJCEF;
+            JsonArray allReleases = new JsonTools() // Search for the tag name
+                    .getJsonArray("https://api.github.com/repos/jcefbuild/jcefbuild/releases");
+            JsonObject release = null;
+            for (JsonElement element :
+                    allReleases) {
+                release = element.getAsJsonObject();
+                if (release.get("tag_name").getAsString().equals(customJcefTagName))
+                    break;
+                release = null;
+            }
+            if (release==null) throw new Exception("Failed to find a JCEF release with tag_name: "+customJcefTagName);
+            for (JsonElement element :
+                    release.getAsJsonArray("assets")) {
+                String downloadURL = element.getAsJsonObject().get("browser_download_url").getAsString();
+                if (downloadURL.endsWith(".zip"))
+                    downloadURLS.add(downloadURL);
+            }
         }
+
 
         if (downloadURLS.isEmpty())
             throw new Exception("Aborted build! No JCEF builds found as assets in: https://api.github.com/repos/jcefbuild/jcefbuild/releases/latest");

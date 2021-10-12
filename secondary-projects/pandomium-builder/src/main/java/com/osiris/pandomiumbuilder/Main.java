@@ -20,6 +20,7 @@ public class Main {
      * dir <small>| The working directory path. If not given the current working directory is used. If not existing gets created.</small> <br>
      * abort_on_warning <small>| Can be true or false (default is false). Should the program abort on a warning.</small> <br>
      * release_notes_url <small>| Url to the release notes.</small> <br>
+     * jcef_tag_name <small>| Provide, if you want to use a specific release of JCEF instead of the latest.</small> <br>
      */
     public static void main(String[] args) throws Exception {
         STEP1 step1 = new STEP1(args);
