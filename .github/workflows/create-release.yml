@@ -8,7 +8,7 @@ on:
     inputs:
       version:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Pandonium version'
+        description: 'Pandomium version'
         # Default value if no value is explicitly provided
         default: '1.0.0'
         # Input has to be provided for the workflow to run
