@@ -1,5 +1,5 @@
 # Pandomium [![Build Status](https://travis-ci.org/dzikoysk/Pandomium.svg?branch=master)](https://travis-ci.org/Panda-Programming-Language/Pandomium) [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/dzikoysk/Pandomium.svg)](http://isitmaintained.com/project/dzikoysk/Pandomium "Average time to resolve an issue")
-Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for the maven projects
+Pandomium is the JCEF (Java Chromium Embedded Framework) implementation dedicated for Maven projects
 
 #### Example
 <!-- ![PandomiumTest.java - Windows x64](https://panda-lang.org/screenshot/5d8KeBJg.png) -->
