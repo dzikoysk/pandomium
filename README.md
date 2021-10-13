@@ -32,6 +32,6 @@ Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/ma
 * [x] Basic implementation
 * [x] Builds available in the maven repository
 * [x] Pandomium wrapper for JCEF objects
-* [ ] Win32, Linux32 & macOS support
+* [ ] macOS support
 * [ ] Advanced Java <-> JS bridge
 * [ ] ByteBuffer implementation
