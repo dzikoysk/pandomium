@@ -2,10 +2,30 @@
 
 mvn --batch-mode deploy:deploy-file -Durl=https://repo.panda-lang.org/releases\
                        -DrepositoryId=panda-repository \
+                       -Dfile=jcef-linux32-fat.jar \
+                       -DgroupId=org.panda-lang.pandomium-fat-jars \
+                       -DartifactId=jcef-linux32-fat \
+                       -Dversion=1.1.2-JCEF-v1.0.10-84.3.8+gc8a556f+chromium-84.0.4147.105 \
+                       -Dpackaging=jar \
+                       -DgeneratePom=true \
+                       -DgeneratePom.description="Contains OS-specific JCEF code." \
+
+mvn --batch-mode deploy:deploy-file -Durl=https://repo.panda-lang.org/releases\
+                       -DrepositoryId=panda-repository \
+                       -Dfile=jcef-linux64-fat.jar \
+                       -DgroupId=org.panda-lang.pandomium-fat-jars \
+                       -DartifactId=jcef-linux64-fat \
+                       -Dversion=1.1.2-JCEF-v1.0.10-84.3.8+gc8a556f+chromium-84.0.4147.105 \
+                       -Dpackaging=jar \
+                       -DgeneratePom=true \
+                       -DgeneratePom.description="Contains OS-specific JCEF code." \
+
+mvn --batch-mode deploy:deploy-file -Durl=https://repo.panda-lang.org/releases\
+                       -DrepositoryId=panda-repository \
                        -Dfile=jcef-win32-fat.jar \
                        -DgroupId=org.panda-lang.pandomium-fat-jars \
                        -DartifactId=jcef-win32-fat \
-                       -Dversion=1.1.1-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131 \
+                       -Dversion=1.1.2-JCEF-v1.0.10-84.3.8+gc8a556f+chromium-84.0.4147.105 \
                        -Dpackaging=jar \
                        -DgeneratePom=true \
                        -DgeneratePom.description="Contains OS-specific JCEF code." \
@@ -15,7 +35,7 @@ mvn --batch-mode deploy:deploy-file -Durl=https://repo.panda-lang.org/releases\
                        -Dfile=jcef-win64-fat.jar \
                        -DgroupId=org.panda-lang.pandomium-fat-jars \
                        -DartifactId=jcef-win64-fat \
-                       -Dversion=1.1.1-JCEF-v1.0.10-92.0.25+gd15cfa8+chromium-92.0.4515.131 \
+                       -Dversion=1.1.2-JCEF-v1.0.10-84.3.8+gc8a556f+chromium-84.0.4147.105 \
                        -Dpackaging=jar \
                        -DgeneratePom=true \
                        -DgeneratePom.description="Contains OS-specific JCEF code." \
