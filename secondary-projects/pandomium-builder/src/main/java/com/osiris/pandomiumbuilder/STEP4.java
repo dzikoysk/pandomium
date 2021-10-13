@@ -38,7 +38,7 @@ public class STEP4 {
                         "```xml\n" +
                         "<repository>\n" +
                         "    <id>panda-repository</id>\n" +
-                        "    <url>https://repo.panda-lang.org/</url>\n" +
+                        "    <url>https://repo.panda-lang.org/releases</url>\n" +
                         "</repository>\n" +
                         "```\n" +
                         "Release notes: " + RELEASE_NOTES_URL)
