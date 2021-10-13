@@ -18,8 +18,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.osiris.pandomiumbuilder.Constants.DIR;
-import static com.osiris.pandomiumbuilder.Constants.VERSION;
+import static com.osiris.pandomiumbuilder.Constants.*;
 import static com.osiris.pandomiumbuilder.U.deleteDirectoryRecursively;
 
 public class STEP2 {
@@ -39,6 +38,13 @@ public class STEP2 {
                 downloadedJCEFBuilds) {
 
             // Do natives stuff:
+            // TODO Macs are special and have other directories for the libs/native files
+            if (downloadedJCEFBuild.getName().contains("mac")){
+                System.out.println("WARNING: Skipped native lib creation for "+downloadedJCEFBuild.getName()+" because currently not supported!");
+                if (isAbortOnWarning)
+                    System.exit(1);
+                continue;
+            }
             File tempDir = new File(DIR + "/temp-dir");
             if (!tempDir.exists()) tempDir.mkdirs();
             System.out.println("Created temp-dir: " + tempDir);
@@ -47,6 +53,7 @@ public class STEP2 {
                     .extract(downloadedJCEFBuild, tempDir);
             System.out.println("Extracted " + downloadedJCEFBuild.getName() + " to temp-dir.");
             File source = new File(tempDir + "/java-cef-build-bin/bin/lib").listFiles()[0];
+            // TODO mac fails above bc of different dir structure
 
             File nativeProperties = new File(source + "/pandomium-natives.properties");
             if (nativeProperties.exists()) nativeProperties.delete();
