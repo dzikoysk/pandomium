@@ -1,2 +1,2 @@
-# Pandonium-Builder
-Runnable jar that handles releasing/updating of Pandonium
+# Pandomium-Builder
+Runnable jar that handles releasing/updating of Pandomium
