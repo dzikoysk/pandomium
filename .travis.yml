@@ -1,8 +1,0 @@
-language: java
-sudo: true
-
-jdk:
-- openjdk8
-
-notifications:
-  email: false
