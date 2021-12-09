@@ -4,7 +4,7 @@
     <groupId>org.panda-lang</groupId>
     <artifactId>pandomium-parent</artifactId>
     <packaging>pom</packaging>
-    <version>v1.0.10-84.3.8+gc8a556f+chromium-84.0.4147.105-v2-JCEF-v1.0.10-84.3.8+gc8a556f+chromium-84.0.4147.105</version>
+    <version>1.1.3-JCEF-v1.0.10-84.3.8+gc8a556f+chromium-84.0.4147.105</version>
     <!-- Pandonium-Builder.jar sets this to the latest version, before publishing. -->
     <scm>
         <connection>scm:git:https://github.com/Panda-Programming-Language/Pandomium.git</connection>
