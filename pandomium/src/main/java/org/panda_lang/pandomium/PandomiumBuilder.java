@@ -2,15 +2,19 @@ package org.panda_lang.pandomium;
 
 import net.dzikoysk.dynamiclogger.Logger;
 import net.dzikoysk.dynamiclogger.backend.PrintStreamLogger;
+import org.cef.CefSettings;
 import org.panda_lang.pandomium.settings.categories.CommandLineSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
 
 import java.io.File;
+import java.util.function.Supplier;
 
 public class PandomiumBuilder {
+
+    private Logger logger = new PrintStreamLogger(System.out, System.err);
     private final CommandLineSettings commandLineSettings = new CommandLineSettings();
     private final NativesSettings nativesSettings = new NativesSettings();
-    private Logger logger = new PrintStreamLogger(System.out, System.err);
+    private Supplier<CefSettings> cefSettingsSupplier = CefSettings::new;
 
     public PandomiumBuilder logger(Logger logger) {
         this.logger = logger;
@@ -40,9 +44,12 @@ public class PandomiumBuilder {
         return this;
     }
 
+    public void cefSettings(Supplier<CefSettings> cefSettingsSupplier) {
+        this.cefSettingsSupplier = cefSettingsSupplier;
+    }
 
     public Pandomium build() {
-        return new Pandomium(logger, commandLineSettings, nativesSettings);
+        return new Pandomium(logger, commandLineSettings, nativesSettings, cefSettingsSupplier.get());
     }
 
 }

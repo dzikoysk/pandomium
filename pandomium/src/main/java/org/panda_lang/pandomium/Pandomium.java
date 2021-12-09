@@ -16,7 +16,8 @@ import java.awt.*;
 import java.io.File;
 
 public class Pandomium implements Journalist {
-    public static String FULL_VERSION = null;
+
+    public static String FULL_VERSION;
 
     static {
         try {
@@ -51,27 +52,23 @@ public class Pandomium implements Journalist {
         return builder().build();
     }
 
+    private static CefApp CEF_APP = null;
+
     private final Logger logger;
     private final CommandLineSettings commandLine;
     private final NativesSettings natives;
     private final CefSettings cefSettings;
     private final PandomiumLoader loader;
-    private final Thread mainThread;
 
-    private static CefApp CEF_APP = null;
-
-
-    public Pandomium(Logger logger, CommandLineSettings commandLine, NativesSettings natives) {
+    public Pandomium(Logger logger, CommandLineSettings commandLine, NativesSettings natives, CefSettings cefSettings) {
         this.logger = logger;
         this.commandLine = commandLine;
         this.natives = natives;
-
-        this.cefSettings = new CefSettings();
+        this.cefSettings = cefSettings;
         this.cefSettings.windowless_rendering_enabled = OSUtils.isLinux();
         this.loader = new PandomiumLoader(this);
-        this.mainThread = Thread.currentThread();
 
-        if (CEF_APP==null || (CefApp.getState()!=null && CefApp.getState().equals(CefApp.CefAppState.TERMINATED))){ // To ensure, init is only called once per runtime
+        if (CEF_APP == null || (CefApp.getState() != null && CefApp.getState().equals(CefApp.CefAppState.TERMINATED))) { // To ensure, init is only called once per runtime
             // Init:
             Toolkit.getDefaultToolkit();
 
@@ -103,7 +100,7 @@ public class Pandomium implements Journalist {
 
     public PandomiumClient createClient(boolean isOffscreenRendered, boolean isTransparent) {
         if (CEF_APP == null) throw new RuntimeException("Pandomium is not initialized yet!");
-        return new PandomiumClient(this.CEF_APP, isOffscreenRendered, isTransparent);
+        return new PandomiumClient(CEF_APP, isOffscreenRendered, isTransparent);
     }
 
     public CefApp getCefApp() {
