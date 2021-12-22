@@ -1,5 +1,6 @@
 package org.panda_lang.pandomium.loader;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;
@@ -28,7 +29,6 @@ public class PandomiumNativesLoader {
         }
 
         loader.updateProgress(5);
-
         FileUtils.handleFileResult(FileUtils.delete(nativesDirectory), "Couldn't delete directory %s", nativesDirectory.getAbsolutePath());
         FileUtils.handleFileResult(nativesDirectory.mkdirs(), "Couldn't create directory %s", nativesDirectory.getAbsolutePath());
         loader.updateProgress(10);
@@ -37,35 +37,41 @@ public class PandomiumNativesLoader {
         if (nativesSettings.getDownloadURL() == null) {
             String ownerAndRepo = "dzikoysk/pandomium";
             List<String> downloadURLS = new ArrayList<>();
-            for (JsonElement element :
-                    new JsonUtils()
-                            .getJsonObject("https://api.github.com/repos/" + ownerAndRepo + "/releases/tags/" + Pandomium.FULL_VERSION)
-                            .getAsJsonArray("assets")) {
+
+            JsonArray assets = new JsonUtils()
+                    .getJsonObject("https://api.github.com/repos/" + ownerAndRepo + "/releases/tags/" + Pandomium.FULL_VERSION)
+                    .getAsJsonArray("assets");
+
+            for (JsonElement element : assets) {
                 String url = element.getAsJsonObject().get("browser_download_url").getAsString();
-                if (url.endsWith(".tar.xz"))
+
+                if (url.endsWith(".tar.xz")) {
                     downloadURLS.add(url);
+                }
             }
 
             // Determine the right download url for this system
             String downloadURL = null;
-            for (String url :
-                    downloadURLS) {
+
+            for (String url : downloadURLS) {
                 String fileName = new File(url).getName();
-                for (String osAlias :
-                        OSUtils.OS_TYPE.getAliases()) {
-                    if (fileName.contains(osAlias))
-                        for (String archAlias :
-                                OSUtils.OS_ARCH.getAliases()) {
+
+                for (String osAlias : OSUtils.OS_TYPE.getAliases()) {
+                    if (fileName.contains(osAlias)) {
+                        for (String archAlias : OSUtils.OS_ARCH.getAliases()) {
                             if (fileName.contains(archAlias)) {
                                 downloadURL = url;
                                 break;
                             }
                         }
+                    }
                 }
             }
 
-            if (downloadURL == null)
+            if (downloadURL == null) {
                 throw new Exception("Failed to find JCEF natives download url for this system.");
+            }
+
             nativesSettings.setDownloadURL(downloadURL);
         }
 
@@ -104,11 +110,14 @@ public class PandomiumNativesLoader {
         }
 
         File nativeProperties = new File(nativesDir + "/pandomium-natives.properties");
-        if (!nativeProperties.exists())
-            return false;
 
-        if (!new FileUtils().getProperties(nativeProperties).getProperty("full-version").trim().equalsIgnoreCase(Pandomium.FULL_VERSION.trim()))
+        if (!nativeProperties.exists()) {
             return false;
+        }
+
+        if (!new FileUtils().getProperties(nativeProperties).getProperty("full-version").trim().equalsIgnoreCase(Pandomium.FULL_VERSION.trim())) {
+            return false;
+        }
 
         File[] directoryContent = nativesDir.listFiles();
         boolean success = FileUtils.isIn("libcef.so", directoryContent) || FileUtils.isIn("libcef.dll", directoryContent);
@@ -133,6 +142,7 @@ public class PandomiumNativesLoader {
         if (cefHelperName != null && directoryContent != null) {
             for (File file : directoryContent) {
                 if (file.getName().equals(cefHelperName)) {
+                    //noinspection ResultOfMethodCallIgnored
                     file.setExecutable(true);
                     break;
                 }
