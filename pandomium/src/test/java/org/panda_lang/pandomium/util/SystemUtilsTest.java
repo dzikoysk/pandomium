@@ -1,6 +1,6 @@
 package org.panda_lang.pandomium.util;
 
-import net.dzikoysk.dynamiclogger.backend.PrintStreamLogger;
+import com.reposilite.journalist.backend.PrintStreamLogger;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

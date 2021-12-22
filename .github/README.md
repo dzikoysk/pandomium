@@ -14,7 +14,7 @@ CefBrowser browser = client.loadURL("https://panda-lang.org");
 Full example: [PandomiumTest.java](https://github.com/dzikoysk/Pandomium/blob/master/pandomium/src/test/java/org/panda_lang/pandomium/PandomiumTest.java)
 
 #### Installation
- - Java 8 or higher required
+ - Java 8 - 14
  - [Maven instructions for the latest release](https://github.com/dzikoysk/pandomium/releases/)
 
 #### Features

@@ -1,7 +1,7 @@
 package org.panda_lang.pandomium;
 
-import net.dzikoysk.dynamiclogger.Logger;
-import net.dzikoysk.dynamiclogger.backend.PrintStreamLogger;
+import com.reposilite.journalist.Logger;
+import com.reposilite.journalist.backend.PrintStreamLogger;
 import org.cef.CefSettings;
 import org.panda_lang.pandomium.settings.categories.CommandLineSettings;
 import org.panda_lang.pandomium.settings.categories.NativesSettings;

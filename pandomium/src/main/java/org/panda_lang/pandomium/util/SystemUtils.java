@@ -1,6 +1,6 @@
 package org.panda_lang.pandomium.util;
 
-import net.dzikoysk.dynamiclogger.Journalist;
+import com.reposilite.journalist.Journalist;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SystemUtils {
-    private List<String> libs = new ArrayList<>();
+
+    private final List<String> libs = new ArrayList<>();
 
     public static void injectLibraryPath(Journalist journalist, String libraryPath) throws Exception {
         System.setProperty("java.library.path", libraryPath);

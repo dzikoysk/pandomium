@@ -1,6 +1,6 @@
 package org.panda_lang.pandomium.loader.os;
 
-import net.dzikoysk.dynamiclogger.Journalist;
+import com.reposilite.journalist.Journalist;
 import net.dzikoysk.linuxenv.LinuxJVMEnvironment;
 import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.util.FileUtils;

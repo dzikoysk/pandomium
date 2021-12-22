@@ -1,7 +1,6 @@
 package org.panda_lang.pandomium.loader;
 
-
-import net.dzikoysk.dynamiclogger.Logger;
+import com.reposilite.journalist.Logger;
 import org.panda_lang.pandomium.Pandomium;
 import org.panda_lang.pandomium.loader.PandomiumProgressListener.State;
 import org.panda_lang.pandomium.loader.os.PandomiumLinuxNativesLoader;

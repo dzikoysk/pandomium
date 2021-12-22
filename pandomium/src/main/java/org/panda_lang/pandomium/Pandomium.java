@@ -1,7 +1,7 @@
 package org.panda_lang.pandomium;
 
-import net.dzikoysk.dynamiclogger.Journalist;
-import net.dzikoysk.dynamiclogger.Logger;
+import com.reposilite.journalist.Journalist;
+import com.reposilite.journalist.Logger;
 import org.cef.CefApp;
 import org.cef.CefSettings;
 import org.panda_lang.pandomium.loader.PandomiumLoader;
