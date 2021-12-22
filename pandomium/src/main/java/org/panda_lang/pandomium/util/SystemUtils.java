@@ -1,15 +1,19 @@
 package org.panda_lang.pandomium.util;
 
+import net.dzikoysk.dynamiclogger.Journalist;
 import java.io.File;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SystemUtils {
     private List<String> libs = new ArrayList<>();
 
-    public static void injectLibraryPath(String libraryPath) throws Exception {
+    public static void injectLibraryPath(Journalist journalist, String libraryPath) throws Exception {
         System.setProperty("java.library.path", libraryPath);
+
         /*
         for (String lib : new SystemUtils().getLibs(new File(libraryPath))) {
             try{
@@ -18,18 +22,24 @@ public class SystemUtils {
                 exception.printStackTrace();
             }
         }
-
          */
 
         try {
-            Field sysPathsField = ClassLoader.class.getDeclaredField("sys_paths");
-            sysPathsField.setAccessible(true);
-            sysPathsField.set(null, null);
-        } catch (final NoSuchFieldException e) {
-            /*
-             * ignore, happens on ibm-jdk-8 and adoptopenjdk-8-openj9 but has no influence since there is no cached
-             * field that needs a reset
-             */
+            //noinspection JavaReflectionMemberAccess
+            Method initLibPaths = ClassLoader.class.getDeclaredMethod("initLibraryPaths"); // AdoptOpenJDK
+            initLibPaths.setAccessible(true);
+            initLibPaths.invoke(null);
+        }
+        catch (NoSuchMethodException | InvocationTargetException initLibraryPathsException) {
+            try {
+                //noinspection JavaReflectionMemberAccess
+                Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths"); // General
+                fieldSysPath.setAccessible(true);
+                fieldSysPath.set(null, null);
+            } catch (Exception sysPathsException) {
+                // Unknown distribution / JDK15+
+                journalist.getLogger().error("Cannot refresh library path, unsupported JDK distribution/version.");
+            }
         }
     }
 
@@ -50,4 +60,5 @@ public class SystemUtils {
             }
         }
     }
+
 }

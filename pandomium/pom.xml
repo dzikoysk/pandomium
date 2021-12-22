@@ -31,7 +31,7 @@
         <!-- Panda -->
         <dependency>
             <groupId>org.panda-lang</groupId>
-            <artifactId>panda</artifactId>
+            <artifactId>panda-utilities</artifactId>
         </dependency>
         <dependency>
             <groupId>net.dzikoysk</groupId>

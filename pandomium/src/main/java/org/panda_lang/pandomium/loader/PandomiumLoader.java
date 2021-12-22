@@ -13,26 +13,26 @@ import java.util.Collection;
 
 public class PandomiumLoader {
     private final Pandomium pandomium;
-    private final Logger log;
+    private final Logger logger;
     private final Collection<PandomiumProgressListener> progressListeners;
     private int progress;
 
     public PandomiumLoader(Pandomium pandomium) {
         this.pandomium = pandomium;
-        this.log = pandomium.getLogger();
+        this.logger = pandomium.getLogger();
         this.progressListeners = new ArrayList<>();
     }
 
     public void load() {
-        log.info("# ");
-        log.info("# Launching Pandonium v" + Pandomium.FULL_VERSION);
-        log.info("# Determined '" + OSUtils.OS_ARCH.name() + "' as operating systems architecture.");
-        log.info("# Determined '" + OSUtils.OS_TYPE.name() + "' as operating system.");
-        log.info("# ");
+        logger.info("# ");
+        logger.info("# Launching Pandonium v" + Pandomium.FULL_VERSION);
+        logger.info("# Determined '" + OSUtils.OS_ARCH.name() + "' as operating systems architecture.");
+        logger.info("# Determined '" + OSUtils.OS_TYPE.name() + "' as operating system.");
+        logger.info("# ");
 
         progressListeners.add((state, progress) -> {
             if (state == State.RUNNING) {
-                log.info("Progress: " + progress + "%");
+                logger.info("Progress: " + progress + "%");
             }
         });
 
@@ -44,7 +44,7 @@ public class PandomiumLoader {
 
             Pandomium pandomium = this.getPandomium();
             String nativePath = pandomium.getNatives().getNativeDirectory().getAbsolutePath();
-            SystemUtils.injectLibraryPath(nativePath);
+            SystemUtils.injectLibraryPath(logger, nativePath);
 
             if (OSUtils.isLinux()) {
                 PandomiumLinuxNativesLoader linuxNativesLoader = new PandomiumLinuxNativesLoader();
@@ -54,7 +54,7 @@ public class PandomiumLoader {
             this.updateProgress(100);
             this.callListeners(PandomiumProgressListener.State.DONE);
         } catch (Exception e) {
-            log.error("Failed to install JCEF natives update. Message: " + e.getMessage());
+            logger.error("Failed to install JCEF natives update. Message: " + e.getMessage());
             e.printStackTrace();
         }
     }
